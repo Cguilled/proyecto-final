@@ -6,7 +6,7 @@ public class Aasadad {
 	public int getValor() {
 		
 		
-		System.out.println("ghfggf");
+		System.out.println("miversion");
 		
 		return 3;
 		
