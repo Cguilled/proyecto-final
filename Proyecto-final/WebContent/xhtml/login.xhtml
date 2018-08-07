@@ -7,9 +7,10 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:icecore="http://www.icefaces.org/icefaces/core"
 	xmlns:ace="http://www.icefaces.org/icefaces/components"
-	style= "background-color: blue">
-	<ui:param name="title" value="#{msgs['example.ace.dialog.title']}"/>
-    <ui:param name="description" value="#{msgs['example.ace.dialog.description']}"/>
+	style="background-color: #3f90d0">
+<ui:param name="title" value="#{msgs['example.ace.dialog.title']}" />
+<ui:param name="description"
+	value="#{msgs['example.ace.dialog.description']}" />
 
 <h:body>
 
@@ -33,6 +34,12 @@
 					id="pass">
 					<f:validateLongRange minimum="1" maximum="10" />
 				</ace:textEntry>
+
+				<ace:pushButton id="submitBtn" value="Iniciar sesión"
+					style="border: border-radius: 25px">
+					<ace:ajax execute="@form" render="@all"
+						onSuccess="ice.ace.instance('#{dialog.clientId}').hide(); " />
+				</ace:pushButton>
 
 			</h:panelGrid>
 			<!-- <ice:message for="emailField" showDetail="false" showSummary="true" style="color:red;"/> -->
