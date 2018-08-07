@@ -4,24 +4,138 @@
   <artifactId>Proyecto-final</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
-  <build>
-    <sourceDirectory>src</sourceDirectory>
-    <plugins>
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.7.0</version>
-        <configuration>
-          <source>1.8</source>
-          <target>1.8</target>
-        </configuration>
-      </plugin>
-      <plugin>
-        <artifactId>maven-war-plugin</artifactId>
-        <version>3.0.0</version>
-        <configuration>
-          <warSourceDirectory>WebContent</warSourceDirectory>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
+  
+  
+	<!-- VARIABLES PARA EL PROYECTO -->
+	<properties>
+		<project.build.sourceEncoding>iso-8859-15</project.build.sourceEncoding>
+		<version-hibernate>4.3.11.Final</version-hibernate>
+		<version-spring>4.3.11.RELEASE</version-spring>
+		<version-datasource>1.4</version-datasource>
+		<version-icefaces>4.2.0</version-icefaces>
+		<version-mojarra>2.2.14</version-mojarra>
+	</properties>
+
+	<!-- REPOSITORIO ADICIONAL PARA LA DESCARGA DE DEPENDENCIAS -->
+	<repositories>
+		<repository>
+			<id>codelds</id>
+			<url>https://code.lds.org/nexus/content/groups/main-repo</url>
+		</repository>
+	</repositories>
+
+	<!-- DEPENDENCIAS DEL PROYECTO -->
+	<dependencies>
+
+		<!-- VERSION DE ICEFACES -->
+		<dependency>
+			<groupId>org.icefaces</groupId>
+			<artifactId>icefaces</artifactId>
+			<version>${version-icefaces}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.icefaces</groupId>
+			<artifactId>icefaces-ace</artifactId>
+			<version>${version-icefaces}</version>
+		</dependency>
+
+		<!-- VERSION DE JSF -->
+		<dependency>
+			<groupId>com.sun.faces</groupId>
+			<artifactId>jsf-api</artifactId>
+			<version>${version-mojarra}</version>
+		</dependency>
+		<!-- IMPLEMENTACION BASE MOJARRA -->
+		<dependency>
+			<groupId>com.sun.faces</groupId>
+			<artifactId>jsf-impl</artifactId>
+			<version>${version-mojarra}</version>
+		</dependency>
+
+		<!-- VERSION DE HIBERNATE -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${version-hibernate}</version>
+		</dependency>
+		<!-- DATASOURCE PARA LA GESTION DE LA TRANSACCION -->
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+			<version>${version-datasource}</version>
+		</dependency>
+
+		<!-- DRIVER PARA ORACLE -->
+		<dependency>
+			<groupId>com.oracle</groupId>
+			<artifactId>ojdbc6</artifactId>
+			<version>11.2.0.3</version>
+		</dependency>
+
+		<!-- *** SPRING *** -->
+		<!-- ENTORNO DE SPRING -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${version-spring}</version>
+		</dependency>
+		<!-- CONTEXTO DE ARRANQUE PARA SPRING -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${version-spring}</version>
+		</dependency>
+		<!-- MODULO DE PERSISTENCIA -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${version-spring}</version>
+		</dependency>
+		<!-- PARTE WEB -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${version-spring}</version>
+		</dependency>
+
+		<!-- TRAZAS -->
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+			<version>1.7.16</version>
+		</dependency>
+		<!-- COLOR A LAS TRAZAS -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+			<version>1.7.16</version>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<sourceDirectory>src</sourceDirectory>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.7.0</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.0.0</version>
+				<configuration>
+					<warSourceDirectory>WebContent</warSourceDirectory>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>

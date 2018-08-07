@@ -6,15 +6,15 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.atos.hibernate.Usuarios;
-import com.atos.hibernate.dao.ext.UsuarioDAO_EXT;
+import com.atos.hibernate.dao.TareasDAO;
+import com.atos.hibernate.dto.Tareas;
 
 
 @Component("gestion_tareas")
 @Scope("prototype")
 public class Gestion_Tareas implements IGestion_Tareas {
 
-	private TareaDAO tarea_dao;
+	private TareasDAO tarea_dao;
 
 	// ***************** CONSULTAS
 	@Override
@@ -32,24 +32,24 @@ public class Gestion_Tareas implements IGestion_Tareas {
 	// ************ CRUD
 	@Override
 	@Transactional
-	public void alta_Tarea(Tarea tarea) {
+	public void alta_Tarea(Tareas tarea) {
 		tarea_dao.save(tarea);
 	}
 
 	@Override
 	@Transactional
-	public void baja_Tarea(Tarea tarea) {
+	public void baja_Tarea(Tareas tarea) {
 		tarea_dao.delete(tarea);
 	}
 
 	@Override
 	@Transactional
-	public void modificacion_Tarea(Tarea tarea) {
+	public void modificacion_Tarea(Tareas tarea) {
 		tarea_dao.attachDirty(tarea);
 	}
 
 	// ACCESORES DE SPRING
-	public void setTarea_dao(TareaDAO tarea_dao) {
+	public void setTarea_dao(TareasDAO tarea_dao) {
 		this.tarea_dao = tarea_dao;
 	}
 
