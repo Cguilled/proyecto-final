@@ -4,22 +4,24 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import com.atos.hibernate.Tareas;
-import com.atos.hibernate.Usuarios;
-import com.atos.hibernate.dao.ext.Usuarios_DAOEXT;
+import com.atos.hibernate.dto.Tareas;
+import com.atos.hibernate.dto.Usuarios;
+import com.atos.hibernate.dao.UsuariosDAO;
+import com.atos.hibernate.dto.Roles;
+
 
 /**
  * Fachada de acceso a los procesos de los DAO.
  */
 public class Gestion_Usuarios implements IGestion_Usuarios {
 	// DAO DE ACCESO A LA INFORMACION
-	private Usuarios_DAOEXT usuario_DAO;
+	private UsuariosDAO usuario_DAO;
 
 	/**
 	 * Constructor de la fachada.
 	 */
 	public Gestion_Usuarios() {
-		usuario_DAO = new Usuarios_DAOEXT();
+		usuario_DAO = new UsuariosDAO();
 	}
 
 	// ***** CONSULTAS
