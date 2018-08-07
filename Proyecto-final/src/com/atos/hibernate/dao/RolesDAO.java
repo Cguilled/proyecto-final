@@ -12,6 +12,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;
 
+import com.atos.hibernate.dto.Roles;
+
 @Repository("roles_dao")
 @Scope("prototype")
 public class RolesDAO {

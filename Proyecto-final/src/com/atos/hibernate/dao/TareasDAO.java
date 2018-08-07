@@ -2,6 +2,8 @@ package com.atos.hibernate.dao;
 
 import org.springframework.stereotype.Repository;
 
+import com.atos.hibernate.dto.Tareas;
+
 import org.hibernate.LockOptions;
 import org.hibernate.Query;
 import org.hibernate.Session;
