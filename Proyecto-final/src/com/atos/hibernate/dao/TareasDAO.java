@@ -77,7 +77,7 @@ public class TareasDAO {
 		log.debug("finding Articulos instance with property: " + propertyName
 				+ ", value: " + value);
 		try {
-			String queryString = "from Articulos as model where model."
+			String queryString = "from Tareas as model where model."
 					+ propertyName + "= ?";
 			Query queryObject = getCurrentSession().createQuery(queryString);
 			queryObject.setParameter(0, value);

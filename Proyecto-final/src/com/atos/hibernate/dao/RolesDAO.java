@@ -59,7 +59,7 @@ public class RolesDAO {
 		log.debug("getting Roles instance with id: " + id);
 		try {
 			Roles instance = (Roles) getCurrentSession().get(
-					"com.atos.hibernate.Tareas", id);
+					"com.atos.hibernate.Roles", id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
@@ -89,7 +89,7 @@ public class RolesDAO {
 	public List findAll() {
 		log.debug("finding all Usuarios instances");
 		try {
-			String queryString = "from Tareas";
+			String queryString = "from Roles";
 			Query queryObject = getCurrentSession().createQuery(queryString);
 			return queryObject.list();
 		} catch (RuntimeException re) {
