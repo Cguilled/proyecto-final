@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:icecore="http://www.icefaces.org/icefaces/core"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	style= "background-color: blue">
+	<ui:param name="title" value="#{msgs['example.ace.dialog.title']}"/>
+    <ui:param name="description" value="#{msgs['example.ace.dialog.description']}"/>
+
+<h:body>
+
+	<ace:dialog id="dialog" binding="#{dialog}" header="Iniciar sesión"
+		closable="false" modal="true" draggable="false" showEffect="clip"
+		hideEffect="fade" width="400" style="">
+		<!-- FORMULARIO DE LA VISTA -->
+		<h:form id="formu_login">
+			<!-- CONTENEDOR DE LOS COMPONENTES -->
+			<h:panelGrid id="panel_formu" columns="1" width="100%"
+				styleClass="textEntryInputTable">
+				<!-- COMPONENTES DEL FORMULARIO -->
+				<ace:textEntry value="" label="Usuario" labelPosition="top"
+					required="true" requiredIndicator="*" indicatorPosition="right"
+					id="user">
+					<f:validateLongRange minimum="1" maximum="15" />
+				</ace:textEntry>
+
+				<ace:textEntry value="" label="Contraseña" labelPosition="top"
+					required="true" requiredIndicator="*" indicatorPosition="right"
+					id="pass">
+					<f:validateLongRange minimum="1" maximum="10" />
+				</ace:textEntry>
+
+			</h:panelGrid>
+			<!-- <ice:message for="emailField" showDetail="false" showSummary="true" style="color:red;"/> -->
+
+
+			<!-- <h:form id="inputForm">
+                    <h:panelGrid columns="2" width="100%">
+                        <h:outputLabel id="firstNameLabel" for="firstNameInputField" value="First Name:"/>
+                        <ace:textEntry id="firstNameInputField"
+                                       value="#{dialogBean.firstName}" />
+
+                        <h:outputLabel id="lastNameLabel" for="lastNameInputField" value="Last Name:"/>
+                        <ace:textEntry id="lastNameInputField"
+                                       value="#{dialogBean.lastName}"/>
+                    </h:panelGrid>
+
+                    <h:panelGrid width="100%" style="text-align: center;">
+                        <ace:pushButton id="submitBtn"
+                                        value="Click me once done with input">
+                            <ace:ajax execute="@form" render="@all"
+                                      onSuccess="ice.ace.instance('#{dialog.clientId}').hide(); "/>
+                        </ace:pushButton>
+                    </h:panelGrid>
+                </h:form> -->
+
+
+
+		</h:form>
+	</ace:dialog>
+</h:body>
+</html>
