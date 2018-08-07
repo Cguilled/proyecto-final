@@ -10,11 +10,6 @@ import com.atos.hibernate.dao.ext.Usuarios_DAOEXT;
 
 /**
  * Fachada de acceso a los procesos de los DAO.
- * 
- * @author Juan Antonio Solves Garcia.
- * @version 1.0.
- * @since 26-10-2016.
- *
  */
 public class Gestion_Usuarios implements IGestion_Usuarios {
 	// DAO DE ACCESO A LA INFORMACION
