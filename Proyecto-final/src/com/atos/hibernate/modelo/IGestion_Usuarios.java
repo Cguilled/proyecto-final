@@ -2,19 +2,26 @@ package com.atos.hibernate.modelo;
 
 import java.util.List;
 
-import com.atos.hibernate.Tareas;
 import com.atos.hibernate.Usuarios;
-
-;
 
 public interface IGestion_Usuarios {
 
-	public abstract Usuarios consulta_PorClave(String nombre_usuario);
+	// ***************** CONSULTAS
+	public Usuarios consultar_PorNombre(String nombre_usuario);
 
-	public abstract List<Usuarios> consultar_Todos();
+	public List<Usuarios> consultar_Todos();
 
-	public abstract List<Tareas> consultar_Tareas(String nombre_cliente);
+	// ************ CRUD
+	public void alta_Usuario(Usuarios usuario);
 
-	public abstract Usuarios consultar_UsuarioConRol(String nombre_usuario);
+	public void baja_Usuario(Usuarios usuario);
+
+	public void modificacion_Usuario(Usuarios usuario);
+
+	public abstract Usuarios consultar_Tareas(String nombre_usuario);
+
+	public abstract Usuarios consultar_ConRol(String nombre_usuario);
+
+	Usuarios consultar_PorClaveYDAS();
 
 }

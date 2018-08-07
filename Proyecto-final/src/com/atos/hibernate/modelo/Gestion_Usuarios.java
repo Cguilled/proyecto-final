@@ -1,77 +1,62 @@
 package com.atos.hibernate.modelo;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
-import com.atos.hibernate.Tareas;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.atos.hibernate.Usuarios;
-import com.atos.hibernate.dao.ext.Usuarios_DAOEXT;
+import com.atos.hibernate.dao.ext.UsuarioDAO_EXT;
 
-/**
- * Fachada de acceso a los procesos de los DAO.
- * 
- * @author Juan Antonio Solves Garcia.
- * @version 1.0.
- * @since 26-10-2016.
- *
- */
+
+@Component("gestion_usuarios")
+@Scope("prototype")
 public class Gestion_Usuarios implements IGestion_Usuarios {
-	// DAO DE ACCESO A LA INFORMACION
-	private Usuarios_DAOEXT usuario_DAO;
 
-	/**
-	 * Constructor de la fachada.
-	 */
-	public Gestion_Usuarios() {
-		usuario_DAO = new Usuarios_DAOEXT();
+	private UsuarioDAO_EXT usuario_dao;
+
+	// ***************** CONSULTAS
+	@Override
+	@Transactional(readOnly = true)
+	public Usuarios consultar_PorIdNombre(int id_usuario) {
+		return usuario_dao.findById(id_usuario);
 	}
 
-	// ***** CONSULTAS
 	@Override
-	public Usuarios consulta_PorClave(String nombre_usuario) {
-		Usuarios usuario = usuario_DAO.findById(nombre_usuario);
-		usuario_DAO.getSession().close();
-		return usuario;
-	}
-
-	/**
-	 * Consulta general de todos los usuarios.
-	 * 
-	 * @return Coleccion de usuarios.
-	 */
-	@Override
+	@Transactional(readOnly = true)
 	public List<Usuarios> consultar_Todos() {
-		List<Usuarios> lista = usuario_DAO.findAll();
-		usuario_DAO.getSession().close();
-		return lista;
+		return usuario_dao.findAll();
+	}
+	
+	@Override
+	@Transactional(readOnly = true)
+	public Usuarios consultar_PorClaveYDAS() {
+		return usuario_dao.consultar_PorClaveYDAS();
+	}
+	
+	// ************ CRUD
+	@Override
+	@Transactional
+	public void alta_Usuario(Usuarios usuario) {
+		usuario_dao.save(usuario);
 	}
 
-	/**
-	 * Consulta de las tareas que puede realizar un usuario.
-	 * 
-	 * @param nombre_cliente
-	 *            Clave primaria del usuario.
-	 * @return Coleccion de tareas del usuario.
-	 */
 	@Override
-	public List<Tareas> consultar_Tareas(String nombre_cliente) {
-		List<Tareas> lista = usuario_DAO.consultar_Tareas(nombre_cliente);
-		usuario_DAO.getSession().close();
-		return lista;
+	@Transactional
+	public void baja_Usuario(Usuarios usuario) {
+		usuario_dao.delete(usuario);
 	}
 
-	/**
-	 * Consulta de resolucion de carga vaga de un usuario con su rol.
-	 * 
-	 * @param nombre_cliente
-	 *            Clave primaria del usuario.
-	 * @return Usuario consultado.
-	 */
 	@Override
-	public Usuarios consultar_UsuarioConRol(String nombre_usuario) {
-		Usuarios usuario = usuario_DAO.consultar_ConRol(nombre_usuario);
-		usuario_DAO.getSession().close();
-		return usuario;
+	@Transactional
+	public void modificacion_Usuario(Usuarios usuario) {
+		usuario_dao.attachDirty(usuario);
 	}
+
+	// ACCESORES DE SPRING
+	public void setUsuario_dao(UsuarioDAO_EXT usuario_dao) {
+		this.usuario_dao = usuario_dao;
+	}
+
 }
