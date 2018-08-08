@@ -46,6 +46,25 @@ public class Login_Bean implements Serializable{
 		}
 	}
 	
+	public String login_check2(){
+		System.out.println("Realizando login...");
+		try {
+			user = gestion_usuario.consultar_PorClaveYDAS(das, password);
+			if (user!=null) {
+				return "true";
+				//ir a la siguiente pantalla
+			}
+			
+			else {
+				//escribir mensaje de fallo
+				return null;
+			}
+		}catch (Exception e) {
+			
+		}
+		return null;
+	}
+	
 	public IGestion_Usuarios getGestion_usuario() {
 		return gestion_usuario;
 	}

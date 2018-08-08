@@ -23,16 +23,18 @@
 			<h:panelGrid id="panel_formu" columns="1" width="100%"
 				styleClass="textEntryInputTable">
 				<!-- COMPONENTES DEL FORMULARIO -->
-				<ace:textEntry id="username" value="#{login_bean.username}"
+				<ace:textEntry id="username" value="#{login_bean.das}"
 					label="Usuario" labelPosition="top" required="true"
-					requiredIndicator="*" indicatorPosition="right">
-					<f:validateLongRange minimum="1" maximum="15" />
+					requiredIndicator="*" indicatorPosition="right"
+					validatorMessage="El tamaño maximo son 15 caracteres">
+					<f:validateLength maximum="15" />
 				</ace:textEntry>
 
 				<ace:textEntry id="password" value="#{login_bean.password}"
 					label="Contraseña" labelPosition="top" required="true"
-					requiredIndicator="*" indicatorPosition="right">
-					<f:validateLongRange minimum="1" maximum="10" />
+					requiredIndicator="*" indicatorPosition="right"
+					validatorMessage="El tamaño maximo son 10 caracteres">
+					<f:validateLength maximum="10" />
 				</ace:textEntry>
 
 				<!-- <ace:pushButton id="submitBtn" value="Iniciar sesión"
@@ -42,7 +44,7 @@
 				</ace:pushButton> -->
 
 				<h:commandButton id="botonComprobar" value="Iniciar sesión"
-					action="#{login_bean.login_check}">
+					action="#{login_bean.login_check2}">
 				</h:commandButton>
 
 			</h:panelGrid>
