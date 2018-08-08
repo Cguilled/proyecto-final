@@ -11,7 +11,7 @@
 <ui:param name="title" value="#{msgs['example.ace.dialog.title']}" />
 <ui:param name="description"
 	value="#{msgs['example.ace.dialog.description']}" />
-	
+
 <h:head>
 </h:head>
 
@@ -23,51 +23,40 @@
 			hideEffect="puff" width="300" visible="true">
 
 			<!-- CONTENEDOR DE LOS COMPONENTES -->
-			<h:panelGrid id="panel_formu" columns="1" style="margin: 0 auto; text-align: center;">
+			<h:panelGrid id="panel_formu" columns="1"
+				style="margin: 0 auto; text-align: center;">
 				<!-- COMPONENTES DEL FORMULARIO -->
 				<ace:textEntry id="username" value="#{login_bean.das}"
 					label="Usuario" labelPosition="top" required="true"
-					requiredIndicator="*" indicatorPosition="right"
-					validatorMessage="El tamaño maximo son 15 caracteres">
+					requiredIndicator="*"
+					validatorMessage="Tamaño máximo: 15 caracteres. Mínimo: 3.">
 					<f:validateLength minimum="3" maximum="15" />
 				</ace:textEntry>
+				<ace:message id="mensajeUsername" for="username" initEffect="slide"
+					changeEffect="shake" />
 
 				<ace:textEntry id="password" value="#{login_bean.password}"
 					label="Contraseña" labelPosition="top" required="true"
-					requiredIndicator="*" indicatorPosition="right"
-					validatorMessage="El tamaño maximo son 10 caracteres">
+					secret="true" requiredIndicator="*" indicatorPosition="right"
+					validatorMessage="Tamaño máximo: 10 caracteres. Mínimo: 3.">
 					<f:validateLength minimum="3" maximum="10" />
 				</ace:textEntry>
+				<ace:message id="mensajePassword" for="password" initEffect="slide"
+					changeEffect="shake" />
 
 				<h:commandButton id="botonComprobar" value="Iniciar sesión"
-					action="#{login_bean.login_check}">
+					action="#{login_bean.login_check}"
+					actionListener="#{mensajes_bean.listener}">
 				</h:commandButton>
-
 			</h:panelGrid>
-			<!-- <ice:message for="emailField" showDetail="false" showSummary="true" style="color:red;"/> -->
-
-
-			<!-- <h:form id="inputForm">
-                    <h:panelGrid columns="2" width="100%">
-                        <h:outputLabel id="firstNameLabel" for="firstNameInputField" value="First Name:"/>
-                        <ace:textEntry id="firstNameInputField"
-                                       value="#{dialogBean.firstName}" />
-
-                        <h:outputLabel id="lastNameLabel" for="lastNameInputField" value="Last Name:"/>
-                        <ace:textEntry id="lastNameInputField"
-                                       value="#{dialogBean.lastName}"/>
-                    </h:panelGrid>
-
-                    <h:panelGrid width="100%" style="text-align: center;">
-                        <ace:pushButton id="submitBtn"
-                                        value="Click me once done with input">
-                            <ace:ajax execute="@form" render="@all"
-                                      onSuccess="ice.ace.instance('#{dialog.clientId}').hide(); "/>
-                        </ace:pushButton>
-                    </h:panelGrid>
-                </h:form> -->
 
 		</ace:dialog>
+
+		<!-- <ace:growlMessages id="mensajes" autoHide="#{mensajes_bean.autoHide}"
+			for="@inView" closeAll="#{mensajes_bean.closeAll}"
+			maxVisibleMessages="#{mensajes_bean.maxVisibleMessages}"
+			position="#{mensajes_bean.position}" header="#{mensajes_bean.header}" /> -->
+
 	</h:form>
 </h:body>
 </html>
