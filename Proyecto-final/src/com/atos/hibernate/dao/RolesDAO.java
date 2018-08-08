@@ -25,6 +25,7 @@ public class RolesDAO {
 
 	private SessionFactory sessionFactory;
 	
+	//Spring iniciará el SessionFactory
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
@@ -33,6 +34,7 @@ public class RolesDAO {
 		return sessionFactory.getCurrentSession();
 	}
 	
+	//Guardar un objeto de tipo Roles en la tabla Roles
 	public void save(Roles transientInstance) {
 		log.debug("saving Roles instance");
 		try {
@@ -44,6 +46,7 @@ public class RolesDAO {
 		}
 	}
 	
+	//Borrar un valor de roles de la tabla que sea identico a nuestro objeto roles
 	public void delete(Roles persistentInstance) {
 		log.debug("deleting Roles instance");
 		try {
@@ -54,7 +57,8 @@ public class RolesDAO {
 			throw re;
 		}
 	}
-
+	
+	//Recuperar un objeto de tipo roles a partir de un Id
 	public Roles findByCodigoRol(java.lang.Integer id) {
 		log.debug("getting Roles instance with id: " + id);
 		try {
@@ -67,6 +71,7 @@ public class RolesDAO {
 		}
 	}
 	
+	//Encontrar todos los objetos de tipo roles que tengan una cierta propiedad
 	public List findByProperty(String propertyName, Object value) {
 		log.debug("finding Roles instance with property: " + propertyName
 				+ ", value: " + value);
@@ -81,13 +86,15 @@ public class RolesDAO {
 			throw re;
 		}
 	}
-
+	
+	//Recuperar objetos de tipo roles a partir de una descripcion
 	public List<Roles> findByDescripcion(Object nombre) {
 		return findByProperty(DESCRIPCION_ROL, nombre);
 	}
-
+	
+	//Recuperar todos los objetos de tipo roles
 	public List findAll() {
-		log.debug("finding all Usuarios instances");
+		log.debug("finding all Roles instances");
 		try {
 			String queryString = "from Roles";
 			Query queryObject = getCurrentSession().createQuery(queryString);
@@ -97,9 +104,10 @@ public class RolesDAO {
 			throw re;
 		}
 	}
-
+	
+	//Hace una consulta para actualizar un objeto de tipo roles desde la base de datos a nuestra aplicación
 	public Roles merge(Roles detachedInstance) {
-		log.debug("merging Usuarios instance");
+		log.debug("merging Roles instance");
 		try {
 			Roles result = (Roles) getCurrentSession().merge(
 					detachedInstance);
@@ -110,7 +118,8 @@ public class RolesDAO {
 			throw re;
 		}
 	}
-
+	
+	//Hace un update para actualizar un objeto de tipo roles desde nuestra aplicación a la base de datos (e intenta bloquear)
 	public void attachDirty(Roles instance) {
 		log.debug("attaching dirty Roles instance");
 		try {
@@ -121,7 +130,8 @@ public class RolesDAO {
 			throw re;
 		}
 	}
-
+	
+	//Hace un update para actualizar un objeto de tipo roles desde nuestra aplicación a la base de datos (sin intentar bloquear)
 	public void attachClean(Roles instance) {
 		log.debug("attaching clean Usuarios instance");
 		try {
@@ -133,7 +143,8 @@ public class RolesDAO {
 			throw re;
 		}
 	}
-
+	
+	//Devuelve un valor Roles de ApplicationContext
 	public static Roles getFromApplicationContext(ApplicationContext ctx) {
 		return (Roles) ctx.getBean("RolesDAO");
 	}

@@ -1,6 +1,5 @@
 package com.atos.hibernate.dao;
 
-import java.util.Iterator;
 import java.util.List;
 
 import org.hibernate.LockOptions;
@@ -31,6 +30,7 @@ public class UsuariosDAO {
 
 	private SessionFactory sessionFactory;
 	
+	//Spring iniciará el SessionFactory
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
@@ -39,6 +39,7 @@ public class UsuariosDAO {
 		return sessionFactory.getCurrentSession();
 	}
 	
+	//Guardar un objeto de tipo Usuarios en la tabla Roles
 	public void save(Usuarios transientInstance) {
 		log.debug("saving Usuarios instance");
 		try {
@@ -50,6 +51,7 @@ public class UsuariosDAO {
 		}
 	}
 	
+	//Borrar un valor de Usuarios de la tabla que sea identico a nuestro objeto roles
 	public void delete(Usuarios persistentInstance) {
 		log.debug("deleting Usuarios instance");
 		try {
@@ -61,6 +63,7 @@ public class UsuariosDAO {
 		}
 	}
 
+	//Recuperar un objeto de tipo Usuarios a partir de un Id
 	public Usuarios findById(java.lang.Integer id) {
 		log.debug("getting Usuarios instance with id: " + id);
 		try {
@@ -73,6 +76,7 @@ public class UsuariosDAO {
 		}
 	}
 	
+	//Encontrar todos los objetos de tipo Usuarios que tengan una cierta propiedad
 	public List findByProperty(String propertyName, Object value) {
 		log.debug("finding Usuarios instance with property: " + propertyName
 				+ ", value: " + value);
@@ -88,6 +92,7 @@ public class UsuariosDAO {
 		}
 	}
 	
+	//Encontrar todos los objetos de tipo Usuarios que tengan ciertas propiedades
 	public List findByProperty(List<String> propertiesNames, List<Object> values) {
 		
 		log.debug("finding Usuarios instance with properties");
@@ -119,30 +124,37 @@ public class UsuariosDAO {
 		
 	}
 	
+	//Recuperar objetos de tipo Usuarios a partir de un das
 	public List<Usuarios> findByDas(Object nombre) {
 		return findByProperty(DAS, nombre);
 	}
 	
+	//Recuperar objetos de tipo Usuarios a partir de un nombre
 	public List<Usuarios> findByNombre(Object nombre) {
 		return findByProperty(NOMBRE, nombre);
 	}
-
+	
+	//Recuperar objetos de tipo Usuarios a partir de un apellido
 	public List<Usuarios> findByApellido(Object descripcion) {
 		return findByProperty(APELLIDO, descripcion);
 	}
 
+	//Recuperar objetos de tipo Usuarios a partir de un estado
 	public List<Usuarios> findByEstado(Object descripcion) {
 		return findByProperty(ESTADO, descripcion);
 	}
 	
+	//Recuperar objetos de tipo Usuarios a partir de si ha iniciado sesion
 	public List<Usuarios> findByInicio(Object descripcion) {
 		return findByProperty(INICIO, descripcion);
 	}
 	
+	//Recuperar objetos de tipo Usuarios a partir de un rol
 	public List<Usuarios> findByRol(Object descripcion) {
 		return findByProperty(CODIGO_ROL, descripcion);
 	}
 
+	//Recuperar todos los objetos de tipo Usuarios
 	public List findAll() {
 		log.debug("finding all Usuarios instances");
 		try {
@@ -155,6 +167,7 @@ public class UsuariosDAO {
 		}
 	}
 
+	//Hace una consulta para actualizar un objeto de tipo Usuarios desde la base de datos a nuestra aplicación
 	public Usuarios merge(Usuarios detachedInstance) {
 		log.debug("merging Usuarios instance");
 		try {
@@ -168,6 +181,7 @@ public class UsuariosDAO {
 		}
 	}
 
+	//Hace un update para actualizar un objeto de tipo Usuarios desde nuestra aplicación a la base de datos (e intenta bloquear)
 	public void attachDirty(Usuarios instance) {
 		log.debug("attaching dirty Usuarios instance");
 		try {
@@ -179,6 +193,7 @@ public class UsuariosDAO {
 		}
 	}
 
+	//Hace un update para actualizar un objeto de tipo Usuarios desde nuestra aplicación a la base de datos (sin intentar bloquear)
 	public void attachClean(Usuarios instance) {
 		log.debug("attaching clean Usuarios instance");
 		try {
@@ -190,7 +205,8 @@ public class UsuariosDAO {
 			throw re;
 		}
 	}
-
+	
+	//Devuelve un valor Usuarios de ApplicationContext
 	public static Usuarios getFromApplicationContext(ApplicationContext ctx) {
 		return (Usuarios) ctx.getBean("UsuariosDAO");
 	}

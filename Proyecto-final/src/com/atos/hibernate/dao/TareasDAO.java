@@ -31,6 +31,7 @@ public class TareasDAO {
 
 	private SessionFactory sessionFactory;
 	
+	//Spring iniciará el SessionFactory
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
@@ -39,8 +40,9 @@ public class TareasDAO {
 		return sessionFactory.getCurrentSession();
 	}
 	
+	//Guardar un objeto de tipo Tareas en la tabla Roles
 	public void save(Tareas transientInstance) {
-		log.debug("saving Articulos instance");
+		log.debug("saving Tareas instance");
 		try {
 			getCurrentSession().save(transientInstance);
 			log.debug("save successful");
@@ -50,8 +52,9 @@ public class TareasDAO {
 		}
 	}
 	
+	//Borrar un valor de Tareas de la tabla que sea identico a nuestro objeto roles
 	public void delete(Tareas persistentInstance) {
-		log.debug("deleting Articulos instance");
+		log.debug("deleting Tareas instance");
 		try {
 			getCurrentSession().delete(persistentInstance);
 			log.debug("delete successful");
@@ -61,8 +64,9 @@ public class TareasDAO {
 		}
 	}
 
+	//Recuperar un objeto de tipo Tareas a partir de un Id
 	public Tareas findById(java.lang.Integer id) {
-		log.debug("getting Articulos instance with id: " + id);
+		log.debug("getting Tareas instance with id: " + id);
 		try {
 			Tareas instance = (Tareas) getCurrentSession().get(
 					"com.atos.hibernate.Tareas", id);
@@ -73,8 +77,9 @@ public class TareasDAO {
 		}
 	}
 	
+	//Encontrar todos los objetos de tipo Tareas que tengan una cierta propiedad
 	public List findByProperty(String propertyName, Object value) {
-		log.debug("finding Articulos instance with property: " + propertyName
+		log.debug("finding Tareas instance with property: " + propertyName
 				+ ", value: " + value);
 		try {
 			String queryString = "from Tareas as model where model."
@@ -88,20 +93,24 @@ public class TareasDAO {
 		}
 	}
 
+	//Recuperar objetos de tipo tareas a partir de un nombre
 	public List<Tareas> findByNombreTareas(Object nombre) {
 		return findByProperty(NOMBRE_TAREA, nombre);
 	}
-
+	
+	//Recuperar objetos de tipo tareas a partir de una descripcion
 	public List<Tareas> findByDescripcionTareas(Object descripcion) {
 		return findByProperty(DESCRIPCION_TAREA, descripcion);
 	}
-
+	
+	//Recuperar objetos de tipo tareas a partir de un estado
 	public List<Tareas> findByEstadoTareas(Object estado) {
 		return findByProperty(ESTADO, estado);
 	}
 
+	//Recuperar todos los objetos de tipo tareas
 	public List findAll() {
-		log.debug("finding all Articulos instances");
+		log.debug("finding all Tareas instances");
 		try {
 			String queryString = "from Tareas";
 			Query queryObject = getCurrentSession().createQuery(queryString);
@@ -111,9 +120,10 @@ public class TareasDAO {
 			throw re;
 		}
 	}
-
+	
+	//Hace una consulta para actualizar un objeto de tipo Tareas desde la base de datos a nuestra aplicación
 	public Tareas merge(Tareas detachedInstance) {
-		log.debug("merging Articulos instance");
+		log.debug("merging Tareas instance");
 		try {
 			Tareas result = (Tareas) getCurrentSession().merge(
 					detachedInstance);
@@ -124,9 +134,10 @@ public class TareasDAO {
 			throw re;
 		}
 	}
-
+	
+	//Hace un update para actualizar un objeto de tipo Tareas desde nuestra aplicación a la base de datos (e intenta bloquear)
 	public void attachDirty(Tareas instance) {
-		log.debug("attaching dirty Articulos instance");
+		log.debug("attaching dirty Tareas instance");
 		try {
 			getCurrentSession().saveOrUpdate(instance);
 			log.debug("attach successful");
@@ -136,8 +147,9 @@ public class TareasDAO {
 		}
 	}
 
+	//Hace un update para actualizar un objeto de tipo Tareas desde nuestra aplicación a la base de datos (sin intentar bloquear)
 	public void attachClean(Tareas instance) {
-		log.debug("attaching clean Articulos instance");
+		log.debug("attaching clean Tareas instance");
 		try {
 			getCurrentSession().buildLockRequest(LockOptions.NONE).lock(
 					instance);
@@ -147,7 +159,8 @@ public class TareasDAO {
 			throw re;
 		}
 	}
-
+	
+	//Devuelve un valor Tareas de ApplicationContext
 	public static Tareas getFromApplicationContext(ApplicationContext ctx) {
 		return (Tareas) ctx.getBean("ArticulosDAO");
 	}
