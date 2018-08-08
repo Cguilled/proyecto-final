@@ -16,6 +16,6 @@ public interface IGestion_Usuarios {
 
 	Usuarios consultar_PorIdNombre(int id_usuario);
 
-	Usuarios consultar_PorClaveYDAS(int das, String clave);
+	Usuarios consultar_PorClaveYDAS(String username, String clave);
 
 }

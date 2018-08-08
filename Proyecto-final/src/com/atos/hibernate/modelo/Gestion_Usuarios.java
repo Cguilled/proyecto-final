@@ -43,7 +43,7 @@ public class Gestion_Usuarios implements IGestion_Usuarios {
 	
 	@Override
 	@Transactional(readOnly = true)
-	public Usuarios consultar_PorClaveYDAS(int das, String clave) {
+	public Usuarios consultar_PorClaveYDAS(String das, String clave) {
 
 		List<String> properties=new ArrayList<String>(){{add("DAS");add("PASSWORD");}};
 		List<Object> values=new ArrayList<Object>(){{add(das);add(clave);}};

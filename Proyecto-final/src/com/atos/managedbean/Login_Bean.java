@@ -17,14 +17,14 @@ public class Login_Bean {
 	private Usuarios user;
 	@ManagedProperty("#{gestion_usuario}")
 	private IGestion_Usuarios gestion_usuario;
-	private Integer username;
+	private String username;
 	private String password;
 	
 	@PostConstruct
 	public void valores_Iniciales() {
 		user = new Usuarios();
 
-		username=0;
+		username="";
 		password="";
 	}
 	
@@ -56,10 +56,10 @@ public class Login_Bean {
 	public void setUser(Usuarios user) {
 		this.user = user;
 	}
-	public Integer getUsername() {
+	public String getUsername() {
 		return username;
 	}
-	public void setUsername(Integer username) {
+	public void setUsername(String username) {
 		this.username = username;
 	}
 	public String getPassword() {
