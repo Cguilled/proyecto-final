@@ -23,9 +23,9 @@
 			<h:panelGrid id="panel_formu" columns="1" width="100%"
 				styleClass="textEntryInputTable">
 				<!-- COMPONENTES DEL FORMULARIO -->
-				<ace:textEntry value="" label="Usuario" labelPosition="top"
-					required="true" requiredIndicator="*" indicatorPosition="right"
-					id="user">
+				<ace:textEntry id="user" value="#{login_bean.nombre_usuario} label="
+					Usuario" labelPosition="top" required="true" requiredIndicator="*"
+					indicatorPosition="right">
 					<f:validateLongRange minimum="1" maximum="15" />
 				</ace:textEntry>
 

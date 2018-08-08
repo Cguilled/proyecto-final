@@ -13,7 +13,7 @@ import com.atos.hibernate.modelo.IGestion_Usuarios;
 
 @ManagedBean(name="login")
 @ViewScoped
-public class Login {
+public class Login_Bean {
 	private Usuarios user;
 	@ManagedProperty("#{gestion_usuario}")
 	private IGestion_Usuarios gestion_usuario;
