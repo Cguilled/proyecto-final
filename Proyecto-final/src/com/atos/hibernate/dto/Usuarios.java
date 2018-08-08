@@ -3,6 +3,7 @@ package com.atos.hibernate.dto;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -17,6 +18,7 @@ public class Usuarios implements java.io.Serializable {
 
 	// Fields
 
+	
 	private Integer id_Usuario; 
 	private String  das;
 	private String  nombre;
@@ -25,10 +27,7 @@ public class Usuarios implements java.io.Serializable {
 	private String  estado;
 	private Integer codigo_Rol;
 	private boolean inicio;
-	  //private Date fechaAlta;
-     // private Date fechaBaja;
-    //  private String carpetaDocumentacion;
-   //   private String idioma;
+
 
 	// Constructors
 
@@ -56,6 +55,7 @@ public class Usuarios implements java.io.Serializable {
 
 	// Property accessors
 	@Id
+	@GeneratedValue
 	@Column(name = "ID_Usuario", unique = true, nullable = false, length = 5)
 	public Integer getidUsuario() {
 		return this.id_Usuario;
@@ -65,7 +65,7 @@ public class Usuarios implements java.io.Serializable {
 		this.nombre=nombreUsuario;
 	}
 
-	@Column(name = "das", unique = true, nullable = false, length = 15)	
+	@Column(name = "DAS", unique = true, nullable = false, length = 15)	
 	public String getDAS() {
 		return das;
 	}
@@ -75,7 +75,7 @@ public class Usuarios implements java.io.Serializable {
 	}
 
 	
-	@Column(name = "Nombre_Usuario", unique = true, nullable = false, length = 20)
+	@Column(name = "NOMBRE", unique = true, nullable = false, length = 20)
 	public String getNombreUsuario() {
 		return nombre;
 	}
@@ -84,7 +84,7 @@ public class Usuarios implements java.io.Serializable {
 		this.nombre = nombre;
 	}
 	
-	@Column(name = "Apellido", unique = true, nullable = false, length = 20)	
+	@Column(name = "APELLIDO", unique = true, nullable = false, length = 20)	
 	public String getApellido() {
 		return apellido;
 	}
@@ -103,7 +103,7 @@ public class Usuarios implements java.io.Serializable {
 		this.password = password;
 	}
 	
-	@Column(name = "Estado", unique = true, nullable = false, length = 10)	
+	@Column(name = "ESTADO", unique = true, nullable = false, length = 10)	
 	public String getEstado() {
 		return estado;
 	}
@@ -113,7 +113,7 @@ public class Usuarios implements java.io.Serializable {
 	}
 
 	
-	@Column(name = "codigo_Rol", unique = true, nullable = false, length = 2)	
+	@Column(name = "CODIGO_ROL", unique = true, nullable = false, length = 2)	
 	public Integer getCodigo_Rol() {
 		return codigo_Rol;
 	}
@@ -122,7 +122,7 @@ public class Usuarios implements java.io.Serializable {
 		this.codigo_Rol = codigo_Rol;
 	}
 
-	@Column(name = "Inicio", unique = true, nullable = false, length = 10)	
+	@Column(name = "INICIO", unique = true, nullable = false, length = 10)	
 	public boolean getInicio() {
 		return inicio;
 	}
@@ -132,7 +132,7 @@ public class Usuarios implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "Codigo_Rol")
+	@JoinColumn(name = "CODIGO_ROL")
 	public Integer getRoles() {
 		return this.codigo_Rol;
 	}
@@ -141,17 +141,5 @@ public class Usuarios implements java.io.Serializable {
 		this.codigo_Rol = Codigo_Rol;
 	}
 
-	public Integer getID_Usuario() {
-		return id_Usuario;
+	
 	}
-
-	public void setID_Usuario(Integer iD_Usuario) {
-		this.id_Usuario = iD_Usuario;
-	}
-
-	public void setinicio(boolean inicio) {
-		this.inicio = inicio;
-		
-	}
-
-}
