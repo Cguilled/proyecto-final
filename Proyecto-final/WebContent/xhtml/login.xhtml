@@ -23,23 +23,27 @@
 			<h:panelGrid id="panel_formu" columns="1" width="100%"
 				styleClass="textEntryInputTable">
 				<!-- COMPONENTES DEL FORMULARIO -->
-				<ace:textEntry id="user" value="#{login_bean.nombre_usuario} label="
-					Usuario" labelPosition="top" required="true" requiredIndicator="*"
-					indicatorPosition="right">
+				<ace:textEntry id="username" value="#{login_bean.username}"
+					label="Usuario" labelPosition="top" required="true"
+					requiredIndicator="*" indicatorPosition="right">
 					<f:validateLongRange minimum="1" maximum="15" />
 				</ace:textEntry>
 
-				<ace:textEntry value="" label="Contraseña" labelPosition="top"
-					required="true" requiredIndicator="*" indicatorPosition="right"
-					id="pass">
+				<ace:textEntry id="password" value="#{login_bean.password}"
+					label="Contraseña" labelPosition="top" required="true"
+					requiredIndicator="*" indicatorPosition="right">
 					<f:validateLongRange minimum="1" maximum="10" />
 				</ace:textEntry>
 
-				<ace:pushButton id="submitBtn" value="Iniciar sesión"
+				<!-- <ace:pushButton id="submitBtn" value="Iniciar sesión"
 					style="border: border-radius: 25px">
 					<ace:ajax execute="@form" render="@all"
 						onSuccess="ice.ace.instance('#{dialog.clientId}').hide(); " />
-				</ace:pushButton>
+				</ace:pushButton> -->
+
+				<h:commandButton id="botonComprobar" value="Iniciar sesión"
+					action="#{login_bean.login_check}">
+				</h:commandButton>
 
 			</h:panelGrid>
 			<!-- <ice:message for="emailField" showDetail="false" showSummary="true" style="color:red;"/> -->

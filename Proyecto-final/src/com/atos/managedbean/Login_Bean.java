@@ -1,5 +1,7 @@
 package com.atos.managedbean;
 
+import java.io.Serializable;
+
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -11,27 +13,27 @@ import org.springframework.dao.DataAccessException;
 import com.atos.hibernate.dto.Usuarios;
 import com.atos.hibernate.modelo.IGestion_Usuarios;
 
-@ManagedBean(name="login")
+@ManagedBean(name="login_bean")
 @ViewScoped
-public class Login_Bean {
+public class Login_Bean implements Serializable{
 	private Usuarios user;
+	private String das;
+	private String password;
+	
 	@ManagedProperty("#{gestion_usuario}")
 	private IGestion_Usuarios gestion_usuario;
-	private String username;
-	private String password;
 	
 	@PostConstruct
 	public void valores_Iniciales() {
 		user = new Usuarios();
-
-		username="";
+		das="";
 		password="";
 	}
 	
 	public void login_check(ActionEvent event) throws DataAccessException{
 		System.out.println("Realizando login...");
 		try {
-			user = gestion_usuario.consultar_PorClaveYDAS(username, password);
+			user = gestion_usuario.consultar_PorClaveYDAS(das, password);
 			if (user!=null) {
 				//ir a la siguiente pantalla
 			}
@@ -57,10 +59,10 @@ public class Login_Bean {
 		this.user = user;
 	}
 	public String getUsername() {
-		return username;
+		return das;
 	}
 	public void setUsername(String username) {
-		this.username = username;
+		this.das = username;
 	}
 	public String getPassword() {
 		return password;
@@ -68,6 +70,4 @@ public class Login_Bean {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	
 }

@@ -10,5 +10,14 @@
 			SPRING PARA PODER INYECTAR PROPIEDADES DESDE SPRING -->
 		<el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
 	</application>
+	
+	<navigation-rule>
+		<from-view-id>xhtml/login.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>siguiente</from-outcome>
+			<to-view-id>xhtml/menu.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
 
 </faces-config>
