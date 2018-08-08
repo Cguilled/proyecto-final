@@ -16,7 +16,6 @@ import com.atos.hibernate.modelo.IGestion_Usuarios;
 @ManagedBean(name="login_bean")
 @ViewScoped
 public class Login_Bean implements Serializable{
-	private Usuarios user;
 	private String das;
 	private String password;
 	
@@ -25,7 +24,6 @@ public class Login_Bean implements Serializable{
 	
 	@PostConstruct
 	public void valores_Iniciales() {
-		user = new Usuarios();
 		das="";
 		password="";
 	}
@@ -33,8 +31,8 @@ public class Login_Bean implements Serializable{
 	public void login_check(ActionEvent event) throws DataAccessException{
 		System.out.println("Realizando login...");
 		try {
-			user = gestion_usuario.consultar_PorClaveYDAS(das, password);
-			if (user!=null) {
+			//comprueba si existe el usuario con la clave
+			if (gestion_usuario.consultar_PorClaveYDAS(das, password)!=null) {
 				//ir a la siguiente pantalla
 			}
 			
@@ -49,8 +47,8 @@ public class Login_Bean implements Serializable{
 	public String login_check2(){
 		System.out.println("Realizando login...");
 		try {
-			user = gestion_usuario.consultar_PorClaveYDAS(das, password);
-			if (user!=null) {
+			//comprueba si existe el usuario con la clave
+			if (gestion_usuario.consultar_PorClaveYDAS(das, password)!=null) {
 				return "true";
 				//ir a la siguiente pantalla
 			}
@@ -70,12 +68,6 @@ public class Login_Bean implements Serializable{
 	}
 	public void setGestion_usuario(IGestion_Usuarios gestion_usuario) {
 		this.gestion_usuario = gestion_usuario;
-	}
-	public Usuarios getUser() {
-		return user;
-	}
-	public void setUser(Usuarios user) {
-		this.user = user;
 	}
 	public String getDas() {
 		return das;
