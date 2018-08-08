@@ -13,45 +13,38 @@
 	value="#{msgs['example.ace.dialog.description']}" />
 
 <h:body style="width:100% heigth: 100%">
+	<center>
+		<ace:dialog id="dialog" binding="#{dialog}" header="Iniciar sesión"
+			closable="false" modal="true" draggable="false" showEffect="clip"
+			hideEffect="fade" width="400">
+			<!-- FORMULARIO DE LA VISTA -->
+			<h:form id="formu_login">
+				<!-- CONTENEDOR DE LOS COMPONENTES -->
+				<h:panelGrid id="panel_formu" columns="1">
+					<!-- COMPONENTES DEL FORMULARIO -->
+					<ace:textEntry id="username" value="#{login_bean.das}"
+						label="Usuario" labelPosition="top" required="true"
+						requiredIndicator="*" indicatorPosition="right"
+						validatorMessage="El tamaño maximo son 15 caracteres">
+						<f:validateLength maximum="15" />
+					</ace:textEntry>
 
-	<ace:dialog id="dialog" binding="#{dialog}" header="Iniciar sesión"
-		closable="false" modal="true" draggable="false" showEffect="clip"
-		hideEffect="fade" width="400" style="">
-		<!-- FORMULARIO DE LA VISTA -->
-		<h:form id="formu_login">
-			<!-- CONTENEDOR DE LOS COMPONENTES -->
-			<h:panelGrid id="panel_formu" columns="1"
-				style="margin: 0 auto; text-align: center;">
-				<!-- COMPONENTES DEL FORMULARIO -->
-				<ace:textEntry id="username" value="#{login_bean.das}"
-					label="Usuario" labelPosition="top" required="true"
-					requiredIndicator="*" indicatorPosition="right"
-					validatorMessage="El tamaño maximo son 15 caracteres">
-					<f:validateLength maximum="15" />
-				</ace:textEntry>
+					<ace:textEntry id="password" value="#{login_bean.password}"
+						label="Contraseña" labelPosition="top" required="true"
+						requiredIndicator="*" indicatorPosition="right"
+						validatorMessage="El tamaño maximo son 10 caracteres">
+						<f:validateLength maximum="10" />
+					</ace:textEntry>
 
-				<ace:textEntry id="password" value="#{login_bean.password}"
-					label="Contraseña" labelPosition="top" required="true"
-					requiredIndicator="*" indicatorPosition="right"
-					validatorMessage="El tamaño maximo son 10 caracteres">
-					<f:validateLength maximum="10" />
-				</ace:textEntry>
+					<h:commandButton id="botonComprobar" value="Iniciar sesión"
+						action="#{login_bean.login_check2}">
+					</h:commandButton>
 
-				<!-- <ace:pushButton id="submitBtn" value="Iniciar sesión"
-					style="border: border-radius: 25px">
-					<ace:ajax execute="@form" render="@all"
-						onSuccess="ice.ace.instance('#{dialog.clientId}').hide(); " />
-				</ace:pushButton> -->
-
-				<h:commandButton id="botonComprobar" value="Iniciar sesión"
-					action="#{login_bean.login_check2}" style="">
-				</h:commandButton>
-
-			</h:panelGrid>
-			<!-- <ice:message for="emailField" showDetail="false" showSummary="true" style="color:red;"/> -->
+				</h:panelGrid>
+				<!-- <ice:message for="emailField" showDetail="false" showSummary="true" style="color:red;"/> -->
 
 
-			<!-- <h:form id="inputForm">
+				<!-- <h:form id="inputForm">
                     <h:panelGrid columns="2" width="100%">
                         <h:outputLabel id="firstNameLabel" for="firstNameInputField" value="First Name:"/>
                         <ace:textEntry id="firstNameInputField"
@@ -73,7 +66,8 @@
 
 
 
-		</h:form>
-	</ace:dialog>
+			</h:form>
+		</ace:dialog>
+	</center>
 </h:body>
 </html>
