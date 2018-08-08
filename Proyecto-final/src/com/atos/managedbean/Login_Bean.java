@@ -28,23 +28,9 @@ public class Login_Bean implements Serializable{
 		password="";
 	}
 	
-	public void login_check(ActionEvent event) throws DataAccessException{
-		System.out.println("Realizando login...");
-		try {
-			//comprueba si existe el usuario con la clave
-			if (gestion_usuario.consultar_PorClaveYDAS(das, password)!=null) {
-				//ir a la siguiente pantalla
-			}
-			
-			else {
-				//escribir mensaje de fallo
-			}
-		}catch (Exception e) {
-			
-		}
-	}
-	
-	public String login_check2(){
+
+	public String login_check(){
+
 		System.out.println("Realizando login...");
 		try {
 			//comprueba si existe el usuario con la clave
