@@ -58,11 +58,11 @@ public class Login_Bean implements Serializable{
 	public void setUser(Usuarios user) {
 		this.user = user;
 	}
-	public String getUsername() {
+	public String getDas() {
 		return das;
 	}
-	public void setUsername(String username) {
-		this.das = username;
+	public void setDas(String das) {
+		this.das = das;
 	}
 	public String getPassword() {
 		return password;
