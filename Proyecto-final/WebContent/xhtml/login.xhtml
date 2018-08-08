@@ -37,41 +37,11 @@
 					<f:validateLength maximum="10" />
 				</ace:textEntry>
 
-				<!-- <ace:pushButton id="submitBtn" value="Iniciar sesión"
-					style="border: border-radius: 25px">
-					<ace:ajax execute="@form" render="@all"
-						onSuccess="ice.ace.instance('#{dialog.clientId}').hide(); " />
-				</ace:pushButton> -->
-
 				<h:commandButton id="botonComprobar" value="Iniciar sesión"
 					action="#{login_bean.login_check2}">
 				</h:commandButton>
 
 			</h:panelGrid>
-			<!-- <ice:message for="emailField" showDetail="false" showSummary="true" style="color:red;"/> -->
-
-
-			<!-- <h:form id="inputForm">
-                    <h:panelGrid columns="2" width="100%">
-                        <h:outputLabel id="firstNameLabel" for="firstNameInputField" value="First Name:"/>
-                        <ace:textEntry id="firstNameInputField"
-                                       value="#{dialogBean.firstName}" />
-
-                        <h:outputLabel id="lastNameLabel" for="lastNameInputField" value="Last Name:"/>
-                        <ace:textEntry id="lastNameInputField"
-                                       value="#{dialogBean.lastName}"/>
-                    </h:panelGrid>
-
-                    <h:panelGrid width="100%" style="text-align: center;">
-                        <ace:pushButton id="submitBtn"
-                                        value="Click me once done with input">
-                            <ace:ajax execute="@form" render="@all"
-                                      onSuccess="ice.ace.instance('#{dialog.clientId}').hide(); "/>
-                        </ace:pushButton>
-                    </h:panelGrid>
-                </h:form> -->
-
-
 
 		</h:form>
 	</ace:dialog>
