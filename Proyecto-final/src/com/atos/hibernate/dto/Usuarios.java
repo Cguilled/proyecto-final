@@ -154,5 +154,4 @@ public class Usuarios implements java.io.Serializable {
 		
 	}
 
-		
 }
