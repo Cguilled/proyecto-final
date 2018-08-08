@@ -21,7 +21,6 @@ public class Mensajes_Bean implements Serializable {
 	private String position = "top-right";
 	private String header = "";
 
-	private boolean error;
 
 	// Getters y setters
 	public String getAutoHide() {
@@ -64,14 +63,6 @@ public class Mensajes_Bean implements Serializable {
 		this.header = header;
 	}
 
-	public boolean getError() {
-		return error;
-	}
-
-	public void setError(boolean error) {
-		this.error = error;
-	}
-
 	public void listener(ActionEvent event) {
 		FacesContext facesContext = FacesContext.getCurrentInstance();
 
@@ -83,9 +74,7 @@ public class Mensajes_Bean implements Serializable {
 		}
 
 		// Anadir mensajes
-		UIComponent component = event.getComponent();
-
 		String message = "Erroooooorrrrrr";
-		FacesContext.getCurrentInstance().addMessage(message, new FacesMessage("Iniciando sesión..."));
+		FacesContext.getCurrentInstance().addMessage(message, new FacesMessage(message));
 	}
 }

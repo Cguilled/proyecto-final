@@ -20,7 +20,7 @@
 	<h:form id="formu_login">
 		<ace:dialog id="dialog" binding="#{dialog}" header="Iniciar sesión"
 			closable="false" modal="true" draggable="false" showEffect="explode"
-			hideEffect="puff" width="300" visible="true">
+			hideEffect="puff" width="400" visible="true">
 
 			<!-- CONTENEDOR DE LOS COMPONENTES -->
 			<h:panelGrid id="panel_formu" columns="1"
@@ -32,8 +32,6 @@
 					validatorMessage="Tamaño máximo: 15 caracteres. Mínimo: 3.">
 					<f:validateLength minimum="3" maximum="15" />
 				</ace:textEntry>
-				<ace:message id="mensajeUsername" for="username" initEffect="slide"
-					changeEffect="shake" />
 
 				<ace:textEntry id="password" value="#{login_bean.password}"
 					label="Contraseña" labelPosition="top" required="true"
@@ -41,8 +39,6 @@
 					validatorMessage="Tamaño máximo: 10 caracteres. Mínimo: 3.">
 					<f:validateLength minimum="3" maximum="10" />
 				</ace:textEntry>
-				<ace:message id="mensajePassword" for="password" initEffect="slide"
-					changeEffect="shake" />
 
 				<h:commandButton id="botonComprobar" value="Iniciar sesión"
 					action="#{login_bean.login_check}"
@@ -52,10 +48,10 @@
 
 		</ace:dialog>
 
-		<!-- <ace:growlMessages id="mensajes" autoHide="#{mensajes_bean.autoHide}"
+		<ace:growlMessages id="mensajes" autoHide="false"
 			for="@inView" closeAll="#{mensajes_bean.closeAll}"
 			maxVisibleMessages="#{mensajes_bean.maxVisibleMessages}"
-			position="#{mensajes_bean.position}" header="#{mensajes_bean.header}" /> -->
+			position="#{mensajes_bean.position}" header="#{mensajes_bean.header}" />
 
 	</h:form>
 </h:body>
