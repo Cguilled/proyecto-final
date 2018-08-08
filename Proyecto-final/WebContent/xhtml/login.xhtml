@@ -12,7 +12,7 @@
 <ui:param name="description"
 	value="#{msgs['example.ace.dialog.description']}" />
 
-<h:body>
+<h:body style="width:100% heigth: 100%">
 
 	<ace:dialog id="dialog" binding="#{dialog}" header="Iniciar sesión"
 		closable="false" modal="true" draggable="false" showEffect="clip"
@@ -20,8 +20,8 @@
 		<!-- FORMULARIO DE LA VISTA -->
 		<h:form id="formu_login">
 			<!-- CONTENEDOR DE LOS COMPONENTES -->
-			<h:panelGrid id="panel_formu" columns="1" width="100%"
-				styleClass="textEntryInputTable">
+			<h:panelGrid id="panel_formu" columns="1"
+				style="margin: 0 auto; text-align: center;">
 				<!-- COMPONENTES DEL FORMULARIO -->
 				<ace:textEntry id="username" value="#{login_bean.das}"
 					label="Usuario" labelPosition="top" required="true"
@@ -44,7 +44,7 @@
 				</ace:pushButton> -->
 
 				<h:commandButton id="botonComprobar" value="Iniciar sesión"
-					action="#{login_bean.login_check2}">
+					action="#{login_bean.login_check2}" style="">
 				</h:commandButton>
 
 			</h:panelGrid>
