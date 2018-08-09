@@ -2,14 +2,34 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
 	xmlns:icecore="http://www.icefaces.org/icefaces/core"
-	xmlns:ace="http://www.icefaces.org/icefaces/components">
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+	<ui:param name="title" value="#{msgs['example.ace.menuBar.title']}" />
+	<ui:param name="description"
+		value="#{msgs['example.ace.menuBar.description']}" />
 
 	<h:form>
-		MENU
+		<ace:menuBar id="menuBar" autoSubmenuDisplay="true">
+			<ace:menuItem value="Usuarios" url="http://www.icefaces.org"
+				target="_blank" />
+
+			<ace:menuItem value="Tareas" url="http://www.icefaces.org"
+				target="_blank" />
+
+			<ace:menuItem value="Roles" url="http://www.icefaces.org"
+				target="_blank" />
+
+			<ace:menuItem value="Consultar" url="http://www.icefaces.org"
+				target="_blank" />
+
+			<ace:menuItem value="Finalizar sesión" url="/xhtml/login.xhtml"
+				target="_blank" />
+		</ace:menuBar>
+
 	</h:form>
 
 </ui:composition>
