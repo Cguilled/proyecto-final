@@ -20,7 +20,7 @@
 	<h:form id="formu_login">
 		<ace:dialog id="dialog" binding="#{dialog}" header="Iniciar sesión"
 			closable="false" modal="true" draggable="false" showEffect="explode"
-			hideEffect="puff" width="400" visible="true">
+			hideEffect="puff" width="400" visible="#{login_bean.visible}">
 
 			<!-- CONTENEDOR DE LOS COMPONENTES -->
 			<h:panelGrid id="panel_formu" columns="1"
@@ -41,18 +41,21 @@
 				</ace:textEntry>
 
 				<h:commandButton id="botonComprobar" value="Iniciar sesión"
-					action="#{login_bean.login_check}"
-					actionListener="#{mensajes_bean.listener}">
+					action="#{login_bean.siguiente}"
+					actionListener="#{login_bean.listener}">
 				</h:commandButton>
 			</h:panelGrid>
 
 		</ace:dialog>
 
-		<ace:growlMessages id="mensajes" autoHide="false"
-			for="@inView" closeAll="#{mensajes_bean.closeAll}"
+		<!-- <ace:growlMessages id="mensajes" autoHide="false" for="@inView"
+			closeAll="#{mensajes_bean.closeAll}"
 			maxVisibleMessages="#{mensajes_bean.maxVisibleMessages}"
-			position="#{mensajes_bean.position}" header="#{mensajes_bean.header}" />
+			position="#{mensajes_bean.position}" header="#{mensajes_bean.header}" /> -->
+		<ace:growlMessages for="@inView"/>
+
 
 	</h:form>
+	<ui:include src="#{login_bean.siguiente_pagina}" />
 </h:body>
 </html>
