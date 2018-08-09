@@ -30,28 +30,24 @@ public class Login_Bean implements Serializable{
 		password="";
 		visible=true;
 		siguiente="";
-		
 	}
 	
 
 	public String login_check(){
-
 		System.out.println("Realizando login...");
 		try {
 			//comprueba si existe el usuario con la clave
 			if (gestionUsuarios.consultar_PorClaveYDAS(das, password)!=null) {
-				return "true";
 				//ir a la siguiente pantalla
 			}
 			
 			else {
 				//escribir mensaje de fallo
-				return null;
 			}
 		}catch (Exception e) {
 			
 		}
-		return null;
+		return "";
 	}
 	
 	public String siguiente(){
