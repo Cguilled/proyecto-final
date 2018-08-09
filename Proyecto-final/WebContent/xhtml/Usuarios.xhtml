@@ -10,70 +10,59 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 	<ui:param name="title" value="#{msgs['example.ace.menuBar.title']}" />
 	<ui:param name="description"
-	value="#{msgs['example.ace.menuBar.description']}" />
+		value="#{msgs['example.ace.menuBar.description']}" />
 
-<!-- FORMULARIO DE USUARIOS-->
+	<!-- FORMULARIO DE USUARIOS-->
 	<h:form id="formu_login">
-					<!-- CONTENEDOR DE LOS COMPONENTES -->
-			<h:panelGrid id="panel_formu" columns="1"
-				style="margin: 0 auto; text-align: center;">
-				<!-- COMPONENTES DEL FORMULARIO -->
-				<ace:textEntry id="username" value="#{login_bean.das}"
-					label="Usuario" labelPosition="top" required="true"
-					requiredIndicator="*"
-					validatorMessage="Usuario: tamaño máximo: 15 caracteres. Mínimo: 3.">
-					<f:validateLength minimum="3" maximum="15" />
-				</ace:textEntry>
-                  <ace:textEntry id="nombre" value="#{login_bean.das}"
-					label="Nombre" labelPosition="top" required="true"
-					requiredIndicator="*"
-					validatorMessage="Nombre: tamaño máximo: 20 caracteres. Mínimo: 3.">
-					<f:validateLength minimum="3" maximum="20" />
-				</ace:textEntry>
+		<!-- CONTENEDOR DE LOS COMPONENTES -->
+		<h:panelGrid id="panel_formuUsuarios" columns="1"
+			style="margin: 0 auto; text-align: center;">
+			<!-- COMPONENTES DEL FORMULARIO -->
+			<ace:textEntry id="username" value="#{}" label="Usuario"
+				labelPosition="top" required="true" requiredIndicator="*"
+				validatorMessage="Usuario: tamaño máximo: 15 caracteres. Mínimo: 3.">
+				<f:validateLength minimum="3" maximum="15" />
+			</ace:textEntry>
+			<ace:textEntry id="nombre" value="#{}" label="Nombre"
+				labelPosition="top" required="true" requiredIndicator="*"
+				validatorMessage="Nombre: tamaño máximo: 20 caracteres. Mínimo: 3.">
+				<f:validateLength minimum="3" maximum="20" />
+			</ace:textEntry>
 
-                <ace:textEntry id="apellido" value="#{login_bean.das}"
-					label="Apellido" labelPosition="top" required="true"
-					requiredIndicator="*"
-					validatorMessage="Nombre: tamaño máximo: 20 caracteres. Mínimo: 3.">
-					<f:validateLength minimum="3" maximum="20" />
-				</ace:textEntry>
-                 <ace:textEntry id="estado" value="#{login_bean.das}"
-					label="Estado" labelPosition="top" required="true"
-					requiredIndicator="*"
-					validatorMessage="Nombre: tamaño máximo: 10 caracteres. Mínimo: 3.">
-					<f:validateLength minimum="3" maximum="10" />
-				</ace:textEntry>
+			<ace:textEntry id="apellido" value="#{}" label="Apellido"
+				labelPosition="top" required="true" requiredIndicator="*"
+				validatorMessage="Apellido: tamaño máximo: 20 caracteres. Mínimo: 3.">
+				<f:validateLength minimum="3" maximum="20" />
+			</ace:textEntry>
+			<ace:textEntry id="estado" value="#{}" label="Estado"
+				labelPosition="top" required="true" requiredIndicator="*"
+				validatorMessage="Estado: activo/no activo.">
+			</ace:textEntry>
 
-				<ace:textEntry id="password" value="#{login_bean.password}"
-					label="Contraseña" labelPosition="top" required="true"
-					secret="true" requiredIndicator="*" indicatorPosition="right"
-					validatorMessage="Contraseña: tamaño máximo: 10 caracteres. Mínimo: 3.">
-					<f:validateLength minimum="3" maximum="10" />
-				</ace:textEntry>
+			<ace:textEntry id="password" value="#{}" label="Contraseña"
+				labelPosition="top" required="true" secret="true"
+				requiredIndicator="*" indicatorPosition="right"
+				validatorMessage="Contraseña: tamaño máximo: 10 caracteres. Mínimo: 3.">
+				<f:validateLength minimum="3" maximum="10" />
+			</ace:textEntry>
 
-                </h:panelGrid>
-                
-                <!-- 
-                 <h:panelGrid id="panel_formu1" columns="3"
-				style="margin: 0 auto; text-align: center;">
-				<h:commandButton id="botonAlta" value="Alta"
-					action="#{login_bean.siguiente}"
-					actionListener="#{login_bean.listener}">
-				</h:commandButton>
-				
-				<h:commandButton id="botonBaja" value="Baja"
-					action="#{login_bean.siguiente}"
-					actionListener="#{login_bean.listener}">
-				</h:commandButton>
-				
-				<h:commandButton id="botonModificar" value="Modificación"
-					action="#{login_bean.siguiente}"
-					actionListener="#{login_bean.listener}">
-				</h:commandButton>
-											
-			</h:panelGrid>
-			
-			-->
+		</h:panelGrid>
+
+		<h:panelGrid id="panel_formuBotonesUsuarios" columns="3"
+			style="margin: 0 auto; text-align: center;">
+			<h:commandButton id="botonAlta" value="Alta"
+				actionListener="#{}">
+			</h:commandButton>
+
+			<h:commandButton id="botonBaja" value="Baja"
+				actionListener="#{}">
+			</h:commandButton>
+
+			<h:commandButton id="botonModificar" value="Modificación"
+				actionListener="#{}">
+			</h:commandButton>
+
+		</h:panelGrid>
 
 	</h:form>
 

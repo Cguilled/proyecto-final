@@ -29,11 +29,10 @@ public class Login_Bean implements Serializable{
 		das="";
 		password="";
 		visible=true;
-		siguiente="";
 	}
 	
 
-	public String login_check(){
+	public void login_check(ActionEvent evento){
 		System.out.println("Realizando login...");
 		try {
 			//comprueba si existe el usuario con la clave
@@ -47,62 +46,51 @@ public class Login_Bean implements Serializable{
 		}catch (Exception e) {
 			
 		}
-		return "";
 	}
 	
-	public String siguiente(){
+	public String siguiente_pagina(){
 		System.out.println("Redirigiendo a menuUser.xhtml");
 		visible=false;
 		siguiente="/xhtml/menuUser.xhtml";
 		return "";
 	}
-	
-	public void listener(ActionEvent event) {
-		
-		login_check();
-		
-	}
-
 
 
 	public IGestion_Usuarios getGestionUsuarios() {
 		return gestionUsuarios;
 	}
 
-
 	public void setGestionUsuarios(IGestion_Usuarios gestionUsuarios) {
 		this.gestionUsuarios = gestionUsuarios;
 	}
 
-
 	public String getDas() {
 		return das;
 	}
+	
 	public void setDas(String das) {
 		this.das = das;
 	}
+	
 	public String getPassword() {
 		return password;
 	}
+	
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
 
 	public boolean isVisible() {
 		return visible;
 	}
 
-
 	public void setVisible(boolean visible) {
 		this.visible = visible;
 	}
 
-
 	public String getSiguiente() {
 		return siguiente;
 	}
-
 
 	public void setSiguiente(String siguiente_pagina) {
 		this.siguiente = siguiente_pagina;

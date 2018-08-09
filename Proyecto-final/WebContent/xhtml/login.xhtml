@@ -34,12 +34,10 @@
 					validatorMessage="Contraseña: tamaño máximo: 10 caracteres. Mínimo: 3.">
 					<f:validateLength minimum="3" maximum="10" />
 				</ace:textEntry>
-<!-- 
+				
 				<h:commandButton id="botonComprobar" value="Iniciar sesión"
-					action="#{login_bean.siguiente}"
-					actionListener="#{login_bean.listener}">
-				</h:commandButton>
-				-->
+					actionListener="#{login_bean.login_check}"
+					action="#{login_bean.siguiente_pagina}"/>
 				
 			</h:panelGrid>
 
