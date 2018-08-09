@@ -41,3 +41,7 @@ ALTER TABLE "USUARIOS" ADD CONSTRAINT "CODIGO_ROL_USUARIOS_FK" FOREIGN KEY ("COD
 ALTER TABLE "ROLES_TAREAS" ADD CONSTRAINT "CODIGO_ROL_FK" FOREIGN KEY ("CODIGO_ROL")
 	REFERENCES "ROLES" ("CODIGO_ROL");
 	
+create sequence codigo_usuario;
+create sequence codigo_rol;
+create sequence codigo_tarea;
+	
