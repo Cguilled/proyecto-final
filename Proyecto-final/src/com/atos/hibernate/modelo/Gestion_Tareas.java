@@ -14,43 +14,43 @@ import com.atos.hibernate.dto.Tareas;
 @Scope("prototype")
 public class Gestion_Tareas implements IGestion_Tareas {
 
-	private TareasDAO tarea_dao;
+	private TareasDAO tareas_dao;
 
 	// ***************** CONSULTAS
 	@Override
 	@Transactional(readOnly = true)
 	public Tareas consultar_PorCodigoTarea(int codigo_tarea) {
-		return tarea_dao.findById(codigo_tarea);
+		return tareas_dao.findById(codigo_tarea);
 	}
 
 	@Override
 	@Transactional(readOnly = true)
 	public List<Tareas> consultar_Todos() {
-		return tarea_dao.findAll();
+		return tareas_dao.findAll();
 	}
 	
 	// ************ CRUD
 	@Override
 	@Transactional
 	public void alta_Tarea(Tareas tarea) {
-		tarea_dao.save(tarea);
+		tareas_dao.save(tarea);
 	}
 
 	@Override
 	@Transactional
 	public void baja_Tarea(Tareas tarea) {
-		tarea_dao.delete(tarea);
+		tareas_dao.delete(tarea);
 	}
 
 	@Override
 	@Transactional
 	public void modificacion_Tarea(Tareas tarea) {
-		tarea_dao.attachDirty(tarea);
+		tareas_dao.attachDirty(tarea);
 	}
 
 	// ACCESORES DE SPRING
-	public void setTarea_dao(TareasDAO tarea_dao) {
-		this.tarea_dao = tarea_dao;
+	public void setTareas_dao(TareasDAO tarea_dao) {
+		this.tareas_dao = tarea_dao;
 	}
 
 }

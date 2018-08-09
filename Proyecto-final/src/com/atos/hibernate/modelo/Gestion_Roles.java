@@ -13,17 +13,17 @@ import com.atos.hibernate.dto.Roles;
 @Scope("prototype")
 public class Gestion_Roles implements IGestion_Roles {
 
-	private RolesDAO rol_dao;
+	private RolesDAO roles_dao;
 
 	@Override
 	@Transactional(readOnly = true)
 	public List<Roles> consultar_Todos() {
-		return rol_dao.findAll();
+		return roles_dao.findAll();
 	}
 
 	// ACCESORS PARA SPRING
-	public void setRol_dao(RolesDAO rol_dao) {
-		this.rol_dao = rol_dao;
+	public void setRoles_dao(RolesDAO rol_dao) {
+		this.roles_dao = rol_dao;
 	}
 
 }

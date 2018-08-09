@@ -49,7 +49,7 @@ public class Tareas implements java.io.Serializable {
 
 	// Property accessors
 	@Id
-	@Column(name = "ID_TAREA", unique = true, nullable = false, precision = 2, scale = 0, length = 5)
+	@Column(name = "ID_TAREA", unique = true, nullable = false, precision = 5, scale = 0)
 	public Byte getId_Tarea() {
 		return id_Tarea;
 	}
@@ -58,7 +58,7 @@ public class Tareas implements java.io.Serializable {
 		this.id_Tarea = id_Tarea;
 	}
 	
-	@Column(name = "NOMBRE_TAREA", unique = true, nullable = false, precision = 2, scale = 0, length = 100)
+	@Column(name = "NOMBRE_TAREA", nullable = false, length = 100)
 	public String getNombre_Tarea() {
 		return nombre_Tarea;
 	}
@@ -77,9 +77,7 @@ public class Tareas implements java.io.Serializable {
 		this.descripcion_Tarea = descripcion_Tarea;
 	}
 	
-	
-	
-	@Column(name = "ESTADO_TAREA", length = 2000)
+	@Column(name = "ESTADO", precision = 1, scale = 0)
 	public String getEstado() {
 		return estado;
 	}
