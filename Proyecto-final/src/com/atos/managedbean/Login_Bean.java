@@ -55,7 +55,7 @@ public class Login_Bean implements Serializable{
 	public String siguiente(){
 		System.out.println("Redirigiendo a menu.xhtml");
 		visible=false;
-		siguiente_pagina="/xhtml/menu.xhtml";
+		siguiente_pagina="/xhtml/menuUser.xhtml";
 		return "";
 	}
 	

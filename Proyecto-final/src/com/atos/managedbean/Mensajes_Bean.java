@@ -19,7 +19,7 @@ public class Mensajes_Bean implements Serializable {
 	private boolean closeAll = true;
 	private int maxVisibleMessages = 0;
 	private String position = "top-right";
-	private String header = "";
+	private String header = "Error de validación";
 
 
 	// Getters y setters
@@ -64,17 +64,17 @@ public class Mensajes_Bean implements Serializable {
 	}
 
 	public void listener(ActionEvent event) {
-		FacesContext facesContext = FacesContext.getCurrentInstance();
+		//FacesContext facesContext = FacesContext.getCurrentInstance();
 
 		// Eliminar mensajes existentes
-		Iterator<FacesMessage> i = facesContext.getMessages();
-		while (i.hasNext()) {
-			i.next();
-			i.remove();
-		}
+//		Iterator<FacesMessage> i = facesContext.getMessages();
+//		while (i.hasNext()) {
+//			i.next();
+//			i.remove();
+//		}
 
 		// Anadir mensajes
-		String message = "Erroooooorrrrrr";
+		String message = "Iniciando sesión...";
 		FacesContext.getCurrentInstance().addMessage(message, new FacesMessage(message));
 	}
 }

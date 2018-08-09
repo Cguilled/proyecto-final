@@ -28,14 +28,14 @@
 				<ace:textEntry id="username" value="#{login_bean.das}"
 					label="Usuario" labelPosition="top" required="true"
 					requiredIndicator="*"
-					validatorMessage="Tamaño máximo: 15 caracteres. Mínimo: 3.">
+					validatorMessage="Usuario: tamaño máximo: 15 caracteres. Mínimo: 3.">
 					<f:validateLength minimum="3" maximum="15" />
 				</ace:textEntry>
 
 				<ace:textEntry id="password" value="#{login_bean.password}"
 					label="Contraseña" labelPosition="top" required="true"
 					secret="true" requiredIndicator="*" indicatorPosition="right"
-					validatorMessage="Tamaño máximo: 10 caracteres. Mínimo: 3.">
+					validatorMessage="Contraseña: tamaño máximo: 10 caracteres. Mínimo: 3.">
 					<f:validateLength minimum="3" maximum="10" />
 				</ace:textEntry>
 
@@ -51,7 +51,7 @@
 			closeAll="#{mensajes_bean.closeAll}"
 			maxVisibleMessages="#{mensajes_bean.maxVisibleMessages}"
 			position="#{mensajes_bean.position}" header="#{mensajes_bean.header}" /> -->
-		<ace:growlMessages for="@inView"/>
+		<!-- <ace:growlMessages for="@inView"/> -->
 
 
 	</h:form>
