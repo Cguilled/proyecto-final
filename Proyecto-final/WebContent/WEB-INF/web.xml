@@ -80,6 +80,6 @@
 
 	<!-- MECANISMO DE INICIO DE USUARIO -->
 	<welcome-file-list>
-		<welcome-file>xhtml/login.xhtml</welcome-file>
+		<welcome-file>xhtml/inicio.xhtml</welcome-file>
 	</welcome-file-list>
 </web-app>
