@@ -6,10 +6,13 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
@@ -49,6 +52,8 @@ public class Tareas implements java.io.Serializable {
 
 	// Property accessors
 	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_tarea")
+	@SequenceGenerator(name = "pk_tarea", sequenceName = "codigo_tarea", allocationSize = 1)
 	@Column(name = "ID_TAREA", unique = true, nullable = false, precision = 5, scale = 0)
 	public Byte getId_Tarea() {
 		return id_Tarea;
@@ -86,7 +91,7 @@ public class Tareas implements java.io.Serializable {
 		this.estado = estado;
 	}
 
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "ROLES_TAREAS", schema = "J172", joinColumns = { @JoinColumn(name = "ID_TAREA", nullable = false, updatable = false) }, inverseJoinColumns = { @JoinColumn(name = "CODIGO_ROL", nullable = false, updatable = false) })
 	public Set<Roles> getRoleses() {
 		return this.roleses;

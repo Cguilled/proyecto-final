@@ -6,9 +6,12 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
@@ -47,6 +50,8 @@ public class Roles implements java.io.Serializable {
 
 	// Property accessors
 	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_rol")
+	@SequenceGenerator(name = "pk_rol", sequenceName = "codigo_rol", allocationSize = 1)
 	@Column(name = "CODIGO_ROL", unique = true, nullable = false, precision = 2, scale = 0, length = 2)
 	public Byte getCodigoRol() {
 		return this.codigoRol;
@@ -65,7 +70,7 @@ public class Roles implements java.io.Serializable {
 		this.descripcionRol = descripcionRol;
 	}
 
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "roleses")
+	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "roleses")
 	public Set<Tareas> getTareases() {
 		return this.tareases;
 	}
@@ -74,7 +79,7 @@ public class Roles implements java.io.Serializable {
 		this.tareases = tareases;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "roles")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "roles")
 	public Set<Usuarios> getUsuarioses() {
 		return this.usuarioses;
 	}
