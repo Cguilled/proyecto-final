@@ -43,10 +43,8 @@
 
 	<!-- INTERESANTES PARA ICEFACES -->
 	<!-- CAMBIO DE TEMA COMPONENTES ICEFACES -->
-	<!-- <context-param>
-		<param-name>org.icefaces.ace.theme</param-name>
-		<param-value>cupertino</param-value>
-	</context-param> -->
+	<!-- <context-param> <param-name>org.icefaces.ace.theme</param-name> <param-value>cupertino</param-value> 
+		</context-param> -->
 
 	<!-- CONFIGURACION INTERNA DE ICEFACES -->
 	<context-param>
@@ -61,8 +59,13 @@
 		<param-name>org.icefaces.strictSessionTimeout</param-name>
 		<param-value>true</param-value>
 	</context-param>
+	<context-param>
+		<param-name>org.icefaces.sessionExpiredRedirectURI
+		</param-name>
+		<param-value>/xhtml/login.xhtml</param-value>
+	</context-param>
 	<session-config>
-        <session-timeout>60</session-timeout>
+		<session-timeout>60</session-timeout>
 	</session-config>
 	<!-- ** FIN ZONA PARAMETROS INICIALES CONFIGURACION DE LA APLICACION ** -->
 
