@@ -19,16 +19,18 @@ public class Login_Bean implements Serializable{
 	private String das;
 	private String password;
 	private boolean visible;
-	private String siguiente_pagina;
-	@ManagedProperty("#{gestion_usuario}")
-	private IGestion_Usuarios gestion_usuario;
+	private String siguiente;
+	
+	@ManagedProperty("#{gestionUsuarios}")
+	private IGestion_Usuarios gestionUsuarios;
 	
 	@PostConstruct
 	public void valores_Iniciales() {
 		das="";
 		password="";
 		visible=true;
-		siguiente_pagina="";
+		siguiente="";
+		
 	}
 	
 
@@ -37,7 +39,7 @@ public class Login_Bean implements Serializable{
 		System.out.println("Realizando login...");
 		try {
 			//comprueba si existe el usuario con la clave
-			if (gestion_usuario.consultar_PorClaveYDAS(das, password)!=null) {
+			if (gestionUsuarios.consultar_PorClaveYDAS(das, password)!=null) {
 				return "true";
 				//ir a la siguiente pantalla
 			}
@@ -55,18 +57,28 @@ public class Login_Bean implements Serializable{
 	public String siguiente(){
 		System.out.println("Redirigiendo a menuUser.xhtml");
 		visible=false;
-		siguiente_pagina="/xhtml/menuUser.xhtml";
+		siguiente="/xhtml/menuUser.xhtml";
 		return "";
 	}
 	
-	public void listener(ActionEvent event) {}
-	
-	public IGestion_Usuarios getGestion_usuario() {
-		return gestion_usuario;
+	public void listener(ActionEvent event) {
+		
+		login_check();
+		
 	}
-	public void setGestion_usuario(IGestion_Usuarios gestion_usuario) {
-		this.gestion_usuario = gestion_usuario;
+
+
+
+	public IGestion_Usuarios getGestionUsuarios() {
+		return gestionUsuarios;
 	}
+
+
+	public void setGestionUsuarios(IGestion_Usuarios gestionUsuarios) {
+		this.gestionUsuarios = gestionUsuarios;
+	}
+
+
 	public String getDas() {
 		return das;
 	}
@@ -91,12 +103,12 @@ public class Login_Bean implements Serializable{
 	}
 
 
-	public String getSiguiente_pagina() {
-		return siguiente_pagina;
+	public String getSiguiente() {
+		return siguiente;
 	}
 
 
-	public void setSiguiente_pagina(String siguiente_pagina) {
-		this.siguiente_pagina = siguiente_pagina;
+	public void setSiguiente(String siguiente_pagina) {
+		this.siguiente = siguiente_pagina;
 	}
 }

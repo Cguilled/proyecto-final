@@ -17,17 +17,14 @@ import javax.persistence.Table;
 public class Usuarios implements java.io.Serializable {
 
 	// Fields
-
-	
 	private Integer id_Usuario; 
 	private String  das;
 	private String  nombre;
 	private String  apellido;
 	private String  password;
 	private String  estado;
-	private Integer codigo_Rol;
+	private Roles roles;
 	private boolean inicio;
-
 
 	// Constructors
 
@@ -41,14 +38,14 @@ public class Usuarios implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public Usuarios(Integer id_Usuario, String nombreUsuario, String das, String apellido, String password,String estado, Integer codigo_Rol, Boolean inicio) {
+	public Usuarios(Integer id_Usuario, String nombreUsuario, String das, String apellido, String password,String estado, Roles roles, Boolean inicio) {
 		this.id_Usuario=id_Usuario;
 		this.das=das;
 		this.nombre = nombreUsuario;
 		this.apellido=apellido;
 		this.password = password;
 		this.estado = estado;
-		this.codigo_Rol = codigo_Rol;
+		this.roles = roles;
 		this.inicio = inicio;
 			
 	}
@@ -56,16 +53,16 @@ public class Usuarios implements java.io.Serializable {
 	// Property accessors
 	@Id
 	@GeneratedValue
-	@Column(name = "ID_Usuario", unique = true, nullable = false, length = 5)
-	public Integer getidUsuario() {
+	@Column(name = "ID_USUARIO", unique = true, nullable = false, precision = 5, scale = 0)
+	public Integer getId_Usuario() {
 		return this.id_Usuario;
 	}
 
-	public void setNombreUsuario(String nombreUsuario) {
-		this.nombre=nombreUsuario;
+	public void setId_Usuario(Integer id_Usuario) {
+		this.id_Usuario = id_Usuario;
 	}
 
-	@Column(name = "DAS", unique = true, nullable = false, length = 15)	
+	@Column(name = "DAS", nullable = false, length = 15)	
 	public String getDAS() {
 		return das;
 	}
@@ -74,17 +71,16 @@ public class Usuarios implements java.io.Serializable {
 		this.das = das;
 	}
 
-	
-	@Column(name = "NOMBRE", unique = true, nullable = false, length = 20)
+	@Column(name = "NOMBRE", nullable = false, length = 20)
 	public String getNombreUsuario() {
 		return nombre;
 	}
 
-	public void setNombre(String nombre) {
+	public void setNombreUsuario(String nombre) {
 		this.nombre = nombre;
 	}
 	
-	@Column(name = "APELLIDO", unique = true, nullable = false, length = 20)	
+	@Column(name = "APELLIDO", nullable = false, length = 20)	
 	public String getApellido() {
 		return apellido;
 	}
@@ -92,7 +88,6 @@ public class Usuarios implements java.io.Serializable {
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
-	
 	
 	@Column(name = "PASSWORD", length = 10)
 	public String getPassword() {
@@ -103,23 +98,13 @@ public class Usuarios implements java.io.Serializable {
 		this.password = password;
 	}
 	
-	@Column(name = "ESTADO", unique = true, nullable = false, length = 10)	
+	@Column(name = "ESTADO", nullable = false, length = 10)	
 	public String getEstado() {
 		return estado;
 	}
 
 	public void setEstado(String estado) {
 		this.estado = estado;
-	}
-
-	
-	@Column(name = "CODIGO_ROL", unique = true, nullable = false, length = 2)	
-	public Integer getCodigo_Rol() {
-		return codigo_Rol;
-	}
-
-	public void setCodigo_Rol(Integer codigo_Rol) {
-		this.codigo_Rol = codigo_Rol;
 	}
 
 	@Column(name = "INICIO", unique = true, nullable = false, length = 10)	
@@ -133,13 +118,12 @@ public class Usuarios implements java.io.Serializable {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "CODIGO_ROL")
-	public Integer getRoles() {
-		return this.codigo_Rol;
+	public Roles getRoles() {
+		return this.roles;
 	}
 
-	public void setRoles(Integer Codigo_Rol) {
-		this.codigo_Rol = Codigo_Rol;
+	public void setRoles(Roles roles) {
+		this.roles = roles;
 	}
-
 	
-	}
+}

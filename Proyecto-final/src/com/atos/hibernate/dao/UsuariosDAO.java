@@ -14,6 +14,9 @@ import org.springframework.stereotype.Repository;
 
 import com.atos.hibernate.dto.Usuarios;
 
+
+@Repository("usuarios_dao")
+@Scope("prototype")
 public class UsuariosDAO {
 	
 	private static final Logger log = LoggerFactory
