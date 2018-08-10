@@ -63,7 +63,7 @@ public class RolesDAO {
 		log.debug("getting Roles instance with id: " + id);
 		try {
 			Roles instance = (Roles) getCurrentSession().get(
-					"com.atos.hibernate.Roles", id);
+					"com.atos.hibernate.dto.Roles", id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);

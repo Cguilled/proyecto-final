@@ -71,7 +71,7 @@ public class UsuariosDAO {
 		log.debug("getting Usuarios instance with id: " + id);
 		try {
 			Usuarios instance = (Usuarios) getCurrentSession().get(
-					"com.atos.hibernate.Usuarios", id);
+					"com.atos.hibernate.dto.Usuarios", id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
@@ -101,7 +101,7 @@ public class UsuariosDAO {
 		log.debug("finding Usuarios instance with properties");
 		try {
 			
-			String queryString = "from Usuarios as model where "; 
+			String queryString = "from Usuarios as model where mode"; 
 			String varArgs="";
 			int count=0;
 			

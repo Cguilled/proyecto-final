@@ -69,7 +69,7 @@ public class TareasDAO {
 		log.debug("getting Tareas instance with id: " + id);
 		try {
 			Tareas instance = (Tareas) getCurrentSession().get(
-					"com.atos.hibernate.Tareas", id);
+					"com.atos.hibernate.dto.Tareas", id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
@@ -162,7 +162,7 @@ public class TareasDAO {
 	
 	//Devuelve un valor Tareas de ApplicationContext
 	public static Tareas getFromApplicationContext(ApplicationContext ctx) {
-		return (Tareas) ctx.getBean("ArticulosDAO");
+		return (Tareas) ctx.getBean("TareasDAO");
 	}
 	
 }
