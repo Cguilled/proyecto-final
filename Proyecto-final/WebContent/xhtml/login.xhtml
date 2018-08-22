@@ -24,14 +24,14 @@
 				<ace:textEntry id="username" value="#{login_bean.das}"
 					label="Usuario" labelPosition="top" required="true"
 					requiredIndicator="*"
-					validatorMessage="Usuario: tamaño máximo: 15 caracteres. Mínimo: 3.">
+					validatorMessage="Usuario: tamaño incorrecto.">
 					<f:validateLength minimum="3" maximum="15" />
 				</ace:textEntry>
 
 				<ace:textEntry id="password" value="#{login_bean.password}"
 					label="Contraseña" labelPosition="top" required="true"
 					secret="true" requiredIndicator="*" indicatorPosition="right"
-					validatorMessage="Contraseña: tamaño máximo: 10 caracteres. Mínimo: 3.">
+					validatorMessage="Contraseña: tamaño incorrecto.">
 					<f:validateLength minimum="3" maximum="10" />
 				</ace:textEntry>
 				
