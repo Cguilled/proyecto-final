@@ -7,7 +7,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.atos.hibernate.dto.Tareas;
 
 
-
 public interface IGestion_Tareas {
 
 	void modificacion_Tarea(Tareas tarea);

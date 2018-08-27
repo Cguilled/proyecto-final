@@ -30,7 +30,7 @@ public class Login_Bean implements Serializable{
 		password="";
 		visible=true;
 	}
-	
+
 
 	public void login_check(ActionEvent evento){
 		System.out.println("Realizando login...");
@@ -49,9 +49,9 @@ public class Login_Bean implements Serializable{
 	}
 	
 	public String siguiente_pagina(){
-		System.out.println("Redirigiendo a menuUser.xhtml");
+		System.out.println("Redirigiendo a menuAdmin.xhtml");
 		visible=false;
-		siguiente="/xhtml/menuUser.xhtml";
+		siguiente="/xhtml/menuAdmin.xhtml";
 		return "";
 	}
 

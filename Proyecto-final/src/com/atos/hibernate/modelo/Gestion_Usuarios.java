@@ -15,7 +15,7 @@ import com.atos.hibernate.dao.UsuariosDAO;
  * @author Guillermo Cermeño Puertas
  *
  * 27 ago. 2018
- * 
+ *
  * Fachada de acceso a los procesos de los DAO.
  */
 

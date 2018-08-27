@@ -21,7 +21,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "TAREAS")
 public class Tareas implements java.io.Serializable {
-
 	// Fields
 
 	private Integer id_Tarea;

@@ -21,7 +21,7 @@ public class Mensajes_Bean implements Serializable {
 	private String position = "top-right";
 	private String header = "Error de validación";
 
-
+	
 	// Getters y setters
 	public String getAutoHide() {
 		return autoHide;

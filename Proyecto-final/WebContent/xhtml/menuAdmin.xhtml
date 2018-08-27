@@ -13,20 +13,28 @@
 		value="#{msgs['example.ace.menuBar.description']}" />
 
 	<h:form>
-		<ace:menuBar id="menuBar" autoSubmenuDisplay="true">
-			<ace:menuItem value="Alta" url="/xhtml/Alta.xhtml"
-				target="_blank" />
+		<!-- CONTENEDOR DE LOS COMPONENTES -->
+		<h:panelGrid id="panel_formuRoles" columns="1"
+			style="margin: 0 auto; text-align: center;">
+			
+			<ace:menuBar id="menuBar" autoSubmenuDisplay="true">
+				<ace:menuItem id="itemUsuarios" value="Usuarios"
+					url="/xhtml/Usuarios.xhtml" action="/xhtml/Usuarios.xhtml" />
 
-			<ace:menuItem value="Modificar" url="http://www.icefaces.org"
-				target="_blank" />
+				<ace:menuItem id="itemTareas" value="Tareas"
+					url="/xhtml/Tareas.xhtml" action="/xhtml/Tareas.xhtml" />
 
-			<ace:menuItem value="Consultar" url="http://www.icefaces.org"
-				target="_blank" />
+				<ace:menuItem id="itemRoles" value="Roles" url="/xhtml/Roles.xhtml"
+					action="/xhtml/Roles.xhtml" />
 
-			<ace:menuItem value="Finalizar sesión" url="/xhtml/login.xhtml"
-				target="_blank" />
-		</ace:menuBar>
+				<ace:menuItem id="itemConsultar" value="Consultar"
+					url="http://www.icefaces.org" action="http://www.icefaces.org" />
 
+				<ace:menuItem id="itemFinSesion" value="Finalizar sesión"
+					url="/xhtml/login.xhtml" action="/xhtml/login.xhtml" />
+			</ace:menuBar>
+
+		</h:panelGrid>
 	</h:form>
 
 </ui:composition>
