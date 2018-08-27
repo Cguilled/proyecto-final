@@ -19,12 +19,12 @@ import javax.persistence.Table;
 public class Usuarios implements java.io.Serializable {
 
 	// Fields
-	private Integer id_Usuario; 
-	private String  das;
-	private String  nombre;
-	private String  apellido;
-	private String  password;
-	private String  estado;
+	private Integer id_Usuario;
+	private String das;
+	private String nombre;
+	private String apellido;
+	private String password;
+	private String estado;
 	private Roles roles;
 	private boolean inicio;
 
@@ -40,16 +40,17 @@ public class Usuarios implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public Usuarios(Integer id_Usuario, String nombreUsuario, String das, String apellido, String password,String estado, Roles roles, Boolean inicio) {
-		this.id_Usuario=id_Usuario;
-		this.das=das;
+	public Usuarios(Integer id_Usuario, String nombreUsuario, String das, String apellido, String password,
+			String estado, Roles roles, Boolean inicio) {
+		this.id_Usuario = id_Usuario;
+		this.das = das;
 		this.nombre = nombreUsuario;
-		this.apellido=apellido;
+		this.apellido = apellido;
 		this.password = password;
 		this.estado = estado;
 		this.roles = roles;
 		this.inicio = inicio;
-			
+
 	}
 
 	// Property accessors
@@ -65,7 +66,7 @@ public class Usuarios implements java.io.Serializable {
 		this.id_Usuario = id_Usuario;
 	}
 
-	@Column(name = "DAS", nullable = false, length = 15)	
+	@Column(name = "DAS", nullable = false, length = 15)
 	public String getDAS() {
 		return das;
 	}
@@ -82,8 +83,8 @@ public class Usuarios implements java.io.Serializable {
 	public void setNombreUsuario(String nombre) {
 		this.nombre = nombre;
 	}
-	
-	@Column(name = "APELLIDO", nullable = false, length = 20)	
+
+	@Column(name = "APELLIDO", nullable = false, length = 20)
 	public String getApellido() {
 		return apellido;
 	}
@@ -91,7 +92,7 @@ public class Usuarios implements java.io.Serializable {
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
-	
+
 	@Column(name = "PASSWORD", length = 10)
 	public String getPassword() {
 		return this.password;
@@ -100,8 +101,8 @@ public class Usuarios implements java.io.Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	@Column(name = "ESTADO", nullable = false, length = 10)	
+
+	@Column(name = "ESTADO", nullable = false, length = 10)
 	public String getEstado() {
 		return estado;
 	}
@@ -110,7 +111,7 @@ public class Usuarios implements java.io.Serializable {
 		this.estado = estado;
 	}
 
-	@Column(name = "INICIO", unique = true, nullable = false, length = 10)	
+	@Column(name = "INICIO", unique = true, nullable = false, length = 10)
 	public boolean getInicio() {
 		return inicio;
 	}
@@ -128,5 +129,5 @@ public class Usuarios implements java.io.Serializable {
 	public void setRoles(Roles roles) {
 		this.roles = roles;
 	}
-	
+
 }

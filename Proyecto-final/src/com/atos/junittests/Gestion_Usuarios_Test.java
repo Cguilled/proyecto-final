@@ -14,7 +14,7 @@ import com.atos.hibernate.dto.Usuarios;
 import com.atos.hibernate.modelo.IGestion_Usuarios;
 
 public class Gestion_Usuarios_Test {
-	private Usuarios defaultUser = new Usuarios(1, "0", "0", "0", "0", "0", null, "false");
+	private Usuarios defaultUser = new Usuarios();
 	private IGestion_Usuarios gestion;
 	private ApplicationContext ctx;
 	

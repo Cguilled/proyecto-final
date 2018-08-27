@@ -24,7 +24,7 @@ public class Tareas implements java.io.Serializable {
 
 	// Fields
 
-	private Byte id_Tarea;
+	private Integer id_Tarea;
 	private String nombre_Tarea;
 	private String descripcion_Tarea;
 	private String estado;
@@ -37,12 +37,12 @@ public class Tareas implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public Tareas(Byte id_Tarea) {
+	public Tareas(Integer id_Tarea) {
 		this.id_Tarea = id_Tarea;
 	}
 
 	/** full constructor */
-	public Tareas(Byte id_Tarea, String nombre_Tarea, String descripcion_Tarea, String estado,
+	public Tareas(Integer id_Tarea, String nombre_Tarea, String descripcion_Tarea, String estado,
 			Set<Roles> roleses) {
 		this.id_Tarea = id_Tarea;
 		this.descripcion_Tarea = descripcion_Tarea;
@@ -55,11 +55,11 @@ public class Tareas implements java.io.Serializable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_tarea")
 	@SequenceGenerator(name = "pk_tarea", sequenceName = "codigo_tarea", allocationSize = 1)
 	@Column(name = "ID_TAREA", unique = true, nullable = false, precision = 5, scale = 0)
-	public Byte getId_Tarea() {
+	public Integer getId_Tarea() {
 		return id_Tarea;
 	}
 
-	public void setId_Tarea(Byte id_Tarea) {
+	public void setId_Tarea(Integer id_Tarea) {
 		this.id_Tarea = id_Tarea;
 	}
 	

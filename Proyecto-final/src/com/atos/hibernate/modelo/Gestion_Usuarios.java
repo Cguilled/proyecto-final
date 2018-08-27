@@ -10,11 +10,15 @@ import org.springframework.transaction.annotation.Transactional;
 import com.atos.hibernate.dto.Usuarios;
 import com.atos.hibernate.dao.UsuariosDAO;
 
-
-
 /**
+ * 
+ * @author Guillermo Cermeño Puertas
+ *
+ * 27 ago. 2018
+ * 
  * Fachada de acceso a los procesos de los DAO.
  */
+
 @Component("gestionUsuarios")
 @Scope("prototype")
 public class Gestion_Usuarios implements IGestion_Usuarios {

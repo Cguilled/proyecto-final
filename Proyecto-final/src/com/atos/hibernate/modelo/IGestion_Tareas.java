@@ -18,6 +18,6 @@ public interface IGestion_Tareas {
 
 	List<Tareas> consultar_Todos();
 
-	Tareas consultar_PorCodigoTarea(int codigo_tarea);
+	Tareas consultar_PorCodigoTarea(Tareas tarea);
 
 }

@@ -9,6 +9,12 @@ import org.springframework.transaction.annotation.Transactional;
 import com.atos.hibernate.dao.TareasDAO;
 import com.atos.hibernate.dto.Tareas;
 
+/**
+ * 
+ * @author Guillermo Cermeño Puertas
+ *
+ * 27 ago. 2018
+ */
 
 @Component("gestion_tareas")
 @Scope("prototype")
@@ -19,8 +25,8 @@ public class Gestion_Tareas implements IGestion_Tareas {
 	// ***************** CONSULTAS
 	@Override
 	@Transactional(readOnly = true)
-	public Tareas consultar_PorCodigoTarea(int codigo_tarea) {
-		return tareas_dao.findById(codigo_tarea);
+	public Tareas consultar_PorCodigoTarea(Tareas tarea) {
+		return tareas_dao.findById(tarea.getId_Tarea());
 	}
 
 	@Override
