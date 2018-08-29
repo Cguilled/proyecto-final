@@ -50,8 +50,7 @@ public class Roles implements java.io.Serializable {
 
 	// Property accessors
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_rol")
-	@SequenceGenerator(name = "pk_rol", sequenceName = "codigo_rol", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "CODIGO_ROL", unique = true, nullable = false, precision = 2, scale = 0, length = 2)
 	public Byte getCodigoRol() {
 		return this.codigoRol;

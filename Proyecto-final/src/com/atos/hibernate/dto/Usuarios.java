@@ -55,8 +55,7 @@ public class Usuarios implements java.io.Serializable {
 
 	// Property accessors
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_pedido")
-	@SequenceGenerator(name = "pk_pedido", sequenceName = "codigo_usuario", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID_USUARIO", unique = true, nullable = false, precision = 5, scale = 0)
 	public Integer getId_Usuario() {
 		return this.id_Usuario;

@@ -65,13 +65,20 @@
 			<artifactId>commons-dbcp</artifactId>
 			<version>${version-datasource}</version>
 		</dependency>
-
+		
+		<!-- DRIVER PARA MYSQL -->
+	   <dependency>
+			 <groupId>mysql</groupId>
+			 <artifactId>mysql-connector-java</artifactId>
+			 <version>5.1.6</version>
+       </dependency>
+		
 		<!-- DRIVER PARA ORACLE -->
-		<dependency>
+		<!-- <dependency>
 			<groupId>com.oracle</groupId>
 			<artifactId>ojdbc6</artifactId>
 			<version>11.2.0.3</version>
-		</dependency>
+		</dependency> -->
 
 		<!-- *** SPRING *** -->
 		<!-- ENTORNO DE SPRING -->

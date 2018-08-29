@@ -51,8 +51,7 @@ public class Tareas implements java.io.Serializable {
 
 	// Property accessors
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_tarea")
-	@SequenceGenerator(name = "pk_tarea", sequenceName = "codigo_tarea", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID_TAREA", unique = true, nullable = false, precision = 5, scale = 0)
 	public Integer getId_Tarea() {
 		return id_Tarea;

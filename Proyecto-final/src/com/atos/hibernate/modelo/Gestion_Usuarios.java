@@ -54,7 +54,6 @@ public class Gestion_Usuarios implements IGestion_Usuarios {
 		List<Object> values=new ArrayList<Object>(){{add(das);add(clave);}};
 		
 		return (Usuarios)usuarios_dao.findByProperty(properties, values).get(0);
-		
 	}
 	
 	// ************ CRUD
