@@ -80,7 +80,7 @@ public class Tareas implements java.io.Serializable {
 		this.descripcion_Tarea = descripcion_Tarea;
 	}
 	
-	@Column(name = "ESTADO", precision = 1, scale = 0)
+	@Column(name = "ESTADO", nullable = false, precision = 1, scale = 0)
 	public String getEstado() {
 		return estado;
 	}

@@ -29,15 +29,17 @@ public class Gestion_Usuarios_Test {
 
 	@Test
 	public void testConsultar_PorIdNombre() {
+		System.out.println("id nombre");
 		Usuarios got;
 		gestion.alta_Usuario(defaultUser);
-		got = gestion.consultar_PorIdNombre(defaultUser.getId_Usuario());
+		got = gestion.consultar_PorDas(defaultUser.getDAS());
 		gestion.baja_Usuario(got);
 		assertEquals(defaultUser.getDAS(), got.getDAS());
 	}
 
 	@Test
 	public void testConsultar_Todos() {
+		System.out.println("todos");
 		List<Usuarios> got;
 		gestion.alta_Usuario(defaultUser);
 		got = gestion.consultar_Todos();
@@ -47,6 +49,7 @@ public class Gestion_Usuarios_Test {
 
 	@Test
 	public void testConsultar_PorClaveYDAS() {
+		System.out.println("clave/DAS");
 		Usuarios got;
 		gestion.alta_Usuario(defaultUser);
 		gestion.baja_Usuario(defaultUser);
@@ -56,11 +59,12 @@ public class Gestion_Usuarios_Test {
 	
 	@Test
 	public void testModificacion_Usuario() {
+		System.out.println("modificacion_usuario");
 		Usuarios modifiedUser = defaultUser;
 		modifiedUser.setPassword("22");
 		gestion.alta_Usuario(defaultUser);
 		gestion.modificacion_Usuario(modifiedUser);
-		assertEquals(gestion.consultar_PorIdNombre(defaultUser.getId_Usuario()).getPassword(), modifiedUser.getPassword());
+		assertEquals(gestion.consultar_PorDas(defaultUser.getDAS()).getPassword(), modifiedUser.getPassword());
 		gestion.baja_Usuario(defaultUser);
 	}
 

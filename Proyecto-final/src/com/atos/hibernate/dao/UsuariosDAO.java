@@ -21,7 +21,6 @@ public class UsuariosDAO {
 	private static final Logger log = LoggerFactory
 			.getLogger(UsuariosDAO.class);
 	// modificar esto en cuanto tengamos acceso a las variables
-	public static final String ID_USUARIO = "id";
 	public static final String DAS = "das";
 	public static final String NOMBRE = "nombre";
 	public static final String APELLIDO = "apellido";

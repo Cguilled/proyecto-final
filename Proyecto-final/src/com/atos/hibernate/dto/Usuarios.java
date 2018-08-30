@@ -19,14 +19,13 @@ import javax.persistence.Table;
 public class Usuarios implements java.io.Serializable {
 
 	// Fields
-	private Integer id_Usuario;
 	private String das;
 	private String nombre;
 	private String apellido;
 	private String password;
 	private String estado;
 	private Roles roles;
-	private boolean inicio;
+	private String inicio;
 
 	// Constructors
 
@@ -35,14 +34,13 @@ public class Usuarios implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public Usuarios(Integer ID_Usuario) {
-		this.id_Usuario = ID_Usuario;
+	public Usuarios(String das) {
+		this.das = das;
 	}
 
 	/** full constructor */
-	public Usuarios(Integer id_Usuario, String nombreUsuario, String das, String apellido, String password,
-			String estado, Roles roles, Boolean inicio) {
-		this.id_Usuario = id_Usuario;
+	public Usuarios(String nombreUsuario, String das, String apellido, String password,
+			String estado, Roles roles, String inicio) {
 		this.das = das;
 		this.nombre = nombreUsuario;
 		this.apellido = apellido;
@@ -55,17 +53,8 @@ public class Usuarios implements java.io.Serializable {
 
 	// Property accessors
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ID_USUARIO", unique = true, nullable = false, precision = 5, scale = 0)
-	public Integer getId_Usuario() {
-		return this.id_Usuario;
-	}
-
-	public void setId_Usuario(Integer id_Usuario) {
-		this.id_Usuario = id_Usuario;
-	}
-
-	@Column(name = "DAS", nullable = false, length = 15)
+	//@GeneratedValue(strategy = GenerationType.)
+	@Column(name = "DAS", unique = true, nullable = false, length = 15)
 	public String getDAS() {
 		return das;
 	}
@@ -92,7 +81,7 @@ public class Usuarios implements java.io.Serializable {
 		this.apellido = apellido;
 	}
 
-	@Column(name = "PASSWORD", length = 10)
+	@Column(name = "PASSWORD", nullable = false, length = 10)
 	public String getPassword() {
 		return this.password;
 	}
@@ -110,12 +99,12 @@ public class Usuarios implements java.io.Serializable {
 		this.estado = estado;
 	}
 
-	@Column(name = "INICIO", unique = true, nullable = false, length = 10)
-	public boolean getInicio() {
+	@Column(name = "INICIO", nullable = false, length = 10)
+	public String getInicio() {
 		return inicio;
 	}
 
-	public void setInicio(boolean inicio) {
+	public void setInicio(String inicio) {
 		this.inicio = inicio;
 	}
 

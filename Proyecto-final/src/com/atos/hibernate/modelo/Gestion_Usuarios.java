@@ -36,8 +36,8 @@ public class Gestion_Usuarios implements IGestion_Usuarios {
 	// ***************** CONSULTAS
 	@Override
 	@Transactional(readOnly = true)
-	public Usuarios consultar_PorIdNombre(int id_usuario) {
-		return usuarios_dao.findById(id_usuario);
+	public Usuarios consultar_PorDas(String das) {
+		return (Usuarios) usuarios_dao.findByDas(das).get(0);
 	}
 
 	@Override
