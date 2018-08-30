@@ -31,20 +31,21 @@ public class Login_Bean implements Serializable{
 		visible=true;
 	}
 
-
 	public void login_check(ActionEvent evento){
 		System.out.println("Realizando login...");
 		try {
 			//comprueba si existe el usuario con la clave
 			if (gestionUsuarios.consultar_PorClaveYDAS(das, password)!=null) {
 				//ir a la siguiente pantalla
+				siguiente_pagina();
 			}
 			
 			else {
 				//escribir mensaje de fallo
+				System.out.println("Fallo al realizar el login");
 			}
 		}catch (Exception e) {
-			
+			e.printStackTrace();
 		}
 	}
 	
@@ -53,11 +54,6 @@ public class Login_Bean implements Serializable{
 		visible=false;
 		siguiente="/xhtml/menuAdmin.xhtml";
 		return "";
-	}
-
-
-	public IGestion_Usuarios getGestionUsuarios() {
-		return gestionUsuarios;
 	}
 
 	public void setGestionUsuarios(IGestion_Usuarios gestionUsuarios) {

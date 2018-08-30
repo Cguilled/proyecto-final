@@ -71,15 +71,6 @@ public class Usuarios_Bean {
 		}
 	}
 
-	/*public void consultar_PorCodigo(ActionEvent evento) {
-		try {
-			gestionUsuarios.consultar_PorId(usuario);
-			System.out.println("consulta correcta");
-		} catch (DataAccessException dae) {
-			dae.printStackTrace();
-		}
-	}*/
-
 	public String getNombre_usuario() {
 		return nombre_usuario;
 	}
