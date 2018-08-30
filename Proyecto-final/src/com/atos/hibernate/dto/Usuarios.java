@@ -48,12 +48,11 @@ public class Usuarios implements java.io.Serializable {
 		this.estado = estado;
 		this.roles = roles;
 		this.inicio = inicio;
-
 	}
 
 	// Property accessors
-	@Id
 	//@GeneratedValue(strategy = GenerationType.)
+	@Id
 	@Column(name = "DAS", unique = true, nullable = false, length = 15)
 	public String getDAS() {
 		return das;

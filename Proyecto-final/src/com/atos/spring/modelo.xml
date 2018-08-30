@@ -36,9 +36,9 @@
 	<!-- **** DATASOURCE REQUERIDO POR TRANSACTION MANAGER **** -->
 	<bean id="dataSource"
 		class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-		<property name="driverClassName" value="${driver.sql}" />
-		<property name="url" value="${url.sql}" />
-		<property name="username" value="${usuario.sql}" />
+		<property name="driverClassName" value="${spring.datasource.driver-class-name}" />
+		<property name="url" value="${spring.datasource.url}" />
+		<property name="username" value="${spring.datasource.username}" />
 		<!-- <property name="password" value="${clave.usuario}" /> -->
 	</bean>
 

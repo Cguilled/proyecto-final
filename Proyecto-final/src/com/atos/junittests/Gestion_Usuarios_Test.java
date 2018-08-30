@@ -14,7 +14,7 @@ import com.atos.hibernate.dto.Usuarios;
 import com.atos.hibernate.modelo.IGestion_Usuarios;
 
 public class Gestion_Usuarios_Test {
-	private Usuarios defaultUser = new Usuarios();
+	private Usuarios defaultUser = new Usuarios("Javier", "A704755", "Gonzalez", "clem", "inactivo", new Roles((byte) 99), "true");
 	private IGestion_Usuarios gestion;
 	private ApplicationContext ctx;
 	
@@ -28,7 +28,7 @@ public class Gestion_Usuarios_Test {
 	}
 
 	@Test
-	public void testConsultar_PorIdNombre() {
+	public void testConsultar_PorDas() {
 		System.out.println("id nombre");
 		Usuarios got;
 		gestion.alta_Usuario(defaultUser);
@@ -52,8 +52,8 @@ public class Gestion_Usuarios_Test {
 		System.out.println("clave/DAS");
 		Usuarios got;
 		gestion.alta_Usuario(defaultUser);
-		gestion.baja_Usuario(defaultUser);
 		got = gestion.consultar_PorClaveYDAS(defaultUser.getDAS(), defaultUser.getPassword());
+		gestion.baja_Usuario(defaultUser);
 		assertEquals(got.getDAS(), defaultUser.getDAS());
 	}
 	
