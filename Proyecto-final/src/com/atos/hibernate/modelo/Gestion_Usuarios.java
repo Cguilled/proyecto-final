@@ -50,7 +50,7 @@ public class Gestion_Usuarios implements IGestion_Usuarios {
 	@Transactional(readOnly = true)
 	public Usuarios consultar_PorClaveYDAS(String das, String clave) {
 
-		List<String> properties=new ArrayList<String>(){{add("DAS");add("PASSWORD");}};
+		List<String> properties=new ArrayList<String>(){{add("DAS");add("password");}};
 		List<Object> values=new ArrayList<Object>(){{add(das);add(clave);}};
 		
 		return (Usuarios)usuarios_dao.findByProperty(properties, values).get(0);

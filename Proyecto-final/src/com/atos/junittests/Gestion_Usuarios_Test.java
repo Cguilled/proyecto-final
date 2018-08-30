@@ -44,17 +44,20 @@ public class Gestion_Usuarios_Test {
 		gestion.alta_Usuario(defaultUser);
 		got = gestion.consultar_Todos();
 		gestion.baja_Usuario(defaultUser);
-		assertEquals(got, 1);
+		assertEquals(got.size(), 2);
+		//2, 1 para un elemento estatico que SIEMPRE ha de estar en la tabla
+		//como referencia y el otro para el ejemplo metido ya de antemano.
 	}
 
 	@Test
 	public void testConsultar_PorClaveYDAS() {
 		System.out.println("clave/DAS");
+		Usuarios newInicial = new Usuarios("Javier", "A704753", "Gonzalez", "clem", "inactivo", new Roles((byte) 99), "true");
 		Usuarios got;
-		gestion.alta_Usuario(defaultUser);
-		got = gestion.consultar_PorClaveYDAS(defaultUser.getDAS(), defaultUser.getPassword());
-		gestion.baja_Usuario(defaultUser);
-		assertEquals(got.getDAS(), defaultUser.getDAS());
+		gestion.alta_Usuario(newInicial);
+		got = gestion.consultar_PorClaveYDAS(newInicial.getDAS(), newInicial.getPassword());
+		gestion.baja_Usuario(newInicial);
+		assertEquals(got.getDAS(), newInicial.getDAS());
 	}
 	
 	@Test

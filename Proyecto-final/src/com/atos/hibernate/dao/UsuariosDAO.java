@@ -94,7 +94,7 @@ public class UsuariosDAO {
 	}
 	
 	//Encontrar todos los objetos de tipo Usuarios que tengan ciertas propiedades
-	public List findByProperty(List<String> propertiesNames, List<Object> values) {
+	/*public List findByProperty(List<String> propertiesNames, List<Object> values) {
 		
 		log.debug("finding Usuarios instance with properties");
 		try {
@@ -123,6 +123,45 @@ public class UsuariosDAO {
 			throw re;
 		}
 		
+	}*/
+	
+	public List findByProperty(List<String> propertiesNames, List<Object> values) {
+		
+		log.debug("finding Usuarios instance with properties");
+		try {
+			
+			String queryString = "from Usuarios as model where "; 
+			String varArgs="";
+			int count=0;
+			
+			//Query queryObject = getCurrentSession().createQuery(queryString);
+			
+			for (String propertyName : propertiesNames) {
+			
+				if(count<(propertiesNames.size()-1))
+					varArgs+="model."+ propertyName + "= ? and ";
+				else
+					varArgs+="model."+ propertyName + "= ?";
+				
+				count++;
+			}
+			
+			Query queryObject = getCurrentSession().createQuery(queryString + varArgs);
+			count = 0;
+			
+			for (Object value : values) {
+					
+				queryObject.setParameter(count, value);
+				
+				count++;
+			}
+			
+			return queryObject.list();
+			
+		} catch (RuntimeException re) {
+			log.error("find by property name failed", re);
+			throw re;
+		}
 	}
 	
 	//Recuperar objetos de tipo Usuarios a partir de un das
