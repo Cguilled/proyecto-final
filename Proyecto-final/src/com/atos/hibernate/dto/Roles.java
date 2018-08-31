@@ -23,7 +23,7 @@ public class Roles implements java.io.Serializable {
 
 	// Fields
 
-	private Byte codigoRol;
+	private Integer codigoRol;
 	private String descripcionRol;
 	private Set<Tareas> tareases = new HashSet<Tareas>(0);
 	private Set<Usuarios> usuarioses = new HashSet<Usuarios>(0);
@@ -35,12 +35,12 @@ public class Roles implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public Roles(Byte codigoRol) {
+	public Roles(Integer codigoRol) {
 		this.codigoRol = codigoRol;
 	}
 
 	/** full constructor */
-	public Roles(Byte codigoRol, String descripcionRol, Set<Tareas> tareases,
+	public Roles(Integer codigoRol, String descripcionRol, Set<Tareas> tareases,
 			Set<Usuarios> usuarioses) {
 		this.codigoRol = codigoRol;
 		this.descripcionRol = descripcionRol;
@@ -52,11 +52,11 @@ public class Roles implements java.io.Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "CODIGO_ROL", unique = true, nullable = false, precision = 2, scale = 0, length = 2)
-	public Byte getCodigoRol() {
+	public Integer getCodigoRol() {
 		return this.codigoRol;
 	}
 
-	public void setCodigoRol(Byte codigoRol) {
+	public void setCodigoRol(Integer codigoRol) {
 		this.codigoRol = codigoRol;
 	}
 
