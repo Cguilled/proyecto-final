@@ -37,7 +37,7 @@ public class Gestion_Usuarios implements IGestion_Usuarios {
 	@Override
 	@Transactional(readOnly = true)
 	public Usuarios consultar_PorDas(String das) {
-		return (Usuarios) usuarios_dao.findByDas(das).get(0);
+		return (Usuarios) usuarios_dao.findByDas(das);
 	}
 
 	@Override
@@ -49,11 +49,8 @@ public class Gestion_Usuarios implements IGestion_Usuarios {
 	@Override
 	@Transactional(readOnly = true)
 	public Usuarios consultar_PorClaveYDAS(String das, String clave) {
-
-		List<String> properties=new ArrayList<String>(){{add("DAS");add("password");}};
-		List<Object> values=new ArrayList<Object>(){{add(das);add(clave);}};
 		
-		return (Usuarios)usuarios_dao.findByProperty(properties, values).get(0);
+		return usuarios_dao.findByDasAndPass(das, clave);
 	}
 	
 	// ************ CRUD

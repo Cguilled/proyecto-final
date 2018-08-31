@@ -125,6 +125,24 @@ public class UsuariosDAO {
 		
 	}*/
 	
+	public Usuarios findByDasAndPass(String das, String pass) {
+		log.debug("finding Usuarios instance with properties");
+		try {
+			
+			String queryString = "from Usuarios as model where model.DAS = ? and model.password = ?";
+			
+			Query queryObject = getCurrentSession().createQuery(queryString);
+			queryObject.setParameter(0, das);
+			queryObject.setParameter(1, pass);
+			
+			return (Usuarios) queryObject.uniqueResult();
+			
+		} catch (RuntimeException re) {
+			log.error("find by property name failed", re);
+			throw re;
+		}
+	}
+	
 	public List findByProperty(List<String> propertiesNames, List<Object> values) {
 		
 		log.debug("finding Usuarios instance with properties");
@@ -165,8 +183,16 @@ public class UsuariosDAO {
 	}
 	
 	//Recuperar objetos de tipo Usuarios a partir de un das
-	public List<Usuarios> findByDas(Object nombre) {
-		return findByProperty(DAS, nombre);
+	public Usuarios findByDas(String das) {
+		log.debug("getting Usuarios instance with das: " + das);
+		try {
+			Usuarios instance = (Usuarios) getCurrentSession().get(
+					"com.atos.hibernate.dto.Usuarios", das);
+			return instance;
+		} catch (RuntimeException re) {
+			log.error("get failed", re);
+			throw re;
+		}
 	}
 	
 	//Recuperar objetos de tipo Usuarios a partir de un nombre

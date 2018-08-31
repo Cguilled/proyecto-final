@@ -26,7 +26,7 @@ public class Tareas implements java.io.Serializable {
 	private Integer id_Tarea;
 	private String nombre_Tarea;
 	private String descripcion_Tarea;
-	private String estado;
+	private boolean estado;
 	private Set<Roles> roleses = new HashSet<Roles>(0);
 
 	// Constructors
@@ -41,9 +41,10 @@ public class Tareas implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public Tareas(Integer id_Tarea, String nombre_Tarea, String descripcion_Tarea, String estado,
+	public Tareas(Integer id_Tarea, String nombre_Tarea, String descripcion_Tarea, boolean estado,
 			Set<Roles> roleses) {
 		this.id_Tarea = id_Tarea;
+		this.nombre_Tarea = nombre_Tarea;
 		this.descripcion_Tarea = descripcion_Tarea;
 		this.estado = estado;
 		this.roleses = roleses;
@@ -81,16 +82,16 @@ public class Tareas implements java.io.Serializable {
 	}
 	
 	@Column(name = "ESTADO", nullable = false, precision = 1, scale = 0)
-	public String getEstado() {
+	public boolean isEstado() {
 		return estado;
 	}
 
-	public void setEstado(String estado) {
+	public void setEstado(boolean estado) {
 		this.estado = estado;
 	}
 
 	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "ROLES_TAREAS", schema = "J172", joinColumns = { @JoinColumn(name = "ID_TAREA", nullable = false, updatable = false) }, inverseJoinColumns = { @JoinColumn(name = "CODIGO_ROL", nullable = false, updatable = false) })
+	@JoinTable(name = "ROLES_TAREAS", joinColumns = { @JoinColumn(name = "CODIGO_TAREAS", nullable = false, updatable = false) }, inverseJoinColumns = { @JoinColumn(name = "CODIGO_ROL", nullable = false, updatable = false) })
 	public Set<Roles> getRoleses() {
 		return this.roleses;
 	}
