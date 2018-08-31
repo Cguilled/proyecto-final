@@ -26,20 +26,23 @@ public class Gestion_Roles_Test {
 	}
 	@Test
 	public void testConsultar_Todos() {
-		gestion.alta_Rol(test);
 		int size = gestion.consultar_Todos().size();
-		gestion.baja_Rol(test);
-		assertEquals(size, 2);
+		
+		assertEquals(size, 1);
 	}
 	
 	@Test
 	public void testModificacion_Rol() {
-		gestion.alta_Rol(test);
 		Roles modified = test;
 		modified.setDescripcionRol("Esto es una descripcion #1");
+		Roles result;
+		
+		gestion.alta_Rol(test);
 		gestion.modificacion_Rol(modified);
-		Roles result = gestion.consultar_PorCodigoRol(modified);
+		result = gestion.consultar_PorCodigoRol(modified);
 		gestion.baja_Rol(modified);
+		
+		assertEquals(result.getDescripcionRol(), modified.getDescripcionRol());
 	}
 
 }

@@ -31,28 +31,34 @@ public class Gestion_Tareas_Test {
 	
 	@Test
 	public void testConsultar_PorCodigoTarea() {
+		Tareas result;
+		
 		gestion.alta_Tarea(test);
-		Tareas result = gestion.consultar_PorCodigoTarea(test);
+		result = gestion.consultar_PorCodigoTarea(test);
 		gestion.baja_Tarea(test);
+		
 		assertEquals(result.getId_Tarea(), test.getId_Tarea());
 	}
 
 	@Test
 	public void testConsultar_Todos() {
-		gestion.alta_Tarea(test);
 		int size = gestion.consultar_Todos().size();
-		gestion.baja_Tarea(test);
-		assertEquals(size, 2);
+		
+		assertEquals(size, 1);
 	}
 
 	@Test
 	public void testModificacion_Tarea() {
-		gestion.alta_Tarea(test);
 		Tareas modified = test;
+		Tareas result;
 		modified.setDescripcion_Tarea("Esto es una descripcion");
+		
+		gestion.alta_Tarea(test);
 		gestion.modificacion_Tarea(modified);
-		Tareas result = gestion.consultar_PorCodigoTarea(modified);
+		result = gestion.consultar_PorCodigoTarea(modified);
 		gestion.baja_Tarea(modified);
+		
+		assertEquals(modified.getDescripcion_Tarea(), result.getDescripcion_Tarea());
 	}
 
 }
