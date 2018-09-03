@@ -24,6 +24,7 @@ public class Gestion_Roles_Test {
 	public void restartGestion() {
 		gestion = ctx.getBean(IGestion_Roles.class);
 	}
+	
 	@Test
 	public void testConsultar_Todos() {
 		int size = gestion.consultar_Todos().size();
@@ -32,7 +33,7 @@ public class Gestion_Roles_Test {
 	}
 	
 	@Test
-	public void testModificacion_Rol() {
+	public void testGeneral_Rol() {
 		Roles modified = test;
 		modified.setDescripcionRol("Esto es una descripcion #1");
 		Roles result;

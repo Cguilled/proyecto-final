@@ -64,12 +64,14 @@ public class Gestion_Usuarios_Test {
 	public void testModificacion_Usuario() {
 		Usuarios modifiedUser = defaultUser;
 		modifiedUser.setPassword("22");
+		Usuarios result;
 		
 		gestion.alta_Usuario(defaultUser);
 		gestion.modificacion_Usuario(modifiedUser);
+		result = gestion.consultar_PorDas(defaultUser.getDAS());
 		gestion.baja_Usuario(defaultUser);
 		
-		assertEquals(gestion.consultar_PorDas(defaultUser.getDAS()).getPassword(), modifiedUser.getPassword());
+		assertEquals(result.getPassword(), modifiedUser.getPassword());
 	}
 
 }
