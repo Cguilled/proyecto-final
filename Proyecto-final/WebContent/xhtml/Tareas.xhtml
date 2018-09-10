@@ -13,44 +13,55 @@
 		value="#{msgs['example.ace.menuBar.description']}" />
 
 	<!-- FORMULARIO DE TAREAS-->
-	<h:form id="formu_login">
-		<!-- CONTENEDOR DE LOS COMPONENTES -->
-		<h:panelGrid id="panel_formuTareas" columns="1"
-			style="margin: 0 auto; text-align: center;">
-			<!-- COMPONENTES DEL FORMULARIO -->
-			<ace:textEntry id="nombre_tarea" value="#{tareas_bean.nombre_tarea}" label="Nombre"
-				labelPosition="top" required="true" requiredIndicator="*"
-				validatorMessage="Nombre: tamaño máximo: 100 caracteres. Mínimo: 3.">
-				<f:validateLength minimum="3" maximum="100" />
-			</ace:textEntry>
+	<h:form id="formu_tareas">
 
-			<ace:textEntry id="descripcion_tarea" value="#{tareas_bean.descripcion_tareas}" label="Apellido"
-				labelPosition="top"
-				validatorMessage="Descripción_Tareas: tamaño máximo: 2000 caracteres.">
-				<f:validateLength maximum="2000" />
-			</ace:textEntry>
-			<ace:textEntry id="estado" value="#{tareas_bean.estado}" label="Estado"
-				labelPosition="top" required="true" requiredIndicator="*"
-				validatorMessage="Estado: tamaño máximo: 1 carácter.">
-				<!-- MENSAJE EN CASO DE ERROR -->
-				<f:convertNumber type="number" integerOnly="true" />
-				<f:validateLongRange maximum="1" minimum="0" />
-			</ace:textEntry>
+		<ace:dialog id="dialogTareas" binding="#{dialogTareas}"
+			header="Tareas" closable="false" modal="true" draggable="false"
+			showEffect="explode" hideEffect="puff" width="400"
+			visible="#{tareas_bean.visible}">
 
-		</h:panelGrid>
+			<!-- CONTENEDOR DE LOS COMPONENTES -->
+			<h:panelGrid id="panel_formuTareas" columns="1"
+				style="margin: 0 auto; text-align: center;">
+				<!-- COMPONENTES DEL FORMULARIO -->
+				<ace:textEntry id="nombre_tarea" value="#{tareas_bean.nombre_tarea}"
+					label="Nombre" labelPosition="top" required="true"
+					requiredIndicator="*"
+					validatorMessage="Nombre: tamaño máximo: 100 caracteres. Mínimo: 3.">
+					<f:validateLength minimum="3" maximum="100" />
+				</ace:textEntry>
 
-		<h:panelGrid id="panel_formuBotonesTareas" columns="3"
-			style="margin: 0 auto; text-align: center;">
-			<h:commandButton id="botonAlta" value="Alta"
-				actionListener="#{tareas_bean.alta_Tarea}" />
+				<ace:textEntry id="descripcion_tarea"
+					value="#{tareas_bean.descripcion_tareas}" label="Descripción"
+					labelPosition="top"
+					validatorMessage="Descripción_Tareas: tamaño máximo: 2000 caracteres.">
+					<f:validateLength maximum="2000" />
+				</ace:textEntry>
+				<ace:textEntry id="estado" value="#{tareas_bean.estado}"
+					label="Estado" labelPosition="top" required="true"
+					requiredIndicator="*"
+					validatorMessage="Estado: tamaño máximo: 1 carácter.">
+					<!-- MENSAJE EN CASO DE ERROR -->
+					<f:convertNumber type="number" integerOnly="true" />
+					<f:validateLongRange maximum="1" minimum="0" />
+				</ace:textEntry>
 
-			<h:commandButton id="botonBaja" value="Baja"
-				actionListener="#{tareas_bean.baja_Tarea}" />
+			</h:panelGrid>
 
-			<h:commandButton id="botonModificar" value="Modificación"
-				actionListener="#{tareas_bean.modificacion_Tarea}" />
+			<h:panelGrid id="panel_formuBotonesTareas" columns="3"
+				style="margin: 0 auto; text-align: center;">
+				<h:commandButton id="botonAlta" value="Alta"
+					actionListener="#{tareas_bean.alta_Tarea}" />
 
-		</h:panelGrid>
+				<h:commandButton id="botonBaja" value="Baja"
+					actionListener="#{tareas_bean.baja_Tarea}" />
+
+				<h:commandButton id="botonModificar" value="Modificación"
+					actionListener="#{tareas_bean.modificacion_Tarea}" />
+
+			</h:panelGrid>
+
+		</ace:dialog>
 
 	</h:form>
 

@@ -27,6 +27,7 @@ public class Tareas_Bean {
 	private String nombre_tarea;
 	private String descripcion_tareas;
 	private Integer estado;
+	private boolean visible;
 
 	@ManagedProperty("#{gestion_tareas}")
 	private IGestion_Tareas gestionTareas;
@@ -37,6 +38,7 @@ public class Tareas_Bean {
 		nombre_tarea = "";
 		descripcion_tareas = "";
 		estado = 1;
+		visible=true;
 	}
 
 	//FALTAN LOS METODOS DE LA FACHADA, SIN ELLOS AQUÍ NO SE HACE NADA...
@@ -108,6 +110,14 @@ public class Tareas_Bean {
 
 	public void setEstado(Integer estado) {
 		this.estado = estado;
+	}
+	
+	public boolean isVisible() {
+		return visible;
+	}
+
+	public void setVisible(boolean visible) {
+		this.visible = visible;
 	}
 
 	public void setGestionTareas(IGestion_Tareas gestionTareas) {

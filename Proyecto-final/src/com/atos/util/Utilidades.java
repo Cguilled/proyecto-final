@@ -2,12 +2,30 @@ package com.atos.util;
 
 import java.util.ArrayList;
 
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
+import com.atos.hibernate.dto.Tareas;
+
 public class Utilidades {
-	// ArrayList que sera la contrasena final
-	ArrayList<String> caracter = new ArrayList<String>();
-	String palabro = "";
+
+	private SessionFactory sessionFactory;
+
+	// Spring iniciará el SessionFactory
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
+
+	protected Session getCurrentSession() {
+		return sessionFactory.getCurrentSession();
+	}
 
 	public String randomPassword() {
+		// ArrayList que sera la contrasena final
+		ArrayList<String> caracter = new ArrayList<String>();
+		String pass = "";
+
 		// Array con los caracteres que formaran la contrasena
 		String[] caracteres = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q",
 				"r", "s", "t", "u", "v", "w", "x", "y", "z", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L",
@@ -16,9 +34,22 @@ public class Utilidades {
 
 		// Hasta 10 porque en la bbdd la contrasena tiene longitud 10
 		for (int i = 0; i < 10; i++) {
-			palabro += caracteres[(int) (Math.floor(Math.random() * caracteres.length))];
+			pass += caracteres[(int) (Math.floor(Math.random() * caracteres.length))];
 		}
 
-		return palabro;
+		return pass;
+	}
+
+	// Consultar del codigo de la tarea de la tabla Roles_Tareas
+	public Integer consultarCodigoTarea(Tareas transientInstance) {
+		Integer codigoTarea = null;
+		try {
+			Query q = getCurrentSession().createQuery("SELECT CODIGO_TAREAS FROM ROLES_TAREAS WHERE CODIGO_TAREAS = ?");
+			q.setInteger(0, transientInstance.getId_Tarea());
+			codigoTarea = (Integer) q.uniqueResult();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return codigoTarea;
 	}
 }

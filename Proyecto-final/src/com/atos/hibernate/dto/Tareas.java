@@ -72,7 +72,7 @@ public class Tareas implements java.io.Serializable {
 	}
 	
 	
-	@Column(name = "DESCRIPCION_TAREA", length = 2000)
+	@Column(name = "DESCRIPCION_TAREA", nullable = true, length = 2000)
 	public String getDescripcion_Tarea() {
 		return descripcion_Tarea;
 	}
