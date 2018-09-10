@@ -39,8 +39,8 @@ public class Usuarios implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public Usuarios(String nombre, String das, String apellido, String password,
-			String estado, Roles roles, String inicio) {
+	public Usuarios(String das, String nombre, String apellido,
+			String estado, String inicio, Roles roles,  String password) {
 		this.das = das;
 		this.nombre = nombre;
 		this.apellido = apellido;

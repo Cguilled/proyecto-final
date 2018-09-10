@@ -16,7 +16,7 @@
 	<h:form id="formu_usuario">
 	
 	<ace:dialog id="dialogUsuarios" binding="#{dialogUsuarios}"
-			header="Tareas" closable="false" modal="true" draggable="false"
+			header="Usuarios" closable="false" modal="true" draggable="false"
 			showEffect="explode" hideEffect="puff" width="400"
 			visible="#{usuarios_bean.visible}">
 	
@@ -45,7 +45,12 @@
 			</ace:textEntry>
 			<ace:textEntry id="estado" value="#{usuarios_bean.usuario.estado}"
 				label="Estado" labelPosition="top" required="true"
-				requiredIndicator="*" validatorMessage="Estado: activo 1 /no activo 0.">
+				requiredIndicator="*" validatorMessage="Estado: activo/no activo.">
+			</ace:textEntry>
+
+			<ace:textEntry id="inicio" value="#{usuarios_bean.usuario.inicio}"
+				label="Inicio" labelPosition="top" required="true"
+				requiredIndicator="*" validatorMessage="Inicio: 1 ó 0.">
 			</ace:textEntry>
 
 			<ace:textEntry id="password" value="#{usuarios_bean.usuario.password}"

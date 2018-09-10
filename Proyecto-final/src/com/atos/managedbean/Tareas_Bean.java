@@ -25,7 +25,7 @@ import com.atos.hibernate.modelo.IGestion_Usuarios;
 public class Tareas_Bean {
 	private Tareas tarea;
 	private String nombre_tarea;
-	private String descripcion_tareas;
+	private String descripcion_Tarea;
 	private Integer estado;
 	private boolean visible;
 
@@ -36,8 +36,8 @@ public class Tareas_Bean {
 	public void valores_Iniciales() {
 		tarea = new Tareas();
 		nombre_tarea = "";
-		descripcion_tareas = "";
-		estado = 1;
+		descripcion_Tarea = "";
+		estado = 0;
 		visible=true;
 	}
 
@@ -96,12 +96,12 @@ public class Tareas_Bean {
 		this.nombre_tarea = nombre_tarea;
 	}
 
-	public String getDescripcion_tareas() {
-		return descripcion_tareas;
+	public String getDescripcion_Tarea() {
+		return descripcion_Tarea;
 	}
 
-	public void setDescripcion_tareas(String descripcion_tareas) {
-		this.descripcion_tareas = descripcion_tareas;
+	public void setDescripcion_Tarea(String descripcion_Tarea) {
+		this.descripcion_Tarea = descripcion_Tarea;
 	}
 
 	public Integer getEstado() {

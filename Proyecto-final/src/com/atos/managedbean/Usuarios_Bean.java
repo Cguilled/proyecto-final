@@ -26,6 +26,7 @@ public class Usuarios_Bean {
 	private String nombre;
 	private String apellido;
 	private String estado;
+	private Integer inicio;
 	private String password;
 	private Usuarios usuario;
 	private boolean visible;
@@ -40,6 +41,7 @@ public class Usuarios_Bean {
 		nombre = "";
 		apellido = "";
 		estado = "";
+		inicio = 0;
 		password = "";
 		visible = true;
 	}
@@ -111,6 +113,14 @@ public class Usuarios_Bean {
 
 	public void setEstado(String estado) {
 		this.estado = estado;
+	}
+
+	public Integer getInicio() {
+		return inicio;
+	}
+
+	public void setInicio(Integer inicio) {
+		this.inicio = inicio;
 	}
 
 	public String getPassword() {
