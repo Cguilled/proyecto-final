@@ -24,7 +24,7 @@
 			<h:panelGrid id="panel_formuTareas" columns="1"
 				style="margin: 0 auto; text-align: center;">
 				<!-- COMPONENTES DEL FORMULARIO -->
-				<ace:textEntry id="nombre_tarea" value="#{tareas_bean.nombre_tarea}"
+				<ace:textEntry id="nombre_tarea" value="#{tareas_bean.tarea.nombre_Tarea}"
 					label="Nombre" labelPosition="top" required="true"
 					requiredIndicator="*"
 					validatorMessage="Nombre: tamaño máximo: 100 caracteres. Mínimo: 3.">
@@ -32,12 +32,12 @@
 				</ace:textEntry>
 
 				<ace:textEntry id="descripcion_tarea"
-					value="#{tareas_bean.descripcion_tareas}" label="Descripción"
+					value="#{tareas_bean.tarea.descripcion_tareas}" label="Descripción"
 					labelPosition="top"
 					validatorMessage="Descripción_Tareas: tamaño máximo: 2000 caracteres.">
 					<f:validateLength maximum="2000" />
 				</ace:textEntry>
-				<ace:textEntry id="estado" value="#{tareas_bean.estado}"
+				<ace:textEntry id="estado" value="#{tareas_bean.tarea.estado}"
 					label="Estado" labelPosition="top" required="true"
 					requiredIndicator="*"
 					validatorMessage="Estado: tamaño máximo: 1 carácter.">

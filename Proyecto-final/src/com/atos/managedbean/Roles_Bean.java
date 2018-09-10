@@ -37,11 +37,10 @@ public class Roles_Bean {
 		descripcion_rol = "";
 	}
 	
-	//FALTAN LOS METODOS DE LA FACHADA, SIN ELLOS AQUÍ NO SE HACE NADA...
 	// EVENTOS
 		public void alta_Rol(ActionEvent evento) {
 			try {
-				//gestionRoles.alta_Rol(rol);
+				gestionRoles.alta_Rol(rol);
 				System.out.println("alta correcta");
 			} catch (DataAccessException dae) {
 				dae.printStackTrace();

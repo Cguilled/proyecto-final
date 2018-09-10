@@ -40,6 +40,21 @@ public class Tareas implements java.io.Serializable {
 		this.id_Tarea = id_Tarea;
 	}
 
+	public Tareas(String nombre_Tarea, String descripcion_Tarea, boolean estado) {
+		super();
+		this.nombre_Tarea = nombre_Tarea;
+		this.descripcion_Tarea = descripcion_Tarea;
+		this.estado = estado;
+	}
+
+	public Tareas(Integer id_Tarea, String nombre_Tarea, String descripcion_Tarea, boolean estado) {
+		super();
+		this.id_Tarea = id_Tarea;
+		this.nombre_Tarea = nombre_Tarea;
+		this.descripcion_Tarea = descripcion_Tarea;
+		this.estado = estado;
+	}
+
 	/** full constructor */
 	public Tareas(Integer id_Tarea, String nombre_Tarea, String descripcion_Tarea, boolean estado,
 			Set<Roles> roleses) {
@@ -53,7 +68,7 @@ public class Tareas implements java.io.Serializable {
 	// Property accessors
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ID_TAREA", unique = true, nullable = false, precision = 5, scale = 0)
+	@Column(name = "ID_TAREA", unique = true, nullable = false, precision = 2, scale = 0)
 	public Integer getId_Tarea() {
 		return id_Tarea;
 	}
@@ -62,7 +77,7 @@ public class Tareas implements java.io.Serializable {
 		this.id_Tarea = id_Tarea;
 	}
 	
-	@Column(name = "NOMBRE_TAREA", nullable = false, length = 100)
+	@Column(name = "NOMBRE_TAREA", nullable = true, length = 100)
 	public String getNombre_Tarea() {
 		return nombre_Tarea;
 	}
@@ -70,7 +85,6 @@ public class Tareas implements java.io.Serializable {
 	public void setNombre_Tarea(String nombre_Tarea) {
 		this.nombre_Tarea = nombre_Tarea;
 	}
-	
 	
 	@Column(name = "DESCRIPCION_TAREA", nullable = true, length = 2000)
 	public String getDescripcion_Tarea() {

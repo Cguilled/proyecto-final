@@ -39,10 +39,10 @@ public class Usuarios implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public Usuarios(String nombreUsuario, String das, String apellido, String password,
+	public Usuarios(String nombre, String das, String apellido, String password,
 			String estado, Roles roles, String inicio) {
 		this.das = das;
-		this.nombre = nombreUsuario;
+		this.nombre = nombre;
 		this.apellido = apellido;
 		this.password = password;
 		this.estado = estado;
@@ -52,28 +52,29 @@ public class Usuarios implements java.io.Serializable {
 
 	// Property accessors
 	//@GeneratedValue(strategy = GenerationType.)
-	@Id
-	@Column(name = "DAS", unique = true, nullable = false, length = 15)
-	public String getDAS() {
-		return das;
-	}
-
-	public void setDAS(String das) {
-		this.das = das;
-	}
-
-	@Column(name = "NOMBRE", nullable = false, length = 20)
-	public String getNombreUsuario() {
-		return nombre;
-	}
-
-	public void setNombreUsuario(String nombre) {
-		this.nombre = nombre;
-	}
 
 	@Column(name = "APELLIDO", nullable = false, length = 20)
 	public String getApellido() {
 		return apellido;
+	}
+
+	@Id
+	@Column(name = "DAS", unique = true, nullable = false, length = 15)
+	public String getDas() {
+		return das;
+	}
+
+	public void setDas(String das) {
+		this.das = das;
+	}
+
+	@Column(name = "NOMBRE", nullable = false, length = 20)
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
 	public void setApellido(String apellido) {

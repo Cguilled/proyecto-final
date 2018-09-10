@@ -113,7 +113,7 @@ public class UsuariosDAO {
 	public Usuarios findByDasAndPass(String das, String pass) {
 		try {
 			
-			String queryString = "from Usuarios as model where model.DAS = ? and model.password = ?";
+			String queryString = "from Usuarios as model where model.das = ? and model.password = ?";
 			
 			Query queryObject = getCurrentSession().createQuery(queryString);
 			queryObject.setParameter(0, das);

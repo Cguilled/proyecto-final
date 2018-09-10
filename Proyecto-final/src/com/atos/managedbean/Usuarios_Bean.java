@@ -22,12 +22,13 @@ import com.atos.hibernate.modelo.IGestion_Usuarios;
 @ManagedBean(name = "usuarios_bean")
 @ViewScoped
 public class Usuarios_Bean {
-	private String nombre_usuario;
+	private String das;
 	private String nombre;
 	private String apellido;
 	private String estado;
 	private String password;
 	private Usuarios usuario;
+	private boolean visible;
 
 	@ManagedProperty("#{gestionUsuarios}")
 	private IGestion_Usuarios gestionUsuarios;
@@ -35,11 +36,12 @@ public class Usuarios_Bean {
 	@PostConstruct
 	public void valores_Iniciales() {
 		usuario = new Usuarios();
-		nombre_usuario = "";
+		das = "";
 		nombre = "";
 		apellido = "";
 		estado = "";
 		password = "";
+		visible = true;
 	}
 
 	// EVENTOS
@@ -71,12 +73,20 @@ public class Usuarios_Bean {
 		}
 	}
 
-	public String getNombre_usuario() {
-		return nombre_usuario;
+	public Usuarios getUsuario() {
+		return usuario;
 	}
 
-	public void setNombre_usuario(String nombre_usuario) {
-		this.nombre_usuario = nombre_usuario;
+	public void setUsuario(Usuarios usuario) {
+		this.usuario = usuario;
+	}
+
+	public String getDas() {
+		return das;
+	}
+
+	public void setDas(String das) {
+		this.das = das;
 	}
 
 	public String getNombre() {
@@ -109,6 +119,14 @@ public class Usuarios_Bean {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public boolean isVisible() {
+		return visible;
+	}
+
+	public void setVisible(boolean visible) {
+		this.visible = visible;
 	}
 
 	public void setGestionUsuarios(IGestion_Usuarios gestionUsuarios) {
