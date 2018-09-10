@@ -54,20 +54,20 @@ public class Usuarios implements java.io.Serializable {
 	//@GeneratedValue(strategy = GenerationType.)
 	@Id
 	@Column(name = "DAS", unique = true, nullable = false, length = 15)
-	public String getDAS() {
+	public String getDas() {
 		return das;
 	}
 
-	public void setDAS(String das) {
+	public void setDas(String das) {
 		this.das = das;
 	}
 
 	@Column(name = "NOMBRE", nullable = false, length = 20)
-	public String getNombreUsuario() {
+	public String getNombre() {
 		return nombre;
 	}
 
-	public void setNombreUsuario(String nombre) {
+	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 

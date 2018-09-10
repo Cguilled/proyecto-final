@@ -18,13 +18,13 @@
 		<h:panelGrid id="panel_formuRoles" columns="1"
 			style="margin: 0 auto; text-align: center;">
 			<!-- COMPONENTES DEL FORMULARIO -->
-			<ace:textEntry id="nombre_rol" value="#{roles_bean.nombre_rol}" label="Nombre_Rol"
+			<ace:textEntry id="nombre_rol" value="#{roles_bean.rol.nombre_rol}" label="Nombre_Rol"
 				labelPosition="top" required="true" requiredIndicator="*"
 				validatorMessage="Nombre: tamaño máximo: 100 caracteres. Mínimo: 3.">
 				<f:validateLength minimum="3" maximum="100" />
 			</ace:textEntry>
 
-			<ace:textEntry id="descripcion_rol" value="#{roles_bean.descripcion_rol}"
+			<ace:textEntry id="descripcion_rol" value="#{roles_bean.rol.descripcionRol}"
 				label="Descripción_Rol" labelPosition="top"
 				validatorMessage="Descripción_Roles: tamaño máximo: 20 caracteres. Mínimo: 3.">
 				<f:validateLength minimum="3" maximum="2000" />

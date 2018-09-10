@@ -14,35 +14,41 @@
 
 	<!-- FORMULARIO DE USUARIOS-->
 	<h:form id="formu_usuario">
+	
+	<ace:dialog id="dialogUsuarios" binding="#{dialogUsuarios}"
+			header="Tareas" closable="false" modal="true" draggable="false"
+			showEffect="explode" hideEffect="puff" width="400"
+			visible="#{usuarios_bean.visible}">
+	
 		<!-- CONTENEDOR DE LOS COMPONENTES -->
 		<h:panelGrid id="panel_formuUsuarios" columns="1"
 			style="margin: 0 auto; text-align: center;">
 			<!-- COMPONENTES DEL FORMULARIO -->
-			<ace:textEntry id="username" value="#{usuarios_bean.nombre_usuario}"
+			<ace:textEntry id="username" value="#{usuarios_bean.usuario.das}"
 				label="Usuario" labelPosition="top" required="true"
 				requiredIndicator="*"
 				validatorMessage="Usuario: tamaño máximo: 15 caracteres. Mínimo: 3.">
 				<f:validateLength minimum="3" maximum="15" />
 			</ace:textEntry>
-			<ace:textEntry id="nombre" value="#{usuarios_bean.nombre}"
+			<ace:textEntry id="nombre" value="#{usuarios_bean.usuario.nombre}"
 				label="Nombre" labelPosition="top" required="true"
 				requiredIndicator="*"
 				validatorMessage="Nombre: tamaño máximo: 20 caracteres. Mínimo: 3.">
 				<f:validateLength minimum="3" maximum="20" />
 			</ace:textEntry>
 
-			<ace:textEntry id="apellido" value="#{usuarios_bean.apellido}"
+			<ace:textEntry id="apellido" value="#{usuarios_bean.usuario.apellido}"
 				label="Apellido" labelPosition="top" required="true"
 				requiredIndicator="*"
 				validatorMessage="Apellido: tamaño máximo: 20 caracteres. Mínimo: 3.">
 				<f:validateLength minimum="3" maximum="20" />
 			</ace:textEntry>
-			<ace:textEntry id="estado" value="#{usuarios_bean.estado}"
+			<ace:textEntry id="estado" value="#{usuarios_bean.usuario.estado}"
 				label="Estado" labelPosition="top" required="true"
-				requiredIndicator="*" validatorMessage="Estado: activo/no activo.">
+				requiredIndicator="*" validatorMessage="Estado: activo 1 /no activo 0.">
 			</ace:textEntry>
 
-			<ace:textEntry id="password" value="#{usuarios_bean.password}"
+			<ace:textEntry id="password" value="#{usuarios_bean.usuario.password}"
 				label="Contraseña" labelPosition="top" required="true" secret="true"
 				requiredIndicator="*" indicatorPosition="right"
 				validatorMessage="Contraseña: tamaño máximo: 10 caracteres. Mínimo: 3.">
@@ -63,6 +69,8 @@
 				actionListener="#{usuarios_bean.modificacion_Usuario}" />
 
 		</h:panelGrid>
+		
+		</ace:dialog>
 
 	</h:form>
 

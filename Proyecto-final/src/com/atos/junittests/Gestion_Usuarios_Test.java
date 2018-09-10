@@ -32,10 +32,10 @@ public class Gestion_Usuarios_Test {
 		Usuarios got;
 		
 		gestion.alta_Usuario(defaultUser);
-		got = gestion.consultar_PorDas(defaultUser.getDAS());
+		got = gestion.consultar_PorDas(defaultUser.getDas());
 		gestion.baja_Usuario(got);
 		
-		assertEquals(defaultUser.getDAS(), got.getDAS());
+		assertEquals(defaultUser.getDas(), got.getDas());
 	}
 
 	@Test
@@ -54,10 +54,10 @@ public class Gestion_Usuarios_Test {
 		Usuarios got;
 		
 		gestion.alta_Usuario(newInicial);
-		got = gestion.consultar_PorClaveYDAS(newInicial.getDAS(), newInicial.getPassword());
+		got = gestion.consultar_PorClaveYDAS(newInicial.getDas(), newInicial.getPassword());
 		gestion.baja_Usuario(newInicial);
 		
-		assertEquals(got.getDAS(), newInicial.getDAS());
+		assertEquals(got.getDas(), newInicial.getDas());
 	}
 	
 	@Test
@@ -68,7 +68,7 @@ public class Gestion_Usuarios_Test {
 		
 		gestion.alta_Usuario(defaultUser);
 		gestion.modificacion_Usuario(modifiedUser);
-		result = gestion.consultar_PorDas(defaultUser.getDAS());
+		result = gestion.consultar_PorDas(defaultUser.getDas());
 		gestion.baja_Usuario(defaultUser);
 		
 		assertEquals(result.getPassword(), modifiedUser.getPassword());
