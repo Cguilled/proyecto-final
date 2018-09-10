@@ -95,7 +95,7 @@ public class Tareas implements java.io.Serializable {
 		this.descripcion_Tarea = descripcion_Tarea;
 	}
 	
-	@Column(name = "ESTADO", nullable = false, precision = 1, scale = 0)
+	@Column(name = "ESTADO", nullable = false)
 	public boolean isEstado() {
 		return estado;
 	}

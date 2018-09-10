@@ -52,7 +52,7 @@ public class Login_Bean implements Serializable{
 	public String siguiente_pagina(){
 		System.out.println("Redirigiendo a menuAdmin.xhtml");
 		visible=false;
-		siguiente="/xhtml/Usuarios.xhtml";
+		siguiente="/loginjsp.jsp";
 		return "";
 	}
 
