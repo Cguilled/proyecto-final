@@ -15,9 +15,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-/**
- * Tareas entity. @author MyEclipse Persistence Tools
- */
 @Entity
 @Table(name = "TAREAS")
 public class Tareas implements java.io.Serializable {

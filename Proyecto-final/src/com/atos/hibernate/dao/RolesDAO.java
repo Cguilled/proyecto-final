@@ -78,7 +78,7 @@ public class RolesDAO {
 	}
 	
 	//Recuperar todos los objetos de tipo roles
-	public List findAll() {
+	public List<Roles> findAll() {
 		try {
 			String queryString = "from Roles";
 			Query queryObject = getCurrentSession().createQuery(queryString);

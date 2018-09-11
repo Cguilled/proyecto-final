@@ -1,22 +1,28 @@
 package com.atos.managedbean;
 
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import javax.faces.event.ActionEvent;
+import javax.faces.event.ValueChangeEvent;
 
 import org.springframework.dao.DataAccessException;
 
+import com.atos.hibernate.dao.RolesDAO;
+import com.atos.hibernate.dto.Roles;
 import com.atos.hibernate.dto.Usuarios;
+import com.atos.hibernate.modelo.IGestion_Roles;
 import com.atos.hibernate.modelo.IGestion_Usuarios;
 
 /**
  * 
  * @author Guillermo Cermeño
  *
- * 09 ago. 2018
+ *         09 ago. 2018
  */
 
 @ManagedBean(name = "usuarios_bean")
@@ -30,10 +36,16 @@ public class Usuarios_Bean {
 	private String password;
 	private Usuarios usuario;
 	private boolean visible;
+	private List<Roles> listaRoles;
+	public Integer codigoRol;
+	public Roles rol;
 
 	@ManagedProperty("#{gestionUsuarios}")
 	private IGestion_Usuarios gestionUsuarios;
-	
+
+	@ManagedProperty("#{gestion_roles}")
+	private IGestion_Roles gestionRoles;
+
 	@PostConstruct
 	public void valores_Iniciales() {
 		usuario = new Usuarios();
@@ -44,6 +56,7 @@ public class Usuarios_Bean {
 		inicio = 0;
 		password = "";
 		visible = true;
+		listaRoles = gestionRoles.consultar_Todos();
 	}
 
 	// EVENTOS
@@ -73,6 +86,12 @@ public class Usuarios_Bean {
 		} catch (DataAccessException dae) {
 			dae.printStackTrace();
 		}
+	}
+
+	public void rolChange(ValueChangeEvent event) {
+		codigoRol = (Integer) event.getNewValue();
+		rol.setCodigoRol(codigoRol);
+		gestionRoles.consultar_PorCodigoRol(rol);
 	}
 
 	public Usuarios getUsuario() {
@@ -139,7 +158,28 @@ public class Usuarios_Bean {
 		this.visible = visible;
 	}
 
+	public List<Roles> getListaRoles() {
+		return listaRoles;
+	}
+
+	public void setListaRoles(List<Roles> listaRoles) {
+		this.listaRoles = listaRoles;
+	}
+
+	public Integer getCodigoRol() {
+		return codigoRol;
+	}
+
+	public void setCodigoRol(Integer codigoRol) {
+		this.codigoRol = codigoRol;
+	}
+
+	// ACCESORES PARA SPRING
 	public void setGestionUsuarios(IGestion_Usuarios gestionUsuarios) {
 		this.gestionUsuarios = gestionUsuarios;
+	}
+
+	public void setGestionRoles(IGestion_Roles gestionRoles) {
+		this.gestionRoles = gestionRoles;
 	}
 }

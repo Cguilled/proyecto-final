@@ -14,9 +14,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-/**
- * Roles entity. @author MyEclipse Persistence Tools
- */
 @Entity
 @Table(name = "ROLES")
 public class Roles implements java.io.Serializable {
@@ -24,7 +21,7 @@ public class Roles implements java.io.Serializable {
 	// Fields
 
 	private Integer codigoRol;
-	private String descripcionRol;
+	private String nombreRol;
 	private Set<Tareas> tareases = new HashSet<Tareas>(0);
 	private Set<Usuarios> usuarioses = new HashSet<Usuarios>(0);
 
@@ -40,10 +37,9 @@ public class Roles implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public Roles(Integer codigoRol, String descripcionRol, Set<Tareas> tareases,
-			Set<Usuarios> usuarioses) {
+	public Roles(Integer codigoRol, String nombreRol, Set<Tareas> tareases, Set<Usuarios> usuarioses) {
 		this.codigoRol = codigoRol;
-		this.descripcionRol = descripcionRol;
+		this.nombreRol = nombreRol;
 		this.tareases = tareases;
 		this.usuarioses = usuarioses;
 	}
@@ -60,13 +56,13 @@ public class Roles implements java.io.Serializable {
 		this.codigoRol = codigoRol;
 	}
 
-	@Column(name = "DESCRIPCION_ROL", length = 100)
-	public String getDescripcionRol() {
-		return this.descripcionRol;
+	@Column(name = "NOMBRE_ROL", length = 100)
+	public String getNombreRol() {
+		return nombreRol;
 	}
 
-	public void setDescripcionRol(String descripcionRol) {
-		this.descripcionRol = descripcionRol;
+	public void setNombreRol(String nombreRol) {
+		this.nombreRol = nombreRol;
 	}
 
 	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "roleses")

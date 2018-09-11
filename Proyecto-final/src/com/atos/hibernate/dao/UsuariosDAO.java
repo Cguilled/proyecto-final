@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;
 
 import com.atos.hibernate.dto.Usuarios;
+import com.atos.util.Utilidades;
 
 @Repository("usuarios_dao")
 @Scope("prototype")
@@ -26,6 +27,7 @@ public class UsuariosDAO {
 	public static final String CODIGO_ROL = "codigo_rol";
 
 	private SessionFactory sessionFactory;
+	public Utilidades util;
 	
 	//Spring iniciará el SessionFactory
 	public void setSessionFactory(SessionFactory sessionFactory) {
@@ -39,6 +41,8 @@ public class UsuariosDAO {
 	//Guardar un objeto de tipo Usuarios en la tabla Roles
 	public void save(Usuarios transientInstance) {
 		try {
+			//Le pongo una contraseña por defecto al nuevo usuario
+			transientInstance.setPassword(util.randomPassword());
 			getCurrentSession().save(transientInstance);
 		} catch (RuntimeException re) {
 			throw re;

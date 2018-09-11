@@ -1,5 +1,8 @@
 package com.atos.hibernate.dto;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,9 +14,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-/**
- * Usuarios entity. @author MyEclipse Persistence Tools
- */
 @Entity
 @Table(name = "USUARIOS")
 public class Usuarios implements java.io.Serializable {
@@ -26,6 +26,7 @@ public class Usuarios implements java.io.Serializable {
 	private String estado;
 	private Roles roles;
 	private String inicio;
+	//private Set<Roles> roleses = new HashSet<Roles>(0);
 
 	// Constructors
 

@@ -28,6 +28,7 @@ public class Tareas_Bean {
 	private String descripcion_Tarea;
 	private Integer estado;
 	private boolean visible;
+	private boolean selected = false;
 
 	@ManagedProperty("#{gestion_tareas}")
 	private IGestion_Tareas gestionTareas;
@@ -78,6 +79,21 @@ public class Tareas_Bean {
 		} catch (DataAccessException dae) {
 			dae.printStackTrace();
 		}
+	}
+	
+	public String getCheckBoxValue() {
+        if(selected)
+            return "activa";
+        else
+            return "inactiva";
+    }
+
+	public boolean isSelected() {
+		return selected;
+	}
+
+	public void setSelected(boolean selected) {
+		this.selected = selected;
 	}
 
 	public Tareas getTarea() {

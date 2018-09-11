@@ -24,27 +24,34 @@
 			<h:panelGrid id="panel_formuTareas" columns="1"
 				style="margin: 0 auto; text-align: center;">
 				<!-- COMPONENTES DEL FORMULARIO -->
-				<ace:textEntry id="nombre_tarea" value="#{tareas_bean.tarea.nombre_Tarea}"
-					label="Nombre" labelPosition="top" required="true"
-					requiredIndicator="*"
+				<ace:textEntry id="nombre_tarea"
+					value="#{tareas_bean.tarea.nombre_Tarea}" label="Nombre"
+					labelPosition="top" required="true" requiredIndicator="*"
 					validatorMessage="Nombre: tamaño máximo: 100 caracteres. Mínimo: 3.">
 					<f:validateLength minimum="3" maximum="100" />
 				</ace:textEntry>
 
-				<ace:textEntry id="descripcion_tarea"
+				<!-- <ace:textEntry id="descripcion_tarea"
 					value="#{tareas_bean.tarea.descripcion_Tarea}" label="Descripción"
 					labelPosition="top"
 					validatorMessage="Descripción_Tareas: tamaño máximo: 2000 caracteres.">
 					<f:validateLength maximum="2000" />
-				</ace:textEntry>
-				<ace:textEntry id="estado" value="#{tareas_bean.tarea.nombre_Tarea}"
-					label="Estado" labelPosition="top" required="true"
-					requiredIndicator="*"
-					validatorMessage="Estado: tamaño máximo: 1 carácter.">
-					<!-- MENSAJE EN CASO DE ERROR -->
-					<f:convertNumber type="number" integerOnly="true" />
-					<f:validateLongRange maximum="1" minimum="0" />
-				</ace:textEntry>
+				</ace:textEntry> -->
+
+				<ace:textAreaEntry id="descripcion_tarea"
+					value="#{tareas_bean.tarea.descripcion_Tarea}" label="Descripción"
+					labelPosition="top"
+					validatorMessage="Descripción_Tareas: tamaño máximo: 2000 caracteres.">
+					<f:validateLength maximum="2000"/>
+						<ace:ajax render="@this comment1Output comment1Msg" />
+				</ace:textAreaEntry>
+
+				<ace:checkboxButton id="checkBoxEstado"
+					value="#{tareas_bean.tarea.estado}">
+					<ace:ajax execute="@this" event="activate" render="valueEstado" />
+				</ace:checkboxButton>
+				<h:outputText id="valueEstado" value="#{tareas_bean.checkBoxValue}"
+					style="font-weight: bold;" />
 
 			</h:panelGrid>
 

@@ -25,7 +25,6 @@ import com.atos.hibernate.modelo.IGestion_Tareas;
 public class Roles_Bean {
 	private Roles rol;
 	private String nombre_rol;
-	private String descripcion_rol;
 	
 	@ManagedProperty("#{gestion_roles}")
 	private IGestion_Roles gestionRoles;
@@ -34,7 +33,6 @@ public class Roles_Bean {
 	public void valores_Iniciales() {
 		rol = new Roles();
 		nombre_rol = "";
-		descripcion_rol = "";
 	}
 	
 	// EVENTOS
@@ -88,14 +86,6 @@ public class Roles_Bean {
 	
 	public void setNombre_rol(String nombre_rol) {
 		this.nombre_rol = nombre_rol;
-	}
-
-	public String getDescripcion_rol() {
-		return descripcion_rol;
-	}
-
-	public void setDescripcion_rol(String descripcion_rol) {
-		this.descripcion_rol = descripcion_rol;
 	}
 
 	public void setGestionRoles(IGestion_Roles gestionRoles) {

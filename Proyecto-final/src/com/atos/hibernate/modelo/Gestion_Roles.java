@@ -24,8 +24,7 @@ private RolesDAO roles_dao;
 	@Override
 	@Transactional(readOnly = true)
 	public Roles consultar_PorCodigoRol(Roles rol) {
-		return rol;
-		//return roles_dao.findByCodigoRol(rol.getCodigoRol());
+		return roles_dao.findByCodigoRol(rol.getCodigoRol());
 	}
 
 	@Override
