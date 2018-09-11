@@ -37,14 +37,14 @@
 					validatorMessage="Descripción_Tareas: tamaño máximo: 2000 caracteres.">
 					<f:validateLength maximum="2000" />
 				</ace:textEntry>
-				<ace:textEntry id="estado" value="#{tareas_bean.estado}"
+				<ace:checkboxButton id="estado" value="#{tareas_bean.tarea.estado}"
 					label="Estado" labelPosition="top" required="true"
 					requiredIndicator="*"
 					validatorMessage="Estado: tamaño máximo: 1 carácter.">
 					<!-- MENSAJE EN CASO DE ERROR -->
-					<f:convertNumber type="number" integerOnly="true" />
-					<f:validateLongRange maximum="1" minimum="0" />
-				</ace:textEntry>
+					<!-- <f:convertNumber type="number" integerOnly="true" />
+					<f:validateLongRange maximum="1" minimum="0" />-->
+				</ace:checkboxButton>
 
 			</h:panelGrid>
 

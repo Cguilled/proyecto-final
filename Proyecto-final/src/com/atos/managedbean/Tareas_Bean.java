@@ -24,8 +24,6 @@ import com.atos.hibernate.modelo.IGestion_Usuarios;
 @ViewScoped
 public class Tareas_Bean {
 	private Tareas tarea;
-	private String nombre_tarea;
-	private String descripcion_tareas;
 	private Integer estado;
 	private boolean visible;
 
@@ -46,7 +44,7 @@ public class Tareas_Bean {
 	// EVENTOS
 	public void alta_Tarea(ActionEvent evento) {
 		try {
-			tarea.setEstado(this.estado == 1);
+			//tarea.setEstado(this.estado == 1);
 			gestionTareas.alta_Tarea(tarea);
 			System.out.println("alta correcta");
 		} catch (DataAccessException dae) {
@@ -57,7 +55,7 @@ public class Tareas_Bean {
 	public void baja_Tarea(ActionEvent evento) {
 		try {
 			// NO SE TIENE QUE ELIMINAR LA TAREA SINO CAMBIAR EL CAMPO ESTADO A 0
-			tarea.setEstado(this.estado == 1);
+			//tarea.setEstado(this.estado == 1);
 			gestionTareas.baja_Tarea(tarea);
 			System.out.println("baja correcta");
 		} catch (DataAccessException dae) {
@@ -67,7 +65,7 @@ public class Tareas_Bean {
 
 	public void modificacion_Tarea(ActionEvent evento) {
 		try {
-			tarea.setEstado(this.estado == 1);
+			//tarea.setEstado(this.estado == 1);
 			gestionTareas.modificacion_Tarea(tarea);
 			System.out.println("modificación correcta");
 		} catch (DataAccessException dae) {
@@ -77,7 +75,7 @@ public class Tareas_Bean {
 
 	public void consultar_PorCodigo(ActionEvent evento) {
 		try {
-			tarea.setEstado(this.estado == 1);
+			//tarea.setEstado(this.estado == 1);
 			gestionTareas.consultar_PorCodigoTarea(tarea);
 			System.out.println("consulta correcta");
 		} catch (DataAccessException dae) {
@@ -91,22 +89,6 @@ public class Tareas_Bean {
 
 	public void setTarea(Tareas tarea) {
 		this.tarea = tarea;
-	}
-
-	public String getNombre_tarea() {
-		return nombre_tarea;
-	}
-
-	public void setNombre_tarea(String nombre_tarea) {
-		this.nombre_tarea = nombre_tarea;
-	}
-
-	public String getDescripcion_tareas() {
-		return descripcion_tareas;
-	}
-
-	public void setDescripcion_tareas(String descripcion_tareas) {
-		this.descripcion_tareas = descripcion_tareas;
 	}
 
 	public Integer getEstado() {
