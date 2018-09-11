@@ -24,7 +24,7 @@ public class Roles implements java.io.Serializable {
 	// Fields
 
 	private Integer codigoRol;
-	private String descripcionRol;
+	private String nombre_rol;
 	private Set<Tareas> tareases = new HashSet<Tareas>(0);
 	private Set<Usuarios> usuarioses = new HashSet<Usuarios>(0);
 
@@ -43,7 +43,7 @@ public class Roles implements java.io.Serializable {
 	public Roles(Integer codigoRol, String descripcionRol, Set<Tareas> tareases,
 			Set<Usuarios> usuarioses) {
 		this.codigoRol = codigoRol;
-		this.descripcionRol = descripcionRol;
+		this.nombre_rol = descripcionRol;
 		this.tareases = tareases;
 		this.usuarioses = usuarioses;
 	}
@@ -60,13 +60,13 @@ public class Roles implements java.io.Serializable {
 		this.codigoRol = codigoRol;
 	}
 
-	@Column(name = "DESCRIPCION_ROL", length = 100)
-	public String getDescripcionRol() {
-		return this.descripcionRol;
+	@Column(name = "NOMBRE_ROL", length = 100)
+	public String getNombre_rol() {
+		return nombre_rol;
 	}
 
-	public void setDescripcionRol(String descripcionRol) {
-		this.descripcionRol = descripcionRol;
+	public void setNombre_rol(String nombre_rol) {
+		this.nombre_rol = nombre_rol;
 	}
 
 	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "roleses")

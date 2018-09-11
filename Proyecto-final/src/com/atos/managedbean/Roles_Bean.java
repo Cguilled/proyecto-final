@@ -33,16 +33,14 @@ public class Roles_Bean {
 	@PostConstruct
 	public void valores_Iniciales() {
 		rol = new Roles();
-		nombre_rol = "";
-		descripcion_rol = "";
+		rol.setNombre_rol("");
 	}
 	
 	//FALTAN LOS METODOS DE LA FACHADA, SIN ELLOS AQUÍ NO SE HACE NADA...
 	// EVENTOS
 		public void alta_Rol(ActionEvent evento) {
 			try {
-				//gestionRoles.alta_Rol(rol);
-				System.out.println("alta correcta");
+				gestionRoles.alta_Rol(rol);
 			} catch (DataAccessException dae) {
 				dae.printStackTrace();
 			}

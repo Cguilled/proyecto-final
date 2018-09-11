@@ -35,7 +35,7 @@ public class Gestion_Roles_Test {
 	@Test
 	public void testGeneral_Rol() {
 		Roles modified = test;
-		modified.setDescripcionRol("Esto es una descripcion #1");
+		modified.setNombre_rol("Esto es una descripcion #1");
 		Roles result;
 		
 		gestion.alta_Rol(test);
@@ -43,7 +43,7 @@ public class Gestion_Roles_Test {
 		result = gestion.consultar_PorCodigoRol(modified);
 		gestion.baja_Rol(modified);
 		
-		assertEquals(result.getDescripcionRol(), modified.getDescripcionRol());
+		assertEquals(result.getNombre_rol(), modified.getNombre_rol());
 	}
 
 }

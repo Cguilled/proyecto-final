@@ -17,7 +17,7 @@ import com.atos.hibernate.dto.Roles;
 public class RolesDAO {
 	// modificar esto en cuanto tengamos acceso a las variables
 	public static final String CODIGO_ROL = "codigo_rol";
-	public static final String DESCRIPCION_ROL = "descripcion";
+	public static final String NOMBRE_ROL = "nombre_rol";
 
 	private SessionFactory sessionFactory;
 	
@@ -74,7 +74,7 @@ public class RolesDAO {
 	
 	//Recuperar objetos de tipo roles a partir de una descripcion
 	public List<Roles> findByDescripcion(Object nombre) {
-		return findByProperty(DESCRIPCION_ROL, nombre);
+		return findByProperty(NOMBRE_ROL, nombre);
 	}
 	
 	//Recuperar todos los objetos de tipo roles
