@@ -16,7 +16,7 @@
 	<h:form id="formu_tareas">
 
 		<ace:dialog id="dialogTareas" binding="#{dialogTareas}"
-			header="Tareas" closable="false" modal="true" draggable="false"
+			header="Tareas" closable="false" modal="false" draggable="false"
 			showEffect="explode" hideEffect="puff" width="400"
 			visible="#{tareas_bean.visible}">
 
@@ -37,7 +37,7 @@
 					validatorMessage="Descripción_Tareas: tamaño máximo: 2000 caracteres.">
 					<f:validateLength maximum="2000" />
 				</ace:textEntry>
-				<ace:checkboxButton id="estado" value="#{tareas_bean.tarea.estado}"
+				<ace:checkboxButton id="estado_tarea" value="#{tareas_bean.tarea.estado}"
 					label="Estado" labelPosition="top" required="true"
 					requiredIndicator="*"
 					validatorMessage="Estado: tamaño máximo: 1 carácter.">
@@ -50,13 +50,13 @@
 
 			<h:panelGrid id="panel_formuBotonesTareas" columns="3"
 				style="margin: 0 auto; text-align: center;">
-				<h:commandButton id="botonAlta" value="Alta"
+				<h:commandButton id="botonAltaTareas" value="Alta"
 					actionListener="#{tareas_bean.alta_Tarea}" />
 
-				<h:commandButton id="botonBaja" value="Baja"
+				<h:commandButton id="botonBajaTareas" value="Baja"
 					actionListener="#{tareas_bean.baja_Tarea}" />
 
-				<h:commandButton id="botonModificar" value="Modificación"
+				<h:commandButton id="botonModificarTareas" value="Modificación"
 					actionListener="#{tareas_bean.modificacion_Tarea}" />
 
 			</h:panelGrid>

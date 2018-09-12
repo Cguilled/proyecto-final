@@ -19,22 +19,165 @@
 			
 			<ace:menuBar id="menuBar" autoSubmenuDisplay="true">
 				<ace:menuItem id="itemUsuarios" value="Usuarios"
-					url="/xhtml/Usuarios.xhtml" action="/xhtml/Usuarios.xhtml" />
+					 actionListener="#{menubar_bean.usuariosInterface}" />
 
 				<ace:menuItem id="itemTareas" value="Tareas"
-					url="/xhtml/Tareas.xhtml" action="/xhtml/Tareas.xhtml" />
+					 actionListener="#{menubar_bean.tareasInterface}" />
 
-				<ace:menuItem id="itemRoles" value="Roles" url="/xhtml/Roles.xhtml"
-					action="/xhtml/Roles.xhtml" />
+				<ace:menuItem id="itemRoles" value="Roles"
+					 actionListener="#{menubar_bean.rolesInterface}" />
 
 				<ace:menuItem id="itemConsultar" value="Consultar"
-					url="http://www.icefaces.org" action="http://www.icefaces.org" />
+					 action="http://www.icefaces.org" />
 
 				<ace:menuItem id="itemFinSesion" value="Finalizar sesión"
-					url="/xhtml/login.xhtml" action="/xhtml/login.xhtml" />
+					 action="/xhtml/login.xhtml" />
 			</ace:menuBar>
 
 		</h:panelGrid>
+		
 	</h:form>
+	
+	
+		<h:form>
+		
+			<ace:dialog id="dialogRoles" binding="#{dialogRoles}"
+				header="Roles" closable="false" modal="false" draggable="false"
+				showEffect="explode" hideEffect="puff" width="400"
+				visible="#{menubar_bean.visible_roles}">
+				
+				<h:panelGrid id="panel_formuRoles" columns="1"
+					style="margin: 0 auto; text-align: center;">
+					<!-- COMPONENTES DEL FORMULARIO -->
+					<ace:textEntry id="nombre_rol" value="#{roles_bean.rol.nombre_rol}" label="Nombre_Rol"
+						labelPosition="top" required="true" requiredIndicator="*"
+						validatorMessage="Nombre: tamaño máximo: 100 caracteres. Mínimo: 3.">
+						<f:validateLength minimum="3" maximum="100" />
+					</ace:textEntry>
+				</h:panelGrid>
+		
+				<h:panelGrid id="panel_formuBotonesRoles" columns="3"
+					style="margin: 0 auto; text-align: center;">
+					<h:commandButton id="botonAltaRoles" value="Alta" actionListener="#{roles_bean.alta_Rol}" />
+		
+					<h:commandButton id="botonBajaRoles" value="Baja" actionListener="#{roles_bean.baja_Rol}" />
+		
+					<h:commandButton id="botonModificarRoles" value="Modificación" actionListener="#{roles_bean.modificacion_Rol}" />
+		
+				</h:panelGrid>
+	
+			</ace:dialog>
+	
+		</h:form>
+	
+		<h:form>
+	
+			<ace:dialog id="dialogTareas" binding="#{dialogTareas}"
+				header="Tareas" closable="false" modal="false" draggable="false"
+				showEffect="explode" hideEffect="puff" width="400"
+				visible="#{menubar_bean.visible_tareas}">
+	
+				<h:panelGrid id="panel_formuTareas" columns="1"
+					style="margin: 0 auto; text-align: center;">
+					<!-- COMPONENTES DEL FORMULARIO -->
+					<ace:textEntry id="nombre_tarea" value="#{tareas_bean.tarea.nombre_Tarea}"
+						label="Nombre" labelPosition="top" required="true"
+						requiredIndicator="*"
+						validatorMessage="Nombre: tamaño máximo: 100 caracteres. Mínimo: 3.">
+						<f:validateLength minimum="3" maximum="100" />
+					</ace:textEntry>
+	
+					<ace:textEntry id="descripcion_tarea"
+						value="#{tareas_bean.tarea.descripcion_Tarea}" label="Descripción"
+						labelPosition="top"
+						validatorMessage="Descripción_Tareas: tamaño máximo: 2000 caracteres.">
+						<f:validateLength maximum="2000" />
+					</ace:textEntry>
+					<ace:checkboxButton id="estado_tarea" value="#{tareas_bean.tarea.estado}"
+						label="Estado" labelPosition="top" required="true"
+						requiredIndicator="*"
+						validatorMessage="Estado: tamaño máximo: 1 carácter.">
+						<!-- MENSAJE EN CASO DE ERROR -->
+						<!-- <f:convertNumber type="number" integerOnly="true" />
+						<f:validateLongRange maximum="1" minimum="0" />-->
+					</ace:checkboxButton>
+	
+				</h:panelGrid>
+	
+				<h:panelGrid id="panel_formuBotonesTareas" columns="3"
+					style="margin: 0 auto; text-align: center;">
+					<h:commandButton id="botonAltaTareas" value="Alta"
+						actionListener="#{tareas_bean.alta_Tarea}" />
+	
+					<h:commandButton id="botonBajaTareas" value="Baja"
+						actionListener="#{tareas_bean.baja_Tarea}" />
+	
+					<h:commandButton id="botonModificarTareas" value="Modificación"
+						actionListener="#{tareas_bean.modificacion_Tarea}" />
+	
+				</h:panelGrid>
+	
+			</ace:dialog>
+	
+	</h:form>
+	
+	<h:form>
+	
+		<ace:dialog id="dialogUsuarios" binding="#{dialogUsuarios}"
+				header="Usuarios" closable="false" modal="false" draggable="false"
+				showEffect="explode" hideEffect="puff" width="400"
+				visible="#{menubar_bean.visible_usuarios}">
+		
+			<h:panelGrid id="panel_formuUsuarios" columns="1"
+				style="margin: 0 auto; text-align: center;">
+				<!-- COMPONENTES DEL FORMULARIO -->
+				<ace:textEntry id="username_usuario" value="#{usuarios_bean.usuario.das}"
+					label="Usuario" labelPosition="top" required="true"
+					requiredIndicator="*"
+					validatorMessage="Usuario: tamaño máximo: 15 caracteres. Mínimo: 3.">
+					<f:validateLength minimum="3" maximum="15" />
+				</ace:textEntry>
+				<ace:textEntry id="nombre_usuario" value="#{usuarios_bean.usuario.nombre}"
+					label="Nombre" labelPosition="top" required="true"
+					requiredIndicator="*"
+					validatorMessage="Nombre: tamaño máximo: 20 caracteres. Mínimo: 3.">
+					<f:validateLength minimum="3" maximum="20" />
+				</ace:textEntry>
+	
+				<ace:textEntry id="apellido" value="#{usuarios_bean.usuario.apellido}"
+					label="Apellido" labelPosition="top" required="true"
+					requiredIndicator="*"
+					validatorMessage="Apellido: tamaño máximo: 20 caracteres. Mínimo: 3.">
+					<f:validateLength minimum="3" maximum="20" />
+				</ace:textEntry>
+				<ace:textEntry id="estado_usuario" value="#{usuarios_bean.usuario.estado}"
+					label="Estado" labelPosition="top" required="true"
+					requiredIndicator="*" validatorMessage="Estado: activo 1 /no activo 0.">
+				</ace:textEntry>
+	
+				<ace:textEntry id="password" value="#{usuarios_bean.usuario.password}"
+					label="Contraseña" labelPosition="top" required="true" secret="true"
+					requiredIndicator="*" indicatorPosition="right"
+					validatorMessage="Contraseña: tamaño máximo: 10 caracteres. Mínimo: 3.">
+					<f:validateLength minimum="3" maximum="10" />
+				</ace:textEntry>
+	
+			</h:panelGrid>
+	
+			<h:panelGrid id="panel_formuBotonesUsuarios" columns="3"
+				style="margin: 0 auto; text-align: center;">
+				<h:commandButton id="botonAltaUsuarios" value="Alta"
+					actionListener="#{usuarios_bean.alta_Usuario}" />
+	
+				<h:commandButton id="botonBajaUsuarios" value="Baja"
+					actionListener="#{usuarios_bean.baja_Usuario}" />
+	
+				<h:commandButton id="botonModificarUsuarios" value="Modificación"
+					actionListener="#{usuarios_bean.modificacion_Usuario}" />
+	
+			</h:panelGrid>
+			
+			</ace:dialog>
+		</h:form>
 
 </ui:composition>

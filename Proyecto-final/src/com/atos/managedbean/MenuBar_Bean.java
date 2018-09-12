@@ -2,6 +2,7 @@ package com.atos.managedbean;
 
 import java.io.Serializable;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.event.AbortProcessingException;
 import javax.faces.event.ActionEvent;
@@ -13,46 +14,46 @@ import org.springframework.web.context.annotation.SessionScope;
 
 @ManagedBean(name = "menubar_bean")
 @SessionScope
-public class MenuBar_Bean implements Serializable, ActionListener{
-	public DefaultMenuModel modelo;
-	MenuItem usuarios;
-	MenuItem tareas;
-	MenuItem roles;
-	MenuItem consultar;
-	MenuItem finSesion;
+public class MenuBar_Bean implements Serializable{
+	boolean visible_roles = false;
+	boolean visible_usuarios = false;
+	boolean visible_tareas = false;
 	
-	public void buildMenuModel() {
-	  	modelo = new DefaultMenuModel();
-	  	usuarios = new MenuItem();
-	  	tareas = new MenuItem();
-	  	roles = new MenuItem();
-	  	consultar = new MenuItem();
-	  	finSesion = new MenuItem();
-	  	
-	  	usuarios.setId("itemUsuarios");
-	  	usuarios.setValue("Usuarios");
-	  	usuarios.addActionListener(this);
-	  	
-	  	tareas.setId("itemTareas");
-	  	tareas.setValue("Tareas");
-	  	tareas.addActionListener(this);
-	  	
-	  	roles.setId("itemRoles");
-	  	roles.setValue("Roles");
-	  	roles.addActionListener(this);
-	  	
-	  	consultar.setId("itemConsultar");
-	  	consultar.setValue("Consultar");
-	  	consultar.addActionListener(this);
-	  	
-	  	finSesion.setId("itemFinSesion");
-	  	finSesion.setValue("FinSesion");
-	  	finSesion.addActionListener(this);
+	@PostConstruct
+	public void valores_Iniciales() {
+		System.out.println("Pasando por post construct, roles = " + visible_roles + ", usuarios = " + visible_usuarios + ", tareas = " + visible_tareas);
 	}
 
-	@Override
-	public void processAction(ActionEvent arg0) throws AbortProcessingException {
-		// TODO Auto-generated method stub
-		
+	public void usuariosInterface(ActionEvent evento) {
+		System.out.println("usuariosInterface");
+		visible_usuarios = true;
+		visible_tareas = false;
+		visible_roles = false;
+	}
+	
+	public void rolesInterface(ActionEvent evento) {
+		System.out.println("rolesInterface");
+		visible_usuarios = false;
+		visible_tareas = false;
+		visible_roles = true;	
+	}
+	
+	public void tareasInterface(ActionEvent evento) {
+		System.out.println("tareasInterface");
+		visible_usuarios = false;
+		visible_tareas = true;
+		visible_roles = false;
+	}
+	
+	public boolean isVisible_roles() {
+		return visible_roles;
+	}
+
+	public boolean isVisible_usuarios() {
+		return visible_usuarios;
+	}
+
+	public boolean isVisible_tareas() {
+		return visible_tareas;
 	}
 }

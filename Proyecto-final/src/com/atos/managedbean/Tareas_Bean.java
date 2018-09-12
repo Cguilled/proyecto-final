@@ -1,5 +1,7 @@
 package com.atos.managedbean;
 
+import java.io.Serializable;
+
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -22,9 +24,8 @@ import com.atos.hibernate.modelo.IGestion_Usuarios;
 
 @ManagedBean(name = "tareas_bean")
 @ViewScoped
-public class Tareas_Bean {
+public class Tareas_Bean implements Serializable{
 	private Tareas tarea;
-	private Integer estado;
 	private boolean visible;
 
 	@ManagedProperty("#{gestion_tareas}")
@@ -35,9 +36,14 @@ public class Tareas_Bean {
 		tarea = new Tareas();
 		tarea.setNombre_Tarea("");
 		tarea.setDescripcion_Tarea("");
-		estado = 1;
 		tarea.setEstado(true);
 		visible=true;
+	}
+	
+	private void reset_valores() {
+		tarea.setNombre_Tarea("");
+		tarea.setDescripcion_Tarea("");
+		tarea.setEstado(true);
 	}
 
 	//FALTAN LOS METODOS DE LA FACHADA, SIN ELLOS AQUÍ NO SE HACE NADA...
@@ -47,6 +53,7 @@ public class Tareas_Bean {
 			//tarea.setEstado(this.estado == 1);
 			gestionTareas.alta_Tarea(tarea);
 			System.out.println("alta correcta");
+			reset_valores();
 		} catch (DataAccessException dae) {
 			dae.printStackTrace();
 		}
@@ -58,6 +65,7 @@ public class Tareas_Bean {
 			//tarea.setEstado(this.estado == 1);
 			gestionTareas.baja_Tarea(tarea);
 			System.out.println("baja correcta");
+			reset_valores();
 		} catch (DataAccessException dae) {
 			dae.printStackTrace();
 		}
@@ -68,6 +76,7 @@ public class Tareas_Bean {
 			//tarea.setEstado(this.estado == 1);
 			gestionTareas.modificacion_Tarea(tarea);
 			System.out.println("modificación correcta");
+			reset_valores();
 		} catch (DataAccessException dae) {
 			dae.printStackTrace();
 		}
@@ -89,14 +98,6 @@ public class Tareas_Bean {
 
 	public void setTarea(Tareas tarea) {
 		this.tarea = tarea;
-	}
-
-	public Integer getEstado() {
-		return estado;
-	}
-
-	public void setEstado(Integer estado) {
-		this.estado = estado;
 	}
 
 	public boolean isVisible() {

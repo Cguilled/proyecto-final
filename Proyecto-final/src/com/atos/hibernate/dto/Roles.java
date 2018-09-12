@@ -60,7 +60,7 @@ public class Roles implements java.io.Serializable {
 		this.codigoRol = codigoRol;
 	}
 
-	@Column(name = "NOMBRE_ROL", length = 100)
+	@Column(name = "NOMBRE_ROL", nullable = false, length = 100)
 	public String getNombre_rol() {
 		return nombre_rol;
 	}

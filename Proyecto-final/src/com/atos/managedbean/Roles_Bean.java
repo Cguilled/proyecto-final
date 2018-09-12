@@ -1,5 +1,7 @@
 package com.atos.managedbean;
 
+import java.io.Serializable;
+
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -22,17 +24,20 @@ import com.atos.hibernate.modelo.IGestion_Tareas;
 
 @ManagedBean(name = "roles_bean")
 @ViewScoped
-public class Roles_Bean {
+public class Roles_Bean implements Serializable{
 	private Roles rol;
-	private String nombre_rol;
-	private String descripcion_rol;
 	
 	@ManagedProperty("#{gestion_roles}")
 	private IGestion_Roles gestionRoles;
 
 	@PostConstruct
 	public void valores_Iniciales() {
+		System.out.println("cargando...");
 		rol = new Roles();
+		rol.setNombre_rol("");
+	}
+	
+	private void reset_valores() {
 		rol.setNombre_rol("");
 	}
 	
@@ -40,7 +45,9 @@ public class Roles_Bean {
 	// EVENTOS
 		public void alta_Rol(ActionEvent evento) {
 			try {
+				System.out.println("Haciendo alta");
 				gestionRoles.alta_Rol(rol);
+				reset_valores();
 			} catch (DataAccessException dae) {
 				dae.printStackTrace();
 			}
@@ -50,6 +57,7 @@ public class Roles_Bean {
 			try {
 				gestionRoles.baja_Rol(rol);
 				System.out.println("baja correcta");
+				reset_valores();
 			} catch (DataAccessException dae) {
 				dae.printStackTrace();
 			}
@@ -59,6 +67,7 @@ public class Roles_Bean {
 			try {
 				gestionRoles.modificacion_Rol(rol);
 				System.out.println("modificación correcta");
+				reset_valores();
 			} catch (DataAccessException dae) {
 				dae.printStackTrace();
 			}
@@ -79,22 +88,6 @@ public class Roles_Bean {
 
 	public void setRol(Roles rol) {
 		this.rol = rol;
-	}
-
-	public String getNombre_rol() {
-		return nombre_rol;
-	}
-	
-	public void setNombre_rol(String nombre_rol) {
-		this.nombre_rol = nombre_rol;
-	}
-
-	public String getDescripcion_rol() {
-		return descripcion_rol;
-	}
-
-	public void setDescripcion_rol(String descripcion_rol) {
-		this.descripcion_rol = descripcion_rol;
 	}
 
 	public void setGestionRoles(IGestion_Roles gestionRoles) {

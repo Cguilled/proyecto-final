@@ -42,7 +42,16 @@ public class Usuarios_Bean implements Serializable{
 		usuario.setInicio("true");
 		usuario.setRoles(new Roles(0));
 		visible = true;
-		
+	}
+	
+	private void reset_valores() {
+		usuario.setDas("");
+		usuario.setNombre("");
+		usuario.setApellido("");
+		usuario.setEstado("");
+		usuario.setPassword("");
+		usuario.setInicio("true");
+		usuario.setRoles(new Roles(0));
 	}
 
 	public boolean isVisible() {
@@ -58,6 +67,7 @@ public class Usuarios_Bean implements Serializable{
 		try {
 			gestionUsuarios.alta_Usuario(usuario);
 			System.out.println("alta correcta");
+			reset_valores();
 		} catch (DataAccessException dae) {
 			dae.printStackTrace();
 		}
@@ -69,6 +79,7 @@ public class Usuarios_Bean implements Serializable{
 			usuario.setEstado("inactivo");
 			gestionUsuarios.modificacion_Usuario(usuario);
 			System.out.println("baja correcta");
+			reset_valores();
 		} catch (DataAccessException dae) {
 			dae.printStackTrace();
 		}
@@ -86,6 +97,7 @@ public class Usuarios_Bean implements Serializable{
 		try {
 			gestionUsuarios.modificacion_Usuario(usuario);
 			System.out.println("modificación correcta");
+			reset_valores();
 		} catch (DataAccessException dae) {
 			dae.printStackTrace();
 		}
