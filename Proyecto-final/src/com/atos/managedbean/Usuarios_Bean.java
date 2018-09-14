@@ -39,7 +39,7 @@ public class Usuarios_Bean implements Serializable{
 		usuario.setApellido("");
 		usuario.setEstado("");
 		usuario.setPassword("");
-		usuario.setInicio("true");
+		usuario.setInicio(true);
 		usuario.setRoles(new Roles(0));
 		visible = true;
 	}
@@ -50,7 +50,7 @@ public class Usuarios_Bean implements Serializable{
 		usuario.setApellido("");
 		usuario.setEstado("");
 		usuario.setPassword("");
-		usuario.setInicio("true");
+		usuario.setInicio(true);
 		usuario.setRoles(new Roles(0));
 	}
 

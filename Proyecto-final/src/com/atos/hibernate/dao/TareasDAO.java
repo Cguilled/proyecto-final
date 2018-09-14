@@ -49,12 +49,12 @@ public class TareasDAO {
 
 	// Eliminar un objeto tarias
 	public void delete(Tareas persistentInstance) {
-		Integer codigoTarea = null;
+		//Integer codigoTarea = null;
 		try {
 			if (util.consultarCodigoTarea(persistentInstance) != null) {
 				Query q = getCurrentSession().createQuery("DELETE FROM ROLES_TAREAS WHERE CODIGO_TAREAS = ?");
 				q.setInteger(0, persistentInstance.getId_Tarea());
-				codigoTarea = (Integer) q.uniqueResult();
+				//codigoTarea = (Integer) q.uniqueResult();
 				getCurrentSession().delete(persistentInstance);
 			}else
 				getCurrentSession().delete(persistentInstance);

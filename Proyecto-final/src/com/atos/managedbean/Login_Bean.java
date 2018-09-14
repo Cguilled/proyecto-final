@@ -9,17 +9,19 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.event.ActionEvent;
 
 import org.springframework.dao.DataAccessException;
+import org.springframework.web.context.annotation.SessionScope;
 
 import com.atos.hibernate.dto.Usuarios;
 import com.atos.hibernate.modelo.IGestion_Usuarios;
 
 @ManagedBean(name="login_bean")
-@ViewScoped
+@SessionScope
 public class Login_Bean implements Serializable{
 	private String das;
 	private String password;
 	private boolean visible;
 	private String siguiente;
+	private Usuarios recuperado;
 	
 	@ManagedProperty("#{gestionUsuarios}")
 	private IGestion_Usuarios gestionUsuarios;
@@ -34,8 +36,9 @@ public class Login_Bean implements Serializable{
 	public void login_check(ActionEvent evento){
 		System.out.println("Realizando login...");
 		try {
+			recuperado = gestionUsuarios.consultar_PorClaveYDAS(das, password);
 			//comprueba si existe el usuario con la clave
-			if (gestionUsuarios.consultar_PorClaveYDAS(das, password)!=null) {
+			if (recuperado!=null) {
 				//ir a la siguiente pantalla
 				siguiente_pagina();
 			}
@@ -50,9 +53,16 @@ public class Login_Bean implements Serializable{
 	}
 	
 	public String siguiente_pagina(){
-		System.out.println("Redirigiendo a menuAdmin.xhtml");
-		visible=false;
-		siguiente="/xhtml/menuAdmin.xhtml";
+		visible = false;
+		if(recuperado.isInicio()) {
+			System.out.println("Redirigiendo a menuAdmin.xhtml");
+			siguiente="/xhtml/menuAdmin.xhtml";
+		}
+		
+		else {
+			System.out.println("Redirigiendo a cambio de clave");
+			siguiente="/xhtml/set_clave.xhtml";	
+		}
 		return "";
 	}
 
@@ -91,4 +101,14 @@ public class Login_Bean implements Serializable{
 	public void setSiguiente(String siguiente_pagina) {
 		this.siguiente = siguiente_pagina;
 	}
+	
+	public Usuarios getRecuperado() {
+		return recuperado;
+	}
+
+	public void setRecuperado(Usuarios recuperado) {
+		this.recuperado = recuperado;
+	}
+
+	
 }

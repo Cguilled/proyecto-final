@@ -13,7 +13,7 @@
 
 	<!-- FORMULARIO DE LA VISTA -->
 	<h:form id="formu_login">
-		<ace:dialog id="dialogLogin" binding="#{dialog}" header="Iniciar sesión"
+		<ace:dialog id="dialogLogin" binding="#{dialogLogin}" header="Iniciar sesión"
 			closable="false" modal="true" draggable="false" showEffect="explode"
 			hideEffect="puff" width="400" visible="#{login_bean.visible}">
 
@@ -35,7 +35,7 @@
 					<f:validateLength minimum="3" maximum="10" />
 				</ace:textEntry>
 				
-				<h:commandButton id="botonComprobar" value="Iniciar sesión"
+				<h:commandButton id="botonLogin" value="Iniciar sesión"
 					actionListener="#{login_bean.login_check}"/>
 					<!-- action="#{login_bean.siguiente_pagina}" -->
 				

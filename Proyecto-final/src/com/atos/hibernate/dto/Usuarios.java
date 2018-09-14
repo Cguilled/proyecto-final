@@ -25,7 +25,7 @@ public class Usuarios implements java.io.Serializable {
 	private String password;
 	private String estado;
 	private Roles roles;
-	private String inicio;
+	private boolean inicio;
 
 	// Constructors
 
@@ -40,7 +40,7 @@ public class Usuarios implements java.io.Serializable {
 
 	/** full constructor */
 	public Usuarios(String nombreUsuario, String das, String apellido, String password,
-			String estado, Roles roles, String inicio) {
+			String estado, Roles roles, boolean inicio) {
 		this.das = das;
 		this.nombre = nombreUsuario;
 		this.apellido = apellido;
@@ -98,12 +98,12 @@ public class Usuarios implements java.io.Serializable {
 		this.estado = estado;
 	}
 
-	@Column(name = "INICIO", nullable = false, length = 10)
-	public String getInicio() {
+	@Column(name = "INICIO", nullable = false, precision = 1, scale = 0)
+	public boolean isInicio() {
 		return inicio;
 	}
 
-	public void setInicio(String inicio) {
+	public void setInicio(boolean inicio) {
 		this.inicio = inicio;
 	}
 
