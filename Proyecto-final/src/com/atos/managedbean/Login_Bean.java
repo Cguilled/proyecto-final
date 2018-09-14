@@ -38,9 +38,7 @@ public class Login_Bean implements Serializable{
 			if (gestionUsuarios.consultar_PorClaveYDAS(das, password)!=null) {
 				//ir a la siguiente pantalla
 				siguiente_pagina();
-			}
-			
-			else {
+			}else {
 				//escribir mensaje de fallo
 				System.out.println("Fallo al realizar el login");
 			}
@@ -52,7 +50,7 @@ public class Login_Bean implements Serializable{
 	public String siguiente_pagina(){
 		System.out.println("Redirigiendo a menuAdmin.xhtml");
 		visible=false;
-		siguiente="/xhtml/Usuarios.xhtml";
+		siguiente="/xhtml/menuAdmin.xhtml";
 		return "";
 	}
 

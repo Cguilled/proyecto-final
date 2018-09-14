@@ -1,17 +1,11 @@
 package com.atos.hibernate.dto;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -25,8 +19,7 @@ public class Usuarios implements java.io.Serializable {
 	private String password;
 	private String estado;
 	private Roles roles;
-	private String inicio;
-	//private Set<Roles> roleses = new HashSet<Roles>(0);
+	private Boolean inicio;
 
 	// Constructors
 
@@ -41,7 +34,7 @@ public class Usuarios implements java.io.Serializable {
 
 	/** full constructor */
 	public Usuarios(String das, String nombre, String apellido,
-			String estado, String inicio, Roles roles,  String password) {
+			String password, String estado, Roles roles, Boolean inicio) {
 		this.das = das;
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -100,12 +93,12 @@ public class Usuarios implements java.io.Serializable {
 		this.estado = estado;
 	}
 
-	@Column(name = "INICIO", nullable = false, length = 10)
-	public String getInicio() {
+	@Column(name = "INICIO", nullable = false)
+	public Boolean getInicio() {
 		return inicio;
 	}
 
-	public void setInicio(String inicio) {
+	public void setInicio(Boolean inicio) {
 		this.inicio = inicio;
 	}
 

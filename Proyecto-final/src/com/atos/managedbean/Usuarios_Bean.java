@@ -14,9 +14,12 @@ import org.springframework.dao.DataAccessException;
 
 import com.atos.hibernate.dao.RolesDAO;
 import com.atos.hibernate.dto.Roles;
+import com.atos.hibernate.dto.Tareas;
 import com.atos.hibernate.dto.Usuarios;
 import com.atos.hibernate.modelo.IGestion_Roles;
 import com.atos.hibernate.modelo.IGestion_Usuarios;
+import com.atos.util.IUtilidades;
+import com.atos.util.Utilidades;
 
 /**
  * 
@@ -45,10 +48,14 @@ public class Usuarios_Bean {
 
 	@ManagedProperty("#{gestion_roles}")
 	private IGestion_Roles gestionRoles;
+	
+	@ManagedProperty("#{utilidades}")
+	private Utilidades util;
 
 	@PostConstruct
 	public void valores_Iniciales() {
 		usuario = new Usuarios();
+		rol = new Roles();
 		das = "";
 		nombre = "";
 		apellido = "";
@@ -57,11 +64,15 @@ public class Usuarios_Bean {
 		password = "";
 		visible = true;
 		listaRoles = gestionRoles.consultar_Todos();
+		util = new Utilidades();
 	}
 
 	// EVENTOS
 	public void alta_Usuario(ActionEvent evento) {
 		try {
+			usuario.setRoles(rol);
+			//Le pongo una contraseña por defecto al nuevo usuario
+			usuario.setPassword(util.randomPassword());
 			gestionUsuarios.alta_Usuario(usuario);
 			System.out.println("alta correcta");
 		} catch (DataAccessException dae) {
@@ -91,7 +102,7 @@ public class Usuarios_Bean {
 	public void rolChange(ValueChangeEvent event) {
 		codigoRol = (Integer) event.getNewValue();
 		rol.setCodigoRol(codigoRol);
-		gestionRoles.consultar_PorCodigoRol(rol);
+		rol = gestionRoles.consultar_PorCodigoRol(rol);
 	}
 
 	public Usuarios getUsuario() {
@@ -181,5 +192,9 @@ public class Usuarios_Bean {
 
 	public void setGestionRoles(IGestion_Roles gestionRoles) {
 		this.gestionRoles = gestionRoles;
+	}
+
+	public void setUtil(Utilidades util) {
+		this.util = util;
 	}
 }

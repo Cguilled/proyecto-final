@@ -42,8 +42,6 @@ public class Tareas_Bean {
 		visible=true;
 	}
 
-	//FALTAN LOS METODOS DE LA FACHADA, SIN ELLOS AQUÍ NO SE HACE NADA...
-	// EVENTOS
 	public void alta_Tarea(ActionEvent evento) {
 		try {
 			gestionTareas.alta_Tarea(tarea);

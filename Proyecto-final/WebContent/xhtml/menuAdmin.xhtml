@@ -16,16 +16,18 @@
 		<!-- CONTENEDOR DE LOS COMPONENTES -->
 		<h:panelGrid id="panel_formuAdmin" columns="1"
 			style="margin: 0 auto; text-align: center;">
-			
+
 			<ace:menuBar id="menuBar" autoSubmenuDisplay="true">
 				<ace:menuItem id="itemUsuarios" value="Usuarios"
-					url="/xhtml/Usuarios.xhtml" action="/xhtml/Usuarios.xhtml" />
+					actionListener="#{menubar_bean.fragmentUsuarios}" />
 
 				<ace:menuItem id="itemTareas" value="Tareas"
-					url="/xhtml/Tareas.xhtml" action="/xhtml/Tareas.xhtml" />
+					url="/xhtml/Tareas.xhtml" action="/xhtml/Tareas.xhtml"
+					actionListener="#{menubar_bean.fragmentTareas}" />
 
 				<ace:menuItem id="itemRoles" value="Roles" url="/xhtml/Roles.xhtml"
-					action="/xhtml/Roles.xhtml" />
+					action="/xhtml/Roles.xhtml"
+					actionListener="#{menubar_bean.fragmentRoles}" />
 
 				<ace:menuItem id="itemConsultar" value="Consultar"
 					url="http://www.icefaces.org" action="http://www.icefaces.org" />
@@ -36,5 +38,5 @@
 
 		</h:panelGrid>
 	</h:form>
-
+	<ui:include src="#{menubar_bean.siguiente}" />
 </ui:composition>

@@ -36,6 +36,12 @@ public class Roles implements java.io.Serializable {
 		this.codigoRol = codigoRol;
 	}
 
+	public Roles(Integer codigoRol, String nombreRol) {
+		super();
+		this.codigoRol = codigoRol;
+		this.nombreRol = nombreRol;
+	}
+
 	/** full constructor */
 	public Roles(Integer codigoRol, String nombreRol, Set<Tareas> tareases, Set<Usuarios> usuarioses) {
 		this.codigoRol = codigoRol;
@@ -56,7 +62,7 @@ public class Roles implements java.io.Serializable {
 		this.codigoRol = codigoRol;
 	}
 
-	@Column(name = "NOMBRE_ROL", length = 100)
+	@Column(name = "NOMBRE_ROL", nullable = false, length = 100)
 	public String getNombreRol() {
 		return nombreRol;
 	}

@@ -16,9 +16,9 @@
 	<h:form id="formu_usuario">
 
 		<ace:dialog id="dialogUsuarios" binding="#{dialogUsuarios}"
-			header="Usuarios" closable="false" modal="true" draggable="false"
+			header="Usuarios" closable="true" modal="false" draggable="false"
 			showEffect="explode" hideEffect="puff" width="400"
-			visible="#{usuarios_bean.visible}">
+			visible="#{menubar_bean.visible_usuarios}">
 
 			<!-- CONTENEDOR DE LOS COMPONENTES -->
 			<h:panelGrid id="panel_formuUsuarios" columns="1"

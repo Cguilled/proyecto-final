@@ -3,7 +3,7 @@ package com.atos.hibernate.dao;
 import org.springframework.stereotype.Repository;
 
 import com.atos.hibernate.dto.Tareas;
-import com.atos.util.Utilidades;
+import com.atos.util.IUtilidades;
 
 import org.hibernate.LockOptions;
 import org.hibernate.Query;
@@ -27,7 +27,7 @@ public class TareasDAO {
 	public static final String ESTADO = "estado";
 
 	private SessionFactory sessionFactory;
-	Utilidades util;
+	IUtilidades util;
 
 	// Spring iniciará el SessionFactory
 	public void setSessionFactory(SessionFactory sessionFactory) {

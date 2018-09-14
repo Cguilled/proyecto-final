@@ -25,6 +25,7 @@ import com.atos.hibernate.modelo.IGestion_Tareas;
 public class Roles_Bean {
 	private Roles rol;
 	private String nombre_rol;
+	private boolean visible;
 	
 	@ManagedProperty("#{gestion_roles}")
 	private IGestion_Roles gestionRoles;
@@ -33,6 +34,7 @@ public class Roles_Bean {
 	public void valores_Iniciales() {
 		rol = new Roles();
 		nombre_rol = "";
+		visible=true;
 	}
 	
 	// EVENTOS
@@ -86,6 +88,14 @@ public class Roles_Bean {
 	
 	public void setNombre_rol(String nombre_rol) {
 		this.nombre_rol = nombre_rol;
+	}
+
+	public boolean isVisible() {
+		return visible;
+	}
+
+	public void setVisible(boolean visible) {
+		this.visible = visible;
 	}
 
 	public void setGestionRoles(IGestion_Roles gestionRoles) {
