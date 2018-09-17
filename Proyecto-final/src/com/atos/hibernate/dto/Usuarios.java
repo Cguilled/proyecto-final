@@ -3,11 +3,17 @@ package com.atos.hibernate.dto;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+/**
+ * Usuarios entity. @author MyEclipse Persistence Tools
+ */
 @Entity
 @Table(name = "USUARIOS")
 public class Usuarios implements java.io.Serializable {
@@ -19,7 +25,7 @@ public class Usuarios implements java.io.Serializable {
 	private String password;
 	private String estado;
 	private Roles roles;
-	private Boolean inicio;
+	private boolean inicio;
 
 	// Constructors
 
@@ -33,10 +39,10 @@ public class Usuarios implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public Usuarios(String das, String nombre, String apellido,
-			String password, String estado, Roles roles, Boolean inicio) {
+	public Usuarios(String nombreUsuario, String das, String apellido, String password,
+			String estado, Roles roles, boolean inicio) {
 		this.das = das;
-		this.nombre = nombre;
+		this.nombre = nombreUsuario;
 		this.apellido = apellido;
 		this.password = password;
 		this.estado = estado;
@@ -46,12 +52,6 @@ public class Usuarios implements java.io.Serializable {
 
 	// Property accessors
 	//@GeneratedValue(strategy = GenerationType.)
-
-	@Column(name = "APELLIDO", nullable = false, length = 20)
-	public String getApellido() {
-		return apellido;
-	}
-
 	@Id
 	@Column(name = "DAS", unique = true, nullable = false, length = 15)
 	public String getDas() {
@@ -69,6 +69,11 @@ public class Usuarios implements java.io.Serializable {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+
+	@Column(name = "APELLIDO", nullable = false, length = 20)
+	public String getApellido() {
+		return apellido;
 	}
 
 	public void setApellido(String apellido) {
@@ -93,12 +98,12 @@ public class Usuarios implements java.io.Serializable {
 		this.estado = estado;
 	}
 
-	@Column(name = "INICIO", nullable = false)
-	public Boolean getInicio() {
+	@Column(name = "INICIO", nullable = false, precision = 1, scale = 0)
+	public boolean isInicio() {
 		return inicio;
 	}
 
-	public void setInicio(Boolean inicio) {
+	public void setInicio(boolean inicio) {
 		this.inicio = inicio;
 	}
 

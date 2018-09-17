@@ -12,31 +12,31 @@
 	value="#{msgs['example.ace.dialog.description']}" />
 
 	<!-- FORMULARIO DE LA VISTA -->
-	<h:form id="formu_login">
-		<ace:dialog id="dialogLogin" binding="#{dialogLogin}" header="Iniciar sesiÃ³n"
+	<h:form id="formu_pass">
+		<ace:dialog id="dialogPasswordReset" binding="#{dialogPasswordReset}" header="#{password_bean.welcomeMessage}"
 			closable="false" modal="true" draggable="false" showEffect="explode"
-			hideEffect="puff" width="400" visible="#{login_bean.visible}">
-
+			hideEffect="puff" width="400" visible="#{password_bean.visible}">
+			
 			<!-- CONTENEDOR DE LOS COMPONENTES -->
-			<h:panelGrid id="panel_formu" columns="1"
+			<h:panelGrid id="panel_pass" columns="1"
 				style="margin: 0 auto; text-align: center;">
 				<!-- COMPONENTES DEL FORMULARIO -->
-				<ace:textEntry id="username" value="#{login_bean.das}"
-					label="Usuario" labelPosition="top" required="true"
-					requiredIndicator="*"
-					validatorMessage="Usuario: tamaÃ±o incorrecto.">
-					<f:validateLength minimum="3" maximum="15" />
+				<ace:textEntry id="initialPassword" value="#{password_bean.password}"
+					label="Nueva contraseña" labelPosition="top" required="true"
+					secret="true" requiredIndicator="*" indicatorPosition="right"
+					validatorMessage="Contraseña: tamaño incorrecto.">
+					<f:validateLength minimum="3" maximum="10" />
 				</ace:textEntry>
 
-				<ace:textEntry id="password" value="#{login_bean.password}"
-					label="ContraseÃ±a" labelPosition="top" required="true"
+				<ace:textEntry id="confirmPassword" value="#{password_bean.confirmPassword}"
+					label="Reintroducir Contraseña" labelPosition="top" required="true"
 					secret="true" requiredIndicator="*" indicatorPosition="right"
-					validatorMessage="ContraseÃ±a: tamaÃ±o incorrecto.">
+					validatorMessage="Contraseña: tamaño incorrecto.">
 					<f:validateLength minimum="3" maximum="10" />
 				</ace:textEntry>
 				
-				<h:commandButton id="botonLogin" value="Iniciar sesiÃ³n"
-					actionListener="#{login_bean.login_check}"/>
+				<h:commandButton id="botonComprobar" value="Cambiar contraseña"
+					actionListener="#{password_bean.pass_check}"/>
 					<!-- action="#{login_bean.siguiente_pagina}" -->
 				
 			</h:panelGrid>
