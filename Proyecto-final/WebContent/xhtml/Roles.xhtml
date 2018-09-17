@@ -14,7 +14,6 @@
 
 	<!-- FORMULARIO DE ROLES-->
 	<h:form id="formu_roles">
-
 		<ace:dialog id="dialogRoles" binding="#{dialogRoles}" header="Roles"
 			closable="true" modal="false" draggable="false" showEffect="explode"
 			hideEffect="puff" width="400" visible="#{roles_bean.visible}">
@@ -29,7 +28,7 @@
 					validatorMessage="Nombre: tamaño máximo: 100 caracteres. Mínimo: 3.">
 					<f:validateLength minimum="3" maximum="100" />
 				</ace:textEntry>
-				
+
 			</h:panelGrid>
 
 			<h:panelGrid id="panel_formuBotonesRoles" columns="3"
