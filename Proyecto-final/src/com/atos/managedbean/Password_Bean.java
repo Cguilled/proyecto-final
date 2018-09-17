@@ -13,6 +13,7 @@ import javax.faces.bean.ViewScoped;
 
 import com.atos.hibernate.dto.Usuarios;
 import com.atos.hibernate.modelo.IGestion_Usuarios;
+import com.mysql.jdbc.Messages;
 
 @ManagedBean(name="password_bean")
 @SessionScope
@@ -28,7 +29,10 @@ public class Password_Bean implements Serializable{
 	
 	@ManagedProperty("#{login_bean.recuperado}")
 	private Usuarios recuperado;
-
+	
+	@ManagedProperty("#{mensajes_bean}")
+	private Mensajes_Bean alerta;
+	
 	@PostConstruct
 	public void valores_Iniciales() {
 		password="";
@@ -39,17 +43,23 @@ public class Password_Bean implements Serializable{
 
 	public void pass_check(ActionEvent evento){
 		System.out.println("Realizando cambio de clave...");
+		
 		try {
 			//comprueba si existe el usuario con la clave
 			if (password.equals(confirmPassword)) {
 				//ir a la siguiente pantalla
+				recuperado.setPassword(password);
+				recuperado.setInicio(true);
+				gestionUsuarios.modificacion_Usuario(recuperado);
+				alerta.setMode(alerta.PASSWORD_CHANGED);
+				alerta.listener(evento);
 				siguiente_pagina();
 			}
 			
 			else {
 				//escribir mensaje de fallo
-				
-				System.out.println("Ambas claves no coinciden");
+				alerta.setMode(alerta.PASSWORD_MISMATCH);
+				alerta.listener(evento);
 			}
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -109,5 +119,13 @@ public class Password_Bean implements Serializable{
 
 	public String getWelcomeMessage() {
 		return welcomeMessage;
+	}
+	
+	public Mensajes_Bean getAlerta() {
+		return alerta;
+	}
+
+	public void setAlerta(Mensajes_Bean alerta) {
+		this.alerta = alerta;
 	}
 }

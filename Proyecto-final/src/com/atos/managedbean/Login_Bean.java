@@ -26,6 +26,9 @@ public class Login_Bean implements Serializable{
 	@ManagedProperty("#{gestionUsuarios}")
 	private IGestion_Usuarios gestionUsuarios;
 	
+	@ManagedProperty("#{mensajes_bean}")
+	private Mensajes_Bean alerta;
+
 	@PostConstruct
 	public void valores_Iniciales() {
 		das="";
@@ -40,11 +43,15 @@ public class Login_Bean implements Serializable{
 			//comprueba si existe el usuario con la clave
 			if (recuperado!=null) {
 				//ir a la siguiente pantalla
+				alerta.setMode(alerta.SUCCESSFUL_LOGIN);
+				alerta.listener(evento);
 				siguiente_pagina();
 			}
 			
 			else {
 				//escribir mensaje de fallo
+				alerta.setMode(alerta.FAILED_LOGIN);
+				alerta.listener(evento);
 				System.out.println("Fallo al realizar el login");
 			}
 		}catch (Exception e) {
@@ -110,5 +117,11 @@ public class Login_Bean implements Serializable{
 		this.recuperado = recuperado;
 	}
 
-	
+	public Mensajes_Bean getAlerta() {
+		return alerta;
+	}
+
+	public void setAlerta(Mensajes_Bean alerta) {
+		this.alerta = alerta;
+	}
 }
