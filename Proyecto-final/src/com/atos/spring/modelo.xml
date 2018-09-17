@@ -53,9 +53,9 @@
 	<context:component-scan
 		base-package="com.atos.hibernate.dto" />
 	<context:component-scan
-		base-package="com.atos..managedbean" />
+		base-package="com.atos.managedbean" />
 	<context:component-scan
-		base-package="com.atos..spring" />
+		base-package="com.atos.spring" />
 	<context:component-scan
-		base-package="com.atos..springSecurity" />
+		base-package="com.atos.springSecurity" />
 </beans>
