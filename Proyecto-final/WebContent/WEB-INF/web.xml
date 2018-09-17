@@ -36,17 +36,7 @@
     <param-name>org.icefaces.coalesceResources</param-name>
     <param-value>false</param-value>
   </context-param>
-  <context-param>
-    <param-name>org.icefaces.strictSessionTimeout</param-name>
-    <param-value>true</param-value>
-  </context-param>
-  <context-param>
-    <param-name>org.icefaces.sessionExpiredRedirectURI</param-name>
-    <param-value>/xhtml/login.xhtml</param-value>
-  </context-param>
-  <session-config>
-    <session-timeout>60</session-timeout>
-  </session-config>
+ 
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
@@ -54,7 +44,5 @@
     <param-name>contextConfigLocation</param-name>
     <param-value>classpath:com/atos/spring/modelo.xml</param-value>
   </context-param>
-  <welcome-file-list>
-    <welcome-file>xhtml/inicio.xhtml</welcome-file>
-  </welcome-file-list>
+  
 </web-app>
