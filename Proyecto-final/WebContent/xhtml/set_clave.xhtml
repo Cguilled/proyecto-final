@@ -22,21 +22,21 @@
 				style="margin: 0 auto; text-align: center;">
 				<!-- COMPONENTES DEL FORMULARIO -->
 				<ace:textEntry id="initialPassword" value="#{password_bean.password}"
-					label="Nueva contraseña" labelPosition="top" required="true"
+					label="Nueva contraseÃ±a" labelPosition="top" required="true"
 					secret="true" requiredIndicator="*" indicatorPosition="right"
-					validatorMessage="Contraseña: tamaño incorrecto.">
+					validatorMessage="ContraseÃ±a: tamaÃ±o incorrecto.">
 					<f:validateLength minimum="3" maximum="10" />
 				</ace:textEntry>
 
 				<ace:textEntry id="confirmPassword" value="#{password_bean.confirmPassword}"
-					label="Reintroducir Contraseña" labelPosition="top" required="true"
+					label="Reintroducir ContraseÃ±a" labelPosition="top" required="true"
 					secret="true" requiredIndicator="*" indicatorPosition="right"
-					validatorMessage="Contraseña: tamaño incorrecto.">
+					validatorMessage="ContraseÃ±a: tamaÃ±o incorrecto.">
 					<f:validateLength minimum="3" maximum="10" />
 				</ace:textEntry>
 				
-				<h:commandButton id="botonComprobar" value="Cambiar contraseña"
-					actionListener="#{password_bean.pass_check}"/>
+				<h:commandButton id="botonComprobar" value="Cambiar contraseÃ±a"
+					actionListener="#{password_bean.pass_check}" ajax="true"/>
 					<!-- action="#{login_bean.siguiente_pagina}" -->
 				
 			</h:panelGrid>

@@ -99,30 +99,31 @@ public class Mensajes_Bean implements Serializable {
         UIComponent component = event.getComponent();
         
         if(mode == SUCCESSFUL_LOGIN) {
+        	header = "Validado";
     		String message = "Iniciando sesión...";
             FacesMessage facesMessage = new FacesMessage((FacesMessage.Severity) FacesMessage.VALUES.get(0), message, message);
             facesContext.addMessage(component.getClientId(), facesMessage);
         }
         
         else if(mode == PASSWORD_CHANGED) {
+        	header = "Validado";
     		String message = "Clave cambiada";
-            FacesMessage facesMessage = new FacesMessage((FacesMessage.Severity) FacesMessage.VALUES.get(2), message, message);
+            FacesMessage facesMessage = new FacesMessage((FacesMessage.Severity) FacesMessage.VALUES.get(0), message, message);
             facesContext.addMessage(component.getClientId(), facesMessage);        	
         }
         
         else if(mode == PASSWORD_MISMATCH) {
+        	header = "Error de validación";
     		String message = "Ambas claves no coinciden";
             FacesMessage facesMessage = new FacesMessage((FacesMessage.Severity) FacesMessage.VALUES.get(2), message, message);
             facesContext.addMessage(component.getClientId(), facesMessage); 
         }
         
         else if(mode == FAILED_LOGIN) {
+        	header = "Error de validación";
     		String message = "Fallo de inicio de sesión";
             FacesMessage facesMessage = new FacesMessage((FacesMessage.Severity) FacesMessage.VALUES.get(2), message, message);
             facesContext.addMessage(component.getClientId(), facesMessage); 
         }
-		// Anadir mensajes
-		String message = "Iniciando sesión...";
-		FacesContext.getCurrentInstance().addMessage(message, new FacesMessage(message));
 	}
 }

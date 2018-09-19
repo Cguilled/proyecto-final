@@ -8,12 +8,8 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.event.ActionEvent;
 
 import org.springframework.web.context.annotation.SessionScope;
-
-import javax.faces.bean.ViewScoped;
-
 import com.atos.hibernate.dto.Usuarios;
 import com.atos.hibernate.modelo.IGestion_Usuarios;
-import com.mysql.jdbc.Messages;
 
 @ManagedBean(name="password_bean")
 @SessionScope
