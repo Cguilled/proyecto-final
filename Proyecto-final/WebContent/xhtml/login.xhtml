@@ -7,15 +7,16 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:icecore="http://www.icefaces.org/icefaces/core"
 	xmlns:ace="http://www.icefaces.org/icefaces/components">
-<ui:param name="title" value="#{msgs['example.ace.dialog.title']}" />
-<ui:param name="description"
-	value="#{msgs['example.ace.dialog.description']}" />
+	<ui:param name="title" value="#{msgs['example.ace.dialog.title']}" />
+	<ui:param name="description"
+		value="#{msgs['example.ace.dialog.description']}" />
 
 	<!-- FORMULARIO DE LA VISTA -->
-	<h:form id="formu_login">
-		<ace:dialog id="dialogLogin" binding="#{dialog}" header="Iniciar sesión"
-			closable="false" modal="true" draggable="false" showEffect="explode"
-			hideEffect="puff" width="400" visible="#{login_bean.visible}">
+	<h:form id="formu_login" method="post">
+		<ace:dialog id="dialogLogin" binding="#{dialog}"
+			header="Iniciar sesión" closable="false" modal="true"
+			draggable="false" showEffect="explode" hideEffect="puff" width="400"
+			visible="#{login_bean.visible}">
 
 			<!-- CONTENEDOR DE LOS COMPONENTES -->
 			<h:panelGrid id="panel_formu" columns="1"
@@ -34,11 +35,11 @@
 					validatorMessage="Contraseña: tamaño incorrecto.">
 					<f:validateLength minimum="3" maximum="10" />
 				</ace:textEntry>
-				
+
 				<h:commandButton id="botonComprobar" value="Iniciar sesión"
-					actionListener="#{login_bean.login_check}"/>
-					<!-- action="#{login_bean.siguiente_pagina}" -->
-				
+					actionListener="#{login_bean.login_check}" />
+				<!-- action="#{login_bean.siguiente_pagina}" -->
+
 			</h:panelGrid>
 
 		</ace:dialog>

@@ -9,12 +9,13 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.event.ActionEvent;
 
 import org.springframework.dao.DataAccessException;
+import org.springframework.web.context.annotation.SessionScope;
 
 import com.atos.hibernate.dto.Usuarios;
 import com.atos.hibernate.modelo.IGestion_Usuarios;
 
 @ManagedBean(name="login_bean")
-@ViewScoped
+@SessionScope
 public class Login_Bean implements Serializable{
 	private String das;
 	private String password;

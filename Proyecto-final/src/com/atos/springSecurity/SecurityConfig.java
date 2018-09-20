@@ -21,13 +21,18 @@ public DataSource dataSource;
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		// Usuario en memoria
-		auth.inMemoryAuthentication().withUser("admin").password("admin").roles("USER");
+		auth.inMemoryAuthentication().withUser("user").password("user").roles("USER");
 
 		/*UserBuilder usuario = usuario.withDefaultPasswordEncoder();
 		
 		// Para conexion a bbdd
 		auth.jdbcAuthentication().dataSource(dataSource).withDefaultSchema().withUser(usuario.username(Usuarios.getDAS)
 				.password(Usuarios.getPassword).roles(Usuario.getRoles));*/
+		
+		/*DaoAuthenticationProvider daoAuth = new DaoAuthenticationProvider();
+		daoAuth.setPasswordEncoder(encoder());
+		daoAuth.setUserDetailsService(userService); //mi servicio que debe implementar UserDetailsService, solo se usa para logueo
+		auth.authenticationProvider(daoAuth);*/
 	}
 
 	@Override
@@ -37,7 +42,9 @@ public DataSource dataSource;
 		//http.authorizeRequests().anyRequest().authenticated().and().formLogin().defaultSuccessUrl("/index.jsp");
 		http.authorizeRequests().anyRequest().authenticated().and().formLogin().loginPage("/xhtml/inicio.xhtml").permitAll();
 		http.formLogin().defaultSuccessUrl("/xhtml/menuAdmin.xhtml", true);
-		http.formLogin().failureUrl("/error.jsp");
+		http.formLogin().failureUrl("/xhtml/error.html");
+		http.exceptionHandling().accessDeniedPage("/xhtml/forbidden.xhtml");
+		//http.csrf().disable();
 	}
 
 	/*@Override
@@ -60,7 +67,7 @@ public DataSource dataSource;
 	@Override
 	public UserDetailsService userDetailsServiceBean() throws Exception {
 		InMemoryUserDetailsManager m = new InMemoryUserDetailsManager();
-		m.createUser(User.withDefaultPasswordEncoder().username("admin").password("admin").roles("USER").build());
+		m.createUser(User.withDefaultPasswordEncoder().username("user").password("user").roles("USER").build());
 		return m;
 	}
 }

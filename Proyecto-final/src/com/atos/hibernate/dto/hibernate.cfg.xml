@@ -13,7 +13,5 @@
 		<mapping class="com.atos.hibernate.dto.Usuarios" />
 		<mapping class="com.atos.hibernate.dto.Roles" />
 		<mapping class="com.atos.hibernate.dto.Tareas" />
-
-		
 	</session-factory>
 </hibernate-configuration>
