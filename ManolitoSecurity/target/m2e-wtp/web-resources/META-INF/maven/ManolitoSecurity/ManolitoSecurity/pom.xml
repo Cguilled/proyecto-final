@@ -52,7 +52,7 @@
 			<version>${version-mojarra}</version>
 		</dependency>
 		
-		<!-- IMPLEMENTACION BASE MOJARRA -->
+		<!-- IMPLEMENTACION BASE MOJARRA (JSF)-->
 		<dependency>
 			<groupId>com.sun.faces</groupId>
 			<artifactId>jsf-impl</artifactId>

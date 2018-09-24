@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.SessionScoped;
-import javax.faces.bean.ViewScoped;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -21,33 +19,41 @@ import com.atos.hibernate.modelo.IGestion_Usuarios;
 
 @Service
 public class UserService implements UserDetailsService {
-	
+
 	// Inyecto un objecto de gestionUsuarios
 	@ManagedProperty("#{gestionUsuarios}")
 	private IGestion_Usuarios gestionUsuarios;
 
 	@Autowired
 	private BCryptPasswordEncoder encoder;
-	
+
+	private Roles roles;
+	UserDetails userDetails;
+
 	@Override
 	public UserDetails loadUserByUsername(String das) throws UsernameNotFoundException {
 		Usuarios usuario = gestionUsuarios.consultar_PorDas(das);
 
 		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+
 		// authorities a partir de roles
-		Roles roles = usuario.getRoles();
+		if (usuario != null) {
+			roles = usuario.getRoles();
 
-		GrantedAuthority ga = new GrantedAuthority() {
+			GrantedAuthority ga = new GrantedAuthority() {
 
-			@Override
-			public String getAuthority() {
-				return roles.getNombreRol();
-			}
-		};
-		authorities.add(ga);
+				@Override
+				public String getAuthority() {
+					return roles.getNombreRol();
+				}
+			};
+			authorities.add(ga);
 
-		UserDetails userDetails = (UserDetails) new org.springframework.security.core.userdetails.User(usuario.getDas(),
-				encoder.encode(usuario.getPassword()), authorities);
+			userDetails = (UserDetails) new org.springframework.security.core.userdetails.User(
+					usuario.getDas(), encoder.encode(usuario.getPassword()), authorities);
+			
+		} else
+			System.out.println("no existe el usuario");
 
 		return userDetails;
 
@@ -56,5 +62,5 @@ public class UserService implements UserDetailsService {
 	public void setGestionUsuarios(IGestion_Usuarios gestionUsuarios) {
 		this.gestionUsuarios = gestionUsuarios;
 	}
-	
+
 }

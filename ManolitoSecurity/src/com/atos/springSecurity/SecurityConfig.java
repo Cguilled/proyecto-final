@@ -24,11 +24,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	public DataSource dataSource;
 	
-	@Bean
-	public BCryptPasswordEncoder encoder() {
-		return new BCryptPasswordEncoder();
-	}
-	
 	@Autowired
 	private UserService userService;
 	
@@ -45,8 +40,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		//http.authorizeRequests().anyRequest().authenticated().and().formLogin().loginPage("/inicio.xhtml").permitAll();
 		//http.authorizeRequests().anyRequest().authenticated().and().formLogin().loginPage("/login.jsp").defaultSuccessUrl("/index.jsp");
 		//http.authorizeRequests().anyRequest().authenticated().and().formLogin().defaultSuccessUrl("/WEB-INF/index.jsp");
-		http.formLogin().defaultSuccessUrl("/WEB-INF/index.jsp");
+		//http.formLogin().defaultSuccessUrl("/WEB-INF/index.jsp");
 		//http.formLogin().failureUrl("/error/error.html");
+	}
+	
+	@Bean
+	public BCryptPasswordEncoder encoder() {
+		return new BCryptPasswordEncoder();
 	}
 	
 	@Bean
