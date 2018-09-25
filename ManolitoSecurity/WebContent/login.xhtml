@@ -22,14 +22,14 @@
 			<h:panelGrid id="panel_formu" columns="1"
 				style="margin: 0 auto; text-align: center;">
 				<!-- COMPONENTES DEL FORMULARIO -->
-				<ace:textEntry id="username" value="#{login_bean.das}"
+				<ace:textEntry id="username" name="username" value="#{login_bean.das}"
 					label="Usuario" labelPosition="top" required="true"
 					requiredIndicator="*"
 					validatorMessage="Usuario: tamaño incorrecto.">
 					<f:validateLength minimum="3" maximum="15" />
 				</ace:textEntry>
 
-				<ace:textEntry id="password" value="#{login_bean.password}"
+				<ace:textEntry id="password" name="password" value="#{login_bean.password}"
 					label="Contraseña" labelPosition="top" required="true"
 					secret="true" requiredIndicator="*" indicatorPosition="right"
 					validatorMessage="Contraseña: tamaño incorrecto.">

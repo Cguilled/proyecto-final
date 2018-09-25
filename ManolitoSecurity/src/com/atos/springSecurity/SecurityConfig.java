@@ -16,6 +16,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 @EnableWebSecurity
 //@Configuration
@@ -36,12 +37,35 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().anyRequest().authenticated().and().formLogin().and().httpBasic();
-		//http.authorizeRequests().anyRequest().authenticated().and().formLogin().loginPage("/inicio.xhtml").permitAll();
-		//http.authorizeRequests().anyRequest().authenticated().and().formLogin().loginPage("/login.jsp").defaultSuccessUrl("/index.jsp");
-		//http.authorizeRequests().anyRequest().authenticated().and().formLogin().defaultSuccessUrl("/WEB-INF/index.jsp");
-		//http.formLogin().defaultSuccessUrl("/WEB-INF/index.jsp");
-		//http.formLogin().failureUrl("/error/error.html");
+		/*http.authorizeRequests().anyRequest().authenticated().and().formLogin().and().httpBasic();
+		http.authorizeRequests().anyRequest().authenticated().and().formLogin().loginPage("/inicio.xhtml").permitAll();
+		http.authorizeRequests().anyRequest().authenticated().and().formLogin().loginPage("/login.jsp").defaultSuccessUrl("/index.jsp");
+		http.authorizeRequests().anyRequest().authenticated().and().formLogin().defaultSuccessUrl("/WEB-INF/index.jsp");
+		http.formLogin().defaultSuccessUrl("/WEB-INF/index.jsp");
+		http.formLogin().failureUrl("/error/error.html");*/
+		
+		http
+			.authorizeRequests()
+				.antMatchers("/admin/").hasRole("ADMIN")
+				.antMatchers("/user/").hasAnyRole("ADMIN","USER")
+				.anyRequest().authenticated()
+				.and()
+			.formLogin().loginPage("/login.jsp")
+				.loginProcessingUrl("/doLogin") //importante, es la url request del servlet de login de spring security (post)
+				.successHandler(customAuthenticationSuccessHandler())
+				.usernameParameter("username").passwordParameter("password")
+				.permitAll();
+		http.sessionManagement().maximumSessions(10).expiredUrl("/expired/expired.xhtml");
+		
+		//http.formLogin().successHandler(customAuthenticationSuccessHandler());
+		//http.formLogin().usernameParameter("username").passwordParameter("password");
+		//http.logout().logoutSuccessHandler(customLogoutSuccessHandler());
+		//http.formLogin().defaultSuccessUrl("/loginSuccess");
+		//http.logout().logoutUrl("/doLogout").logoutSuccessUrl("/login.jsp").permitAll();
+		
+		//http.formLogin().successHandler(customAuthenticationSuccessHandler());
+		
+		//http.exceptionHandling().accessDeniedPage("/control/403");
 	}
 	
 	@Bean
@@ -57,29 +81,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 													// para logueo
 	    return daoAuth;
 	}
-
-	/*@Override
-	public void configure(WebSecurity web) throws Exception {
-		// TODO Auto-generated method stub
-		super.configure(web);
-	}*/
-
-	/*@Override
-	public void init(WebSecurity web) throws Exception {
-		super.init(web);
-	}
-
-	@Override
-	protected UserDetailsService userDetailsService() {
-		return super.userDetailsService();
-	}
-
+	
 	@Bean
-	@Override
-	public UserDetailsService userDetailsServiceBean() throws Exception {
-		InMemoryUserDetailsManager m = new InMemoryUserDetailsManager();
-		m.createUser(User.withDefaultPasswordEncoder().username("admin").password("admin").roles("ROL_ADMIN").build());
-		return m;
-	}*/
-
+    public AuthenticationSuccessHandler customAuthenticationSuccessHandler(){
+        return new CustomSimpleUrlAuthenticationSuccessHandler();
+    }
 }

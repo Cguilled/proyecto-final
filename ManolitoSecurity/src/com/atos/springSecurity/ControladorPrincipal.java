@@ -10,29 +10,30 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class ControladorPrincipal {
-	//@RequestMapping(value = "/loginSuccess", method = RequestMethod.POST)
+	@RequestMapping(value = "/loginSuccess", method = RequestMethod.POST)
 	public String entrar(Model model) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		// authentication.getPrincipal(); //este seria tu objeto Usuarios
+		authentication.getPrincipal(); //este seria tu objeto Usuarios
 
 		// ojo con authentication... null pointer exc
 		boolean esAdmin = false;
 		boolean esUser = false;
 		for (GrantedAuthority ga : authentication.getAuthorities()) {
-			if (ga.getAuthority().equals("ROL_ADMIN"))
+			if (ga.getAuthority().equals("ADMIN"))
 				esAdmin = true;
-			else if(ga.getAuthority().equals("ROL_USER"))
+			else if(ga.getAuthority().equals("USER"))
 				esUser = true;
 		}
 
 		// no es obligatorio
 		model.addAttribute("usuario", authentication.getName());
+		model.addAttribute("admin", authentication.getName());
 
 		if (esAdmin)
-			return "pages/indexadmin.jsp";
+			return "/admin/indexadmin.jsp";
 		else if(esUser)
-			return "pages/indexuser.jsp";
+			return "/user/indexuser.jsp";
 		else
-			return "error/error.html";
+			return "/error/error.html";
 	}
 }
