@@ -43,17 +43,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.formLogin().failureUrl("/error/error.html");*/
 		
 		http
-			.authorizeRequests()
-				.antMatchers("/admin/").hasAuthority("ADMIN")
-				.antMatchers("/user/").hasAnyAuthority("ADMIN","USER")
+			.authorizeRequests().antMatchers("/login.jsp").permitAll()
+				.antMatchers("/admin/**").hasAuthority("ADMIN")
+				.antMatchers("/user/**").hasAnyAuthority("ADMIN","USER")
 				.anyRequest().authenticated()
 				.and()
 			.formLogin().loginPage("/login.jsp") //Pagina de login
 				.loginProcessingUrl("/doLogin") //importante, es la url request del servlet de login de spring security (post)
+				.failureUrl("/login.jsp?error")
 				.successHandler(customAuthenticationSuccessHandler()) //Clase para redireccionar
-				.usernameParameter("username").passwordParameter("password") //Parametros del login
-				.and()
-				.logout().logoutSuccessUrl("/login.jsp").permitAll();
+				.usernameParameter("username").passwordParameter("password"); //Parametros del login
+				//.and()
+			//.logout().logoutSuccessUrl("/login.jsp");
 		
 		//Crear sesion si se necesita
 		http.sessionManagement()
