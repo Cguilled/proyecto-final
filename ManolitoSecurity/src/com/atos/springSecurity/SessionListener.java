@@ -14,5 +14,6 @@ public class SessionListener implements HttpSessionListener{
 	@Override
 	public void sessionDestroyed(HttpSessionEvent event) {
 		System.out.println("session destroyed");
+		event.getSession().invalidate();
 	}
 }

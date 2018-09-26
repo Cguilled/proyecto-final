@@ -3,11 +3,13 @@ package com.atos.springSecurity;
 import java.io.IOException;
 import java.util.Collection;
 
+import javax.faces.bean.ManagedProperty;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.DefaultRedirectStrategy;
@@ -15,7 +17,15 @@ import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.WebAttributes;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
+import com.atos.hibernate.dto.Usuarios;
+import com.atos.hibernate.modelo.IGestion_Usuarios;
+
 public class CustomSimpleUrlAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
+
+	// Inyecto un objecto de gestionUsuarios
+	@Autowired
+	@ManagedProperty("#{gestionUsuarios}")
+	private IGestion_Usuarios gestionUsuarios;
 
 	private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 
@@ -52,8 +62,12 @@ public class CustomSimpleUrlAuthenticationSuccessHandler implements Authenticati
 				break;
 			}
 		}
-
-		if (isUser)
+		//Recupero el objeto usuario que se esta logueando
+		Usuarios user = gestionUsuarios.consultar_PorDas(authentication.getName());
+		
+		if(!user.getInicio())
+			return "/cambioPass.xhtml";
+		else if (isUser)
 			return "/user/menuUser.xhtml";
 		else if (isAdmin)
 			return "/admin/menuAdmin.xhtml";
@@ -76,6 +90,10 @@ public class CustomSimpleUrlAuthenticationSuccessHandler implements Authenticati
 
 	protected RedirectStrategy getRedirectStrategy() {
 		return redirectStrategy;
+	}
+
+	public void setGestionUsuarios(IGestion_Usuarios gestionUsuarios) {
+		this.gestionUsuarios = gestionUsuarios;
 	}
 
 }

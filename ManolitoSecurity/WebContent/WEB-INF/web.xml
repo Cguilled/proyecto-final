@@ -40,10 +40,20 @@
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
+	
+	<listener>
+	    <listener-class>org.springframework.security.web.session.HttpSessionEventPublisher</listener-class>
+	</listener>
 
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath:com/atos/spring/modelo.xml</param-value>
 	</context-param>
+
+	<!-- Para que los datos de la sesion no aparezcan en la URL y se guarden en una cookie -->
+	<session-config>
+		<!-- <session-timeout>1</session-timeout> -->
+		<tracking-mode>COOKIE</tracking-mode>
+	</session-config>
 
 </web-app>

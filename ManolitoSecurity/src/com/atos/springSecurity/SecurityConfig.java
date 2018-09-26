@@ -1,29 +1,26 @@
 package com.atos.springSecurity;
 
-import javax.sql.DataSource;
+import java.util.EnumSet;
+
+import javax.servlet.ServletContext;
+import javax.servlet.SessionTrackingMode;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.ImportResource;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.session.HttpSessionEventPublisher;
 
 @EnableWebSecurity
 //@Configuration
 //@ImportResource("classpath:/com/atos/spring/modelo.xml")
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-
-	public DataSource dataSource;
 	
 	@Autowired
 	private UserService userService;
@@ -32,6 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		// Usuario en memoria
 		//auth.inMemoryAuthentication().withUser("admin").password("admin").roles("ROL_ADMIN");
 
+		//Encriptado de contrasena
 		auth.authenticationProvider(authProvider());
 	}
 
@@ -46,20 +44,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		
 		http
 			.authorizeRequests()
-				.antMatchers("/admin/").hasRole("ADMIN")
-				.antMatchers("/user/").hasAnyRole("ADMIN","USER")
+				.antMatchers("/admin/").hasAuthority("ADMIN")
+				.antMatchers("/user/").hasAnyAuthority("ADMIN","USER")
 				.anyRequest().authenticated()
 				.and()
-			.formLogin().loginPage("/login.jsp")
+			.formLogin().loginPage("/login.jsp") //Pagina de login
 				.loginProcessingUrl("/doLogin") //importante, es la url request del servlet de login de spring security (post)
-				.successHandler(customAuthenticationSuccessHandler())
-				.usernameParameter("username").passwordParameter("password")
-				.permitAll();
-		http.sessionManagement().maximumSessions(10).expiredUrl("/expired/expired.xhtml");
+				.successHandler(customAuthenticationSuccessHandler()) //Clase para redireccionar
+				.usernameParameter("username").passwordParameter("password") //Parametros del login
+				.and()
+				.logout().logoutSuccessUrl("/login.jsp").permitAll();
 		
-		//http.formLogin().successHandler(customAuthenticationSuccessHandler());
-		//http.formLogin().usernameParameter("username").passwordParameter("password");
-		//http.logout().logoutSuccessHandler(customLogoutSuccessHandler());
+		//Crear sesion si se necesita
+		http.sessionManagement()
+			.sessionFixation().migrateSession() //proteccion contra ataques de secuestro de sesion cuando el usuario vuelve a hacer log in.
+        	.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
+        	.maximumSessions(2).expiredUrl("/expired/expired.xhtml"); //Pagina para cuando expire la sesion
+		
 		//http.formLogin().defaultSuccessUrl("/loginSuccess");
 		//http.logout().logoutUrl("/doLogout").logoutSuccessUrl("/login.jsp").permitAll();
 		
@@ -68,11 +69,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		//http.exceptionHandling().accessDeniedPage("/control/403");
 	}
 	
+	//Bean de la clase para encriptar la contrasena
 	@Bean
 	public BCryptPasswordEncoder encoder() {
 		return new BCryptPasswordEncoder();
 	}
 	
+	//Bean para encriptar la contrasena
 	@Bean
 	public DaoAuthenticationProvider authProvider() {
 	    DaoAuthenticationProvider daoAuth = new DaoAuthenticationProvider();
@@ -82,8 +85,28 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	    return daoAuth;
 	}
 	
+	//Bean de la clase para redirecciones
 	@Bean
     public AuthenticationSuccessHandler customAuthenticationSuccessHandler(){
         return new CustomSimpleUrlAuthenticationSuccessHandler();
     }
+	
+	//Bean para activar el control simultaneo de la sesion
+	/*@Bean
+	public HttpSessionEventPublisher httpSessionEventPublisher() {
+	    return new HttpSessionEventPublisher();
+	}*/
+	
+	//Injecting the Raw Session into a Controller
+	/*@RequestMapping(..)
+	public void fooMethod(HttpSession session) {
+	    session.addAttribute(Constants.FOO, new Foo();
+	    //...
+	    Foo foo = (Foo) session.getAttribute(Constants.Foo);
+	}*/
+	
+	//The current HTTP Session can also be obtained programmatically via the raw Servlet API:
+	/*ServletRequestAttributes attr = (ServletRequestAttributes) 
+    RequestContextHolder.currentRequestAttributes();
+	HttpSession session= attr.getRequest().getSession(true);*/ // true == allow create
 }
