@@ -15,29 +15,27 @@
 <h:head></h:head>
 
 <h:body>
-	<h:form id="formu_menuAdmin">
-		<!-- CONTENEDOR DE LOS COMPONENTES -->
-		<h:panelGrid id="panel_formuAdmin" columns="1"
-			style="margin: 0 auto; text-align: center;">
+	<!-- CONTENEDOR DE LOS COMPONENTES -->
+	<h:panelGrid id="panel_formuAdmin" columns="1"
+		style="margin: 0 auto; text-align: center;">
 
-			<ace:menuBar id="menuBar" autoSubmenuDisplay="true">
-				<ace:menuItem id="itemUsuarios" value="Usuarios"
-					actionListener="#{menubar_bean.fragmentUsuarios}" />
+		<ace:menuBar id="menuBar" autoSubmenuDisplay="true">
+			<ace:menuItem id="itemUsuarios" value="Usuarios"
+				actionListener="#{menubar_bean.fragmentUsuarios}" />
 
-				<ace:menuItem id="itemTareas" value="Tareas"
-					actionListener="#{menubar_bean.fragmentTareas}" />
+			<ace:menuItem id="itemTareas" value="Tareas"
+				actionListener="#{menubar_bean.fragmentTareas}" />
 
-				<ace:menuItem id="itemRoles" value="Roles"
-					actionListener="#{menubar_bean.fragmentRoles}" />
+			<ace:menuItem id="itemRoles" value="Roles"
+				actionListener="#{menubar_bean.fragmentRoles}" />
 
-				<ace:menuItem id="itemConsultar" value="Consultar"
-					action="http://www.icefaces.org" />
+			<ace:menuItem id="itemConsultar" value="Consultar"
+				action="http://www.icefaces.org" />
 
-				<ace:menuItem id="itemFinSesion" value="Finalizar sesión" />
-			</ace:menuBar>
+			<ace:menuItem id="itemFinSesion" value="Finalizar sesión" />
+		</ace:menuBar>
 
-		</h:panelGrid>
-	</h:form>
+	</h:panelGrid>
 	<ui:include src="#{menubar_bean.siguiente}" />
 </h:body>
 </html>

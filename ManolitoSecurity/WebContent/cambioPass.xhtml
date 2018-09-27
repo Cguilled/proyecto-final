@@ -7,50 +7,47 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:icecore="http://www.icefaces.org/icefaces/core"
 	xmlns:ace="http://www.icefaces.org/icefaces/components">
-	<ui:param name="title" value="#{msgs['example.ace.dialog.title']}" />
-	<ui:param name="description"
-		value="#{msgs['example.ace.dialog.description']}" />
+<ui:param name="title" value="#{msgs['example.ace.dialog.title']}" />
+<ui:param name="description"
+	value="#{msgs['example.ace.dialog.description']}" />
 
-	<h:head></h:head>
+<h:head>
+</h:head>
 
-	<h:body>
-
-		<!-- FORMULARIO DE LA VISTA -->
-		<h:form id="formu_cambioPass">
-			<!-- <ace:dialog id="dialogPasswordReset" binding="#{dialogPasswordReset}" header="Holi"
-			closable="false" modal="true" draggable="false" showEffect="explode"
-			hideEffect="puff" width="400" visible="true">
-			#{password_bean.visible} #{password_bean.welcomeMessage} -->
+<h:body>
+	<h:form id="formu_cambioPass">
+		<ace:dialog id="dialogPasswordReset" binding="#{dialogPasswordReset}"
+			header="#{password_bean.welcomeMessage}" closable="false"
+			modal="true" draggable="false" showEffect="explode" hideEffect="puff"
+			width="400" visible="#{password_bean.visible}">
 
 			<!-- CONTENEDOR DE LOS COMPONENTES -->
 			<h:panelGrid id="panel_pass" columns="1"
 				style="margin: 0 auto; text-align: center;">
 				<!-- COMPONENTES DEL FORMULARIO -->
-				<ace:textEntry id="initialPassword" value="contrasena inicial"
-					label="Nueva contraseña" labelPosition="top" required="true"
-					secret="true" requiredIndicator="*" indicatorPosition="right"
+				<ace:textEntry id="initialPassword"
+					value="#{password_bean.password}" label="Nueva contraseña"
+					labelPosition="top" required="true" secret="true"
+					requiredIndicator="*" indicatorPosition="right"
 					validatorMessage="Contraseña: tamaño incorrecto.">
 					<f:validateLength minimum="3" maximum="10" />
 				</ace:textEntry>
-				<!-- contrasena inicial #{password_bean.password} -->
 
-				<ace:textEntry id="confirmPassword" value="confirmar pass"
+				<ace:textEntry id="confirmPassword"
+					value="#{password_bean.confirmPassword}"
 					label="Reintroducir Contraseña" labelPosition="top" required="true"
 					secret="true" requiredIndicator="*" indicatorPosition="right"
 					validatorMessage="Contraseña: tamaño incorrecto.">
 					<f:validateLength minimum="3" maximum="10" />
 				</ace:textEntry>
-				<!-- #{password_bean.confirmPassword} -->
 
-				<h:commandButton id="botonComprobar" value="Cambiar contraseña"
-					actionListener="pass check" />
-				<!-- action="#{login_bean.siguiente_pagina}" -->
-				<!-- #{password_bean.pass_check} -->
+				<ace:pushButton id="botonComprobar" value="Cambiar pass"
+					actionListener="#{password_bean.pass_check}" />
+					<!-- action="#{login_bean.siguiente_pagina}" -->
 
 			</h:panelGrid>
 
-			<!-- </ace:dialog>-->
-
-		</h:form>
-	</h:body>
-	</html>
+		</ace:dialog>
+	</h:form>
+</h:body>
+</html>

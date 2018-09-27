@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import javax.faces.event.AbortProcessingException;
 import javax.faces.event.ActionEvent;
 import javax.faces.event.ActionListener;
@@ -14,7 +15,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.web.context.annotation.SessionScope;
 
 @ManagedBean(name = "menubar_bean")
-@SessionScope
+@ViewScoped
 public class MenuBar_Bean implements Serializable, ActionListener {
 	public DefaultMenuModel modelo;
 	private String siguiente = "";
@@ -29,7 +30,7 @@ public class MenuBar_Bean implements Serializable, ActionListener {
 	private boolean visible_tareas;
 
 	public void buildMenuModel() {
-		modelo = new DefaultMenuModel();
+		/*modelo = new DefaultMenuModel();
 		usuarios = new MenuItem();
 		tareas = new MenuItem();
 		roles = new MenuItem();
@@ -54,7 +55,7 @@ public class MenuBar_Bean implements Serializable, ActionListener {
 
 		finSesion.setId("itemFinSesion");
 		finSesion.setValue("FinSesion");
-		finSesion.addActionListener(this);
+		finSesion.addActionListener(this);*/
 	}
 
 	@PostConstruct
@@ -69,6 +70,11 @@ public class MenuBar_Bean implements Serializable, ActionListener {
 		// TODO Auto-generated method stub
 
 	}
+	
+	public void pass_check(ActionEvent evento) {
+		System.out.println("Realizando cambio de contraseña...");
+	}
+	
 
 	public void fragmentUsuarios(ActionEvent evento) {
 		try {
@@ -147,4 +153,6 @@ public class MenuBar_Bean implements Serializable, ActionListener {
 		this.visible_tareas = visible_tareas;
 	}
 
+	
+	
 }

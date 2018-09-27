@@ -41,9 +41,9 @@
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 	
-	<listener>
+	<!-- <listener>
 	    <listener-class>org.springframework.security.web.session.HttpSessionEventPublisher</listener-class>
-	</listener>
+	</listener> -->
 
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
@@ -51,9 +51,9 @@
 	</context-param>
 
 	<!-- Para que los datos de la sesion no aparezcan en la URL y se guarden en una cookie -->
-	<session-config>
-		<!-- <session-timeout>1</session-timeout> -->
+	<!-- <session-config>
+		<session-timeout>1</session-timeout>
 		<tracking-mode>COOKIE</tracking-mode>
-	</session-config>
+	</session-config> -->
 
 </web-app>

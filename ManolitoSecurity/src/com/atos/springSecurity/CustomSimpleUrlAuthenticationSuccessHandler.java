@@ -49,7 +49,7 @@ public class CustomSimpleUrlAuthenticationSuccessHandler implements Authenticati
 		redirectStrategy.sendRedirect(request, response, targetUrl);
 	}
 
-	protected String determineTargetUrl(Authentication authentication) {
+	public String determineTargetUrl(Authentication authentication) {
 		boolean isUser = false;
 		boolean isAdmin = false;
 		Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();

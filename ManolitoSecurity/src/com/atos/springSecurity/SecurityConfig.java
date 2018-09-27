@@ -52,9 +52,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.loginProcessingUrl("/doLogin") //importante, es la url request del servlet de login de spring security (post)
 				.failureUrl("/login.jsp?error")
 				.successHandler(customAuthenticationSuccessHandler()) //Clase para redireccionar
-				.usernameParameter("username").passwordParameter("password"); //Parametros del login
-				//.and()
-			//.logout().logoutSuccessUrl("/login.jsp");
+				.usernameParameter("username").passwordParameter("password") //Parametros del login
+			.and()
+				.logout().logoutSuccessUrl("/login.jsp")
+			.and()
+				.exceptionHandling().accessDeniedPage("/error/forbidden.xhtml")
+			.and()
+				.csrf().disable();
 		
 		//Crear sesion si se necesita
 		http.sessionManagement()
