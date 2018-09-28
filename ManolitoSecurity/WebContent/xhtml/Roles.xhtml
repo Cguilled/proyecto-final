@@ -36,8 +36,11 @@
 
 			<h:panelGrid id="panel_formuBotonesRoles" columns="3"
 				style="margin: 0 auto; text-align: center;">
-				<h:commandButton id="botonAlta" value="Alta"
+				<ace:pushButton id="botonAlta" value="Alta"
 					actionListener="#{roles_bean.alta_Rol}" />
+
+				<ace:pushButton id="botonBaja" value="Baja"
+					actionListener="#{roles_bean.baja_Rol}" />
 
 				<ace:pushButton id="botonModificar" value="Modificación"
 					actionListener="#{roles_bean.modificacion_Rol}" />

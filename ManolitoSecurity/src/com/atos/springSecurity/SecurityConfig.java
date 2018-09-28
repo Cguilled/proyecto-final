@@ -64,7 +64,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.sessionManagement()
 			.sessionFixation().migrateSession() //proteccion contra ataques de secuestro de sesion cuando el usuario vuelve a hacer log in.
         	.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
-        	.maximumSessions(2).expiredUrl("/expired/expired.xhtml"); //Pagina para cuando expire la sesion
+        	.maximumSessions(1).expiredUrl("/expired/expired.xhtml"); //Pagina para cuando expire la sesion
 		
 		//http.formLogin().defaultSuccessUrl("/loginSuccess");
 		//http.logout().logoutUrl("/doLogout").logoutSuccessUrl("/login.jsp").permitAll();
@@ -93,7 +93,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	//Bean de la clase para redirecciones
 	@Bean
     public AuthenticationSuccessHandler customAuthenticationSuccessHandler(){
-        return new CustomSimpleUrlAuthenticationSuccessHandler();
+        return new CustomUrlAuthenticationSuccessHandler();
     }
 	
 	//Bean para activar el control simultaneo de la sesion

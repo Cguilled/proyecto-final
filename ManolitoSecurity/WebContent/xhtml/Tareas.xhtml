@@ -8,14 +8,14 @@
 	xmlns:icecore="http://www.icefaces.org/icefaces/core"
 	xmlns:ace="http://www.icefaces.org/icefaces/components"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-	<ui:param name="title" value="#{msgs['example.ace.menuBar.title']}" />
-	<ui:param name="description"
-		value="#{msgs['example.ace.menuBar.description']}" />
+<ui:param name="title" value="#{msgs['example.ace.menuBar.title']}" />
+<ui:param name="description"
+	value="#{msgs['example.ace.menuBar.description']}" />
 
 <h:head></h:head>
 
 <h:body>
-<!-- FORMULARIO DE TAREAS-->
+	<!-- FORMULARIO DE TAREAS-->
 	<h:form id="formu_tareas">
 
 		<ace:dialog id="dialogTareas" binding="#{dialogTareas}"
@@ -45,8 +45,8 @@
 					value="#{tareas_bean.tarea.descripcion_Tarea}" label="Descripción"
 					labelPosition="top"
 					validatorMessage="Descripción_Tareas: tamaño máximo: 2000 caracteres.">
-					<f:validateLength maximum="2000"/>
-						<ace:ajax render="@this comment1Output comment1Msg" />
+					<f:validateLength maximum="2000" />
+					<ace:ajax render="@this comment1Output comment1Msg" />
 				</ace:textAreaEntry>
 
 				<ace:checkboxButton id="checkBoxEstado"
@@ -60,20 +60,21 @@
 
 			<h:panelGrid id="panel_formuBotonesTareas" columns="3"
 				style="margin: 0 auto; text-align: center;">
-				<h:commandButton id="botonAlta" value="Alta"
+
+				<ace:pushButton id="botonAlta" value="Alta"
 					actionListener="#{tareas_bean.alta_Tarea}" />
 
-				<h:commandButton id="botonBaja" value="Baja"
+				<ace:pushButton id="botonBaja" value="Baja"
 					actionListener="#{tareas_bean.baja_Tarea}" />
 
-				<h:commandButton id="botonModificar" value="Modificación"
+				<ace:pushButton id="botonModificar" value="Modificación"
 					actionListener="#{tareas_bean.modificacion_Tarea}" />
 
 			</h:panelGrid>
 
 		</ace:dialog>
-		</h:form>
-	
-	</h:body>
+	</h:form>
+
+</h:body>
 
 </html>

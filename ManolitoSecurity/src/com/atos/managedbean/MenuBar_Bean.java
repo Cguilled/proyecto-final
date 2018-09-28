@@ -29,8 +29,8 @@ public class MenuBar_Bean implements Serializable, ActionListener {
 	private boolean visible_usuarios;
 	private boolean visible_tareas;
 
-	public void buildMenuModel() {
-		/*modelo = new DefaultMenuModel();
+	/*public void buildMenuModel() {
+		modelo = new DefaultMenuModel();
 		usuarios = new MenuItem();
 		tareas = new MenuItem();
 		roles = new MenuItem();
@@ -55,8 +55,8 @@ public class MenuBar_Bean implements Serializable, ActionListener {
 
 		finSesion.setId("itemFinSesion");
 		finSesion.setValue("FinSesion");
-		finSesion.addActionListener(this);*/
-	}
+		finSesion.addActionListener(this);
+	}*/
 
 	@PostConstruct
 	public void valores_Iniciales() {
@@ -70,11 +70,6 @@ public class MenuBar_Bean implements Serializable, ActionListener {
 		// TODO Auto-generated method stub
 
 	}
-	
-	public void pass_check(ActionEvent evento) {
-		System.out.println("Realizando cambio de contraseña...");
-	}
-	
 
 	public void fragmentUsuarios(ActionEvent evento) {
 		try {
@@ -110,7 +105,7 @@ public class MenuBar_Bean implements Serializable, ActionListener {
 	}
 
 	public String formTareas() {
-		System.out.println("Redirigiendo a Usuarios.xhtml");
+		System.out.println("Redirigiendo a Tareas.xhtml");
 		siguiente = "/xhtml/Tareas.xhtml";
 		return siguiente;
 	}
@@ -152,7 +147,4 @@ public class MenuBar_Bean implements Serializable, ActionListener {
 	public void setVisible_tareas(boolean visible_tareas) {
 		this.visible_tareas = visible_tareas;
 	}
-
-	
-	
 }

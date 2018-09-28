@@ -14,7 +14,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 
 import com.atos.hibernate.dto.Usuarios;
 import com.atos.hibernate.modelo.IGestion_Usuarios;
-import com.atos.springSecurity.CustomSimpleUrlAuthenticationSuccessHandler;
+import com.atos.springSecurity.CustomUrlAuthenticationSuccessHandler;
 
 @ManagedBean(name = "password_bean")
 @ViewScoped
@@ -37,7 +37,7 @@ public class Password_Bean implements Serializable {
 	private Mensajes_Bean alerta;
 
 	@Autowired
-	private CustomSimpleUrlAuthenticationSuccessHandler authSuccessHandler;
+	private CustomUrlAuthenticationSuccessHandler authSuccessHandler;
 
 	@PostConstruct
 	public void valores_Iniciales() {

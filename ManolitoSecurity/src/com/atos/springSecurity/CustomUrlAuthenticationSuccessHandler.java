@@ -20,7 +20,7 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 import com.atos.hibernate.dto.Usuarios;
 import com.atos.hibernate.modelo.IGestion_Usuarios;
 
-public class CustomSimpleUrlAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
+public class CustomUrlAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
 
 	// Inyecto un objecto de gestionUsuarios
 	@Autowired
@@ -33,6 +33,10 @@ public class CustomSimpleUrlAuthenticationSuccessHandler implements Authenticati
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
 			Authentication authentication) throws IOException, ServletException {
 		handle(request, response, authentication);
+		HttpSession session = request.getSession(false);
+	    if (session != null) {
+	        session.setMaxInactiveInterval(30);
+	    }
 		clearAuthenticationAttributes(request);
 	}
 

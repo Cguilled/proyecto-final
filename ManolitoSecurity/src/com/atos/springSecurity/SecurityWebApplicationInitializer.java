@@ -3,6 +3,7 @@ package com.atos.springSecurity;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
 
 public class SecurityWebApplicationInitializer extends AbstractSecurityWebApplicationInitializer {
