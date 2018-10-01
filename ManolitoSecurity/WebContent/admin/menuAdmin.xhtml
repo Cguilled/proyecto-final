@@ -16,7 +16,7 @@
 
 <h:body>
 
-	<h:form id="formu_menuAdmin">
+	<h:form id="formu_menuAdmin" action="/logout">
 
 		<!-- CONTENEDOR DE LOS COMPONENTES -->
 		<h:panelGrid id="panel_formuAdmin" columns="1"
@@ -35,12 +35,12 @@
 				<ace:menuItem id="itemConsultar" value="Consultar"
 					action="http://www.icefaces.org" />
 
-				<ace:menuItem id="itemFinSesion" value="Finalizar sesión"
-					url="/login.jsp" />
+				<ace:menuItem id="itemFinSesion" value="Finalizar sesión" 
+				actionListener="#{menubar_bean.logout}"/>
 			</ace:menuBar>
 
 		</h:panelGrid>
-		<ui:include src="#{menubar_bean.siguiente}" />
+		<!-- <ui:include src="#{menubar_bean.siguiente}" /> -->
 	</h:form>
 </h:body>
 </html>

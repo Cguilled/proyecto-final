@@ -33,10 +33,12 @@ public class CustomUrlAuthenticationSuccessHandler implements AuthenticationSucc
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
 			Authentication authentication) throws IOException, ServletException {
 		handle(request, response, authentication);
+		
 		HttpSession session = request.getSession(false);
 	    if (session != null) {
-	        session.setMaxInactiveInterval(30);
+	        session.setMaxInactiveInterval(10);
 	    }
+	    
 		clearAuthenticationAttributes(request);
 	}
 
@@ -77,7 +79,6 @@ public class CustomUrlAuthenticationSuccessHandler implements AuthenticationSucc
 			return "/admin/menuAdmin.xhtml";
 		else
 			return "/error/error.html";
-
 	}
 
 	protected void clearAuthenticationAttributes(HttpServletRequest request) {

@@ -2,11 +2,20 @@ package com.atos.util;
 
 import java.util.ArrayList;
 
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.context.annotation.Scope;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.atos.hibernate.dto.Tareas;
 
@@ -64,5 +73,25 @@ public class Utilidades implements IUtilidades {
 		}
 		return codigoTarea;
 	}
+	
+	/*public static void refresh() {
+		System.out.println("refrejcando");
+		FacesContext contexto = FacesContext.getCurrentInstance();
+		String refreshpage = contexto.getViewRoot().getViewId();
+		javax.faces.application.ViewHandler handler = contexto.getApplication().getViewHandler();
+		javax.faces.component.UIViewRoot root = handler.createView(contexto, refreshpage);
+		root.setViewId(refreshpage);
+		contexto.setViewRoot(root);
+		System.out.println("refrejcado");
+	}*/
+	
+	@RequestMapping(value="/logout", method = RequestMethod.POST)
+	public static String logoutPage (HttpServletRequest request, HttpServletResponse response) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth != null){   
+            new SecurityContextLogoutHandler().logout(request, response, auth);
+        }
+        return "redirect:/login?logout=true";
+    }
 	
 }

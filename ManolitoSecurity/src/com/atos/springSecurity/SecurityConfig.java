@@ -15,6 +15,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 import org.springframework.security.web.session.HttpSessionEventPublisher;
 
 @EnableWebSecurity
@@ -34,44 +35,30 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	}
 
 	@Override
-	protected void configure(HttpSecurity http) throws Exception {
-		/*http.authorizeRequests().anyRequest().authenticated().and().formLogin().and().httpBasic();
-		http.authorizeRequests().anyRequest().authenticated().and().formLogin().loginPage("/inicio.xhtml").permitAll();
-		http.authorizeRequests().anyRequest().authenticated().and().formLogin().loginPage("/login.jsp").defaultSuccessUrl("/index.jsp");
-		http.authorizeRequests().anyRequest().authenticated().and().formLogin().defaultSuccessUrl("/WEB-INF/index.jsp");
-		http.formLogin().defaultSuccessUrl("/WEB-INF/index.jsp");
-		http.formLogin().failureUrl("/error/error.html");*/
-		
+	protected void configure(HttpSecurity http) throws Exception {	
 		http
+			.csrf().disable()
 			.authorizeRequests().antMatchers("/login.jsp").permitAll()
 				.antMatchers("/admin/**").hasAuthority("ADMIN")
 				.antMatchers("/user/**").hasAnyAuthority("ADMIN","USER")
+				.antMatchers("/expired/**").hasAnyAuthority("ADMIN","USER")
+				.antMatchers("/error/**").hasAnyAuthority("ADMIN","USER")
 				.anyRequest().authenticated()
-				.and()
-			.formLogin().loginPage("/login.jsp") //Pagina de login
+			.and()
+				.formLogin().loginPage("/login.jsp") //Pagina de login
 				.loginProcessingUrl("/doLogin") //importante, es la url request del servlet de login de spring security (post)
 				.failureUrl("/login.jsp?error")
 				.successHandler(customAuthenticationSuccessHandler()) //Clase para redireccionar
 				.usernameParameter("username").passwordParameter("password") //Parametros del login
 			.and()
-				.logout().logoutSuccessUrl("/login.jsp")
+				.logout().logoutSuccessUrl("/logout").invalidateHttpSession(true)
+				.logoutSuccessHandler(CustomLogoutSuccessHandler())
 			.and()
 				.exceptionHandling().accessDeniedPage("/error/forbidden.xhtml")
 			.and()
-				.csrf().disable();
-		
-		//Crear sesion si se necesita
-		http.sessionManagement()
-			.sessionFixation().migrateSession() //proteccion contra ataques de secuestro de sesion cuando el usuario vuelve a hacer log in.
-        	.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
-        	.maximumSessions(1).expiredUrl("/expired/expired.xhtml"); //Pagina para cuando expire la sesion
-		
-		//http.formLogin().defaultSuccessUrl("/loginSuccess");
-		//http.logout().logoutUrl("/doLogout").logoutSuccessUrl("/login.jsp").permitAll();
-		
-		//http.formLogin().successHandler(customAuthenticationSuccessHandler());
-		
-		//http.exceptionHandling().accessDeniedPage("/control/403");
+				//proteccion contra ataques de secuestro de sesion cuando el usuario vuelve a hacer log in.
+				.sessionManagement().sessionFixation().migrateSession() 
+		    	.maximumSessions(1).expiredUrl("/expired/expired.xhtml"); //Pagina para cuando expire la sesion
 	}
 	
 	//Bean de la clase para encriptar la contrasena
@@ -96,11 +83,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new CustomUrlAuthenticationSuccessHandler();
     }
 	
+	//Bean de la clase para logout
+	@Bean
+    public LogoutSuccessHandler CustomLogoutSuccessHandler(){
+        return new CustomLogoutSuccessHandler();
+    }
+	
 	//Bean para activar el control simultaneo de la sesion
-	/*@Bean
+	@Bean
 	public HttpSessionEventPublisher httpSessionEventPublisher() {
 	    return new HttpSessionEventPublisher();
-	}*/
+	}
 	
 	//Injecting the Raw Session into a Controller
 	/*@RequestMapping(..)
