@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 public class CustomLogoutSuccessHandler implements LogoutSuccessHandler {
 
-	@RequestMapping(value="/logout", method = RequestMethod.POST)
 	@Override
 	public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
 			throws IOException, ServletException {

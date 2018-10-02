@@ -40,19 +40,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.csrf().disable()
 			.authorizeRequests().antMatchers("/login.jsp").permitAll()
 				.antMatchers("/admin/**").hasAuthority("ADMIN")
-				.antMatchers("/user/**").hasAnyAuthority("ADMIN","USER")
+				.antMatchers("/user/**").hasAnyAuthority("ADM5IN","USER")
 				.antMatchers("/expired/**").hasAnyAuthority("ADMIN","USER")
 				.antMatchers("/error/**").hasAnyAuthority("ADMIN","USER")
 				.anyRequest().authenticated()
 			.and()
 				.formLogin().loginPage("/login.jsp") //Pagina de login
 				.loginProcessingUrl("/doLogin") //importante, es la url request del servlet de login de spring security (post)
-				.failureUrl("/login.jsp?error")
+				.failureUrl("/error/error.html")
 				.successHandler(customAuthenticationSuccessHandler()) //Clase para redireccionar
 				.usernameParameter("username").passwordParameter("password") //Parametros del login
 			.and()
-				.logout().logoutSuccessUrl("/logout").invalidateHttpSession(true)
-				.logoutSuccessHandler(CustomLogoutSuccessHandler())
+				.logout().logoutUrl("/logout").logoutSuccessUrl("/login.jsp").invalidateHttpSession(true)
+				//.logoutSuccessHandler(CustomLogoutSuccessHandler())
 			.and()
 				.exceptionHandling().accessDeniedPage("/error/forbidden.xhtml")
 			.and()

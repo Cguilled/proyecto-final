@@ -12,7 +12,7 @@
 		value="#{msgs['example.ace.dialog.description']}" />
 
 	<!-- FORMULARIO DE LA VISTA -->
-	<h:form id="formu_login" action="doLogin" method="post">
+	<h:form id="formu_login" action="${request.contextPath}/doLogin" method="post">
 		<ace:dialog id="dialogLogin" binding="#{dialog}"
 			header="Iniciar sesión" closable="false" modal="true"
 			draggable="false" showEffect="explode" hideEffect="puff" width="400"
