@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+	xmlns:icecore="http://www.icefaces.org/icefaces/core"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+	<ui:param name="title" value="#{msgs['example.ace.menuBar.title']}" />
+	<ui:param name="description"
+		value="#{msgs['example.ace.menuBar.description']}" />
+
+	<!-- FORMULARIO DE ROLES-->
+	<h:form id="formu_login">
+		<!-- CONTENEDOR DE LOS COMPONENTES -->
+		<h:panelGrid id="panel_formuRoles" columns="1"
+			style="margin: 0 auto; text-align: center;">
+			<!-- COMPONENTES DEL FORMULARIO -->
+			<ace:textEntry id="nombre_rol" value="#{roles_bean.nombre_rol}" label="Nombre_Rol"
+				labelPosition="top" required="true" requiredIndicator="*"
+				validatorMessage="Nombre: tamaño máximo: 100 caracteres. Mínimo: 3.">
+				<f:validateLength minimum="3" maximum="100" />
+			</ace:textEntry>
+
+			<ace:textEntry id="descripcion_rol" value="#{roles_bean.descripcion_rol}"
+				label="Descripción_Rol" labelPosition="top"
+				validatorMessage="Descripción_Roles: tamaño máximo: 20 caracteres. Mínimo: 3.">
+				<f:validateLength minimum="3" maximum="2000" />
+			</ace:textEntry>
+		</h:panelGrid>
+
+		<h:panelGrid id="panel_formuBotonesRoles" columns="3"
+			style="margin: 0 auto; text-align: center;">
+			<h:commandButton id="botonAlta" value="Alta" actionListener="#{roles_bean.alta_Rol}" />
+
+			<h:commandButton id="botonBaja" value="Baja" actionListener="#{roles_bean.baja_Rol}" />
+
+			<h:commandButton id="botonModificar" value="Modificación"
+				actionListener="#{roles_bean.modificacion_Rol}" />
+
+		</h:panelGrid>
+
+	</h:form>
+
+</ui:composition>
+

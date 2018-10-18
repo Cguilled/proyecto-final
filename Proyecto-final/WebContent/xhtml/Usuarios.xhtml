@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+	xmlns:icecore="http://www.icefaces.org/icefaces/core"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+	<ui:param name="title" value="#{msgs['example.ace.menuBar.title']}" />
+	<ui:param name="description"
+		value="#{msgs['example.ace.menuBar.description']}" />
+
+	<!-- FORMULARIO DE USUARIOS-->
+	<h:form id="formu_login">
+		<!-- CONTENEDOR DE LOS COMPONENTES -->
+		<h:panelGrid id="panel_formuUsuarios" columns="1"
+			style="margin: 0 auto; text-align: center;">
+			<!-- COMPONENTES DEL FORMULARIO -->
+			<ace:textEntry id="username" value="#{usuarios_bean.nombre_usuario}"
+				label="Usuario" labelPosition="top" required="true"
+				requiredIndicator="*"
+				validatorMessage="Usuario: tamaño máximo: 15 caracteres. Mínimo: 3.">
+				<f:validateLength minimum="3" maximum="15" />
+			</ace:textEntry>
+			<ace:textEntry id="nombre" value="#{usuarios_bean.nombre}"
+				label="Nombre" labelPosition="top" required="true"
+				requiredIndicator="*"
+				validatorMessage="Nombre: tamaño máximo: 20 caracteres. Mínimo: 3.">
+				<f:validateLength minimum="3" maximum="20" />
+			</ace:textEntry>
+
+			<ace:textEntry id="apellido" value="#{usuarios_bean.apellido}"
+				label="Apellido" labelPosition="top" required="true"
+				requiredIndicator="*"
+				validatorMessage="Apellido: tamaño máximo: 20 caracteres. Mínimo: 3.">
+				<f:validateLength minimum="3" maximum="20" />
+			</ace:textEntry>
+			<ace:textEntry id="estado" value="#{usuarios_bean.estado}"
+				label="Estado" labelPosition="top" required="true"
+				requiredIndicator="*" validatorMessage="Estado: activo/no activo.">
+			</ace:textEntry>
+
+			<ace:textEntry id="password" value="#{usuarios_bean.password}"
+				label="Contraseña" labelPosition="top" required="true" secret="true"
+				requiredIndicator="*" indicatorPosition="right"
+				validatorMessage="Contraseña: tamaño máximo: 10 caracteres. Mínimo: 3.">
+				<f:validateLength minimum="3" maximum="10" />
+			</ace:textEntry>
+
+		</h:panelGrid>
+
+		<h:panelGrid id="panel_formuBotonesUsuarios" columns="3"
+			style="margin: 0 auto; text-align: center;">
+			<h:commandButton id="botonAlta" value="Alta"
+				actionListener="#{usuarios_bean.alta_Usuario}" />
+
+			<h:commandButton id="botonBaja" value="Baja"
+				actionListener="#{usuarios_bean.baja_Usuario}" />
+
+			<h:commandButton id="botonModificar" value="Modificación"
+				actionListener="#{usuarios_bean.modificacion_Usuario}" />
+
+		</h:panelGrid>
+
+	</h:form>
+
+</ui:composition>
